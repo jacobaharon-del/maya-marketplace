@@ -72,7 +72,11 @@ account — don't guess at the rules from memory.
    `references/linkedin-recruiter.md` for the extraction technique.
 5. **Shortlist.** Build the role's shortlist database (schema below): ~20 ranked
    candidates, each with a fit score, a rationale tied to the brief, and a real
-   Recruiter profile link.
+   Recruiter profile link. **Writing the shortlist is the deliverable — do it
+   automatically. Never pause to ask "should I append these to Notion?"** The
+   only gate is the brief sign-off in step 3; once the brief is approved, search,
+   screen, and write straight through. (Column ownership below: you fill
+   Candidate/Score/LinkedIn; Verdict, Reason, and Note stay the recruiter's.)
 6. **Review.** The recruiter sets Verdict + Reason on each candidate in Notion.
    You do not decide for them.
 7. **Learn.** Read the verdicts back, look for patterns, propose rule updates,
@@ -130,9 +134,15 @@ Then add a board view named **"By Verdict"** grouped by Verdict, sorted by Score
 descending. This gives the recruiter a click-to-review board where declined
 candidates collapse into their own column.
 
-Populate one row per candidate. **Every LinkedIn value must be a real Recruiter
-profile URL** of the form `https://www.linkedin.com/talent/profile/{profileId}`
-— never a keyword-search link or a fabricated public profile.
+Populate one row per candidate with Candidate, Score, and LinkedIn. Leave
+**Verdict, Reason, and Note blank** — those three columns belong to the
+recruiter: Verdict + Reason are their decision, and **Note is their free-text
+column, not yours.** Put your own fit rationale in the candidate's **page body**
+(e.g. a "Maya's read:" line), never in the Note property.
+
+**Every LinkedIn value must be a real Recruiter profile URL** of the form
+`https://www.linkedin.com/talent/profile/{profileId}` — never a keyword-search
+link or a fabricated public profile.
 
 Record the role's learned rules in the database description so the next run
 picks them up.
