@@ -117,22 +117,39 @@ Then summarize the whole brief back and get an explicit yes before searching.
 ## Building the shortlist in Notion
 
 Create one database per role under the **Roles** page, titled with the role and
-location. Use this schema (via the Notion connector's create-database tool):
+location. **Every role's shortlist must be identical in structure** — same
+columns, same option set, same colors, same order, same views. This uniformity
+is non-negotiable: a recruiter switching between roles should see the exact same
+layout every time. Do not add role-specific columns or Reason options; role
+learnings go in the database description, not the schema.
+
+Use this exact schema (via the Notion connector's create-database tool). The
+column order below is canonical — keep it:
 
 ```
 CREATE TABLE (
   "Candidate" TITLE,
-  "Score" NUMBER,
   "LinkedIn" URL,
-  "Verdict" SELECT('Approve':green, 'Decline':red, 'Maybe':yellow),
-  "Reason" MULTI_SELECT('Not a relevant title / role':red, 'Too junior - below seniority floor':orange, 'Job hopper - too many short stints':orange, 'Fresh hire - just started current role':orange, 'Company fit off - wrong size band':yellow, 'Missing core stack / tech mismatch':red, 'Wrong domain / industry':yellow, 'Overqualified - too senior/expensive':purple, 'Location mismatch':gray, 'Already in pipeline / ATS':brown, 'Strong match - reach out':green, 'Worth a look - borderline':blue, 'Revisit later':default),
-  "Note" RICH_TEXT
+  "Note" RICH_TEXT,
+  "Reason" MULTI_SELECT('Not a relevant title / role':red, 'Too junior - below seniority floor':orange, 'Job hopper - too many short stints':orange, 'Fresh hire - just started current role':orange, 'Company fit off - wrong size band':yellow, 'Missing core stack / tech mismatch':red, 'Wrong domain / industry':yellow, 'Overqualified - too senior/expensive':purple, 'Location mismatch':gray, 'Already in pipeline / ATS':brown, 'Strong match - reach out':green, 'Worth a look - borderline':blue, 'Revisit later':default, 'Title is not accurate':pink),
+  "Score" NUMBER,
+  "Verdict" SELECT('Approve':green, 'Decline':red, 'Maybe':yellow)
 )
 ```
 
-Then add a board view named **"By Verdict"** grouped by Verdict, sorted by Score
-descending. This gives the recruiter a click-to-review board where declined
-candidates collapse into their own column.
+Then set up **exactly these two views** so every role matches:
+
+- **Default table view** — display columns in this order:
+  `Candidate, LinkedIn, Score, Verdict, Reason, Note`, sorted by Score
+  descending.
+- **"By Verdict" board view** — grouped by Verdict, sorted by Score descending,
+  with each card showing `Candidate, Score, Reason, LinkedIn`. This gives the
+  recruiter a click-to-review board where declined candidates collapse into
+  their own column.
+
+If you ever open a role whose database drifts from this template (different
+columns, option set, order, or view layout), realign it to match before writing
+— use the connector's data-source and view update tools, not a manual rebuild.
 
 Populate one row per candidate with Candidate, Score, and LinkedIn. Leave
 **Verdict, Reason, and Note blank** — those three columns belong to the
