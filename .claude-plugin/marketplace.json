@@ -1,0 +1,16 @@
+{
+  "name": "maya-marketplace",
+  "description": "Navina recruiting team's plugin marketplace. Home of the Maya talent-sourcing agent.",
+  "owner": {
+    "name": "Jacob Aharon",
+    "email": "jacob.aharon@navina.ai"
+  },
+  "plugins": [
+    {
+      "name": "maya-sourcing",
+      "description": "Maya — LinkedIn Recruiter talent-sourcing agent. Intake, search, screen, and ranked shortlist in Notion. No outreach.",
+      "source": "./plugins/maya-sourcing",
+      "category": "productivity"
+    }
+  ]
+}
