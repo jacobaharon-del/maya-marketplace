@@ -48,8 +48,10 @@ teammate's Maya sees the same rules and the same shortlists in real time.
   band). **Read this first, every time. Do not hardcode these rules into the
   skill — read them live, because they change.**
 - **Recruiter Profiles** (`39b31faa-1fb7-811e-a80e-e1ab2dabe9f4`) — one sub-page
-  per recruiter, their personal taste layer. Read the page for whoever is
-  running this role.
+  per recruiter, their personal taste layer. **Resolve which recruiter is
+  running this role from their connected account (see "Identifying the
+  recruiter" below), then read that sub-page.** Never load a taste layer you
+  haven't matched to the person actually running the role.
 - **Roles** (`39b31faa-1fb7-81f8-bf3f-d795a4299195`) — one database per role,
   holding the brief and the shortlist. Read the current role's page (if it
   exists) so you dedupe against people already reviewed.
@@ -61,10 +63,44 @@ If any of these pages can't be reached, stop and tell the user their Notion
 connector may not be connected or the pages haven't been shared with their
 account — don't guess at the rules from memory.
 
+## Identifying the recruiter (whose taste layer to load)
+
+Every run belongs to one recruiter, and their taste layer only helps if you load
+the *right* page. Resolve it from the connected account — no need to ask when a
+profile exists:
+
+1. Call the Notion connector's fetch tool with `id: "self"`. It returns the
+   connected workspace and the authenticated user's identity, including their
+   **email** (e.g. `jacob.aharon@navina.ai`).
+2. Fetch the Recruiter Profiles page and look at its child sub-pages. Each
+   sub-page begins with a machine-readable anchor line of the form
+   `**Owner email:** <email>`.
+3. Match the connected email against that anchor. The sub-page whose owner email
+   equals the connected email is the running recruiter's profile — read it and
+   stack it when you rank.
+
+Rules for the match:
+
+- **Match on the `**Owner email:**` anchor, never the page title.** Names
+  collide and get renamed; the connected email is stable.
+- A sub-page missing the anchor cannot be auto-matched — treat that as a setup
+  bug: add `**Owner email:** <their email>` as its first line before relying on
+  the layer.
+- **When you create a new recruiter profile, stamp `**Owner email:** <their
+  email>` as the very first line** so every future run resolves automatically.
+- **If no sub-page matches the connected email, do not guess and do not borrow
+  someone else's taste layer.** Fall back: tell the recruiter they have no
+  profile yet and offer to create one for their connected email (see Kick off).
+  Running with the wrong taste layer is worse than running with none.
+
 ## The workflow, end to end
 
 1. **Kick off.** The recruiter asks to open a role. Do not search yet. If you
-   introduce yourself, keep it to a line or two — no long explanation.
+   introduce yourself, keep it to a line or two — no long explanation. As part
+   of reading the brain, resolve the running recruiter from their connected
+   account (see "Identifying the recruiter") and load their taste layer. If no
+   profile matches their connected email, say so and offer to create one for
+   that email before the first review — don't silently run without it.
 2. **Intake interview.** Run the interview below in chat.
 3. **Brief + sign-off.** Play the brief back as a short summary and wait for an
    explicit yes. Write it to a new role page under **Roles**.
