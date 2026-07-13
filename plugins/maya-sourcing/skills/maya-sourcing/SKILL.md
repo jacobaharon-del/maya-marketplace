@@ -41,8 +41,9 @@ sign-off) at the **end of every run**. Because these pages are shared, any
 teammate's Maya sees the same rules and the same shortlists in real time.
 
 - **Global Screening Profile** (`39b31faa-1fb7-8132-9e99-cd7f34014249`) — the
-  team baseline that applies to every run: hard rules (deliver ~20, real profile
-  links, exclude ATS, no outreach) and the learned screening filters (title
+  team baseline that applies to every run: hard rules (quality over quota — up
+  to 20, never padded; real profile links; exclude ATS; no outreach) and the
+  learned screening filters (title
   match, fresh-hire and job-hopper thresholds, seniority floor, company-fit
   band). **Read this first, every time. Do not hardcode these rules into the
   skill — read them live, because they change.**
@@ -67,16 +68,40 @@ account — don't guess at the rules from memory.
 2. **Intake interview.** Run the interview below in chat.
 3. **Brief + sign-off.** Play the brief back as a short summary and wait for an
    explicit yes. Write it to a new role page under **Roles**.
-4. **Search & screen.** Turn the brief into a LinkedIn Recruiter boolean search,
-   drop anyone already in the ATS, apply the layered rules. See
-   `references/linkedin-recruiter.md` for the extraction technique.
-5. **Shortlist.** Build the role's shortlist database (schema below): ~20 ranked
-   candidates, each with a fit score, a rationale tied to the brief, and a real
-   Recruiter profile link. **Writing the shortlist is the deliverable — do it
-   automatically. Never pause to ask "should I append these to Notion?"** The
-   only gate is the brief sign-off in step 3; once the brief is approved, search,
-   screen, and write straight through. (Column ownership below: you fill
-   Candidate/Score/LinkedIn; Verdict, Reason, and Note stay the recruiter's.)
+4. **Search & screen.** Build a real LinkedIn Recruiter search from the brief —
+   this is where sourcing quality is won or lost.
+   - **Always construct a keyword/boolean string from the must-haves.** A search
+     on Job title + Location facets alone is not acceptable: it returns a broad,
+     undifferentiated pool (often thousands) ordered by LinkedIn's relevance, not
+     yours. Turn the JD and hiring-manager must-haves into a boolean keyword
+     string — the actual stack, tools, and signals that separate a real fit from
+     a title match (specific technologies, scale/domain terms, transition
+     signals) — so the pool is smaller and denser. **An empty Keywords field is a
+     bug, not a shortcut.**
+   - **Review deep, not just the top.** Do not skim the first page or two and
+     stop. Work down the densified pool and expect to reject far more people than
+     you keep. A high keep-rate off the top of a broad, unfiltered list is a red
+     flag that you sampled shallow rather than sourced.
+   - Drop anyone already in the ATS, then apply the layered screening rules to
+     each profile you actually open. See `references/linkedin-recruiter.md` for
+     the extraction technique.
+5. **Shortlist — fit-gated.** Build the role's shortlist database (schema below).
+   **Only a candidate you have verified as a genuine fit earns a row.** Before
+   writing anyone, confirm they clear the layered bar and that you can point to
+   2–3 specific pieces of profile evidence for the must-haves — never "relevant
+   background." If you can't, they don't go on the list.
+   - **20 is a ceiling, not a floor.** Deliver up to 20 ranked candidates, but
+     never pad to hit a number. If only 12 clear the bar, write 12 and tell the
+     recruiter what limited the pool (too-narrow brief, thin market, weak
+     keyword hits). A short list of real fits beats a full list of maybes.
+   - Each row carries a fit score, a rationale tied to the brief, and a real
+     Recruiter profile link.
+   - **Writing the shortlist is the deliverable — do it automatically for the
+     candidates who clear the fit-gate. Never pause to ask "should I append these
+     to Notion?"** The only gate is the brief sign-off in step 3; once the brief
+     is approved, search, screen, fit-gate, and write straight through. (Column
+     ownership below: you fill Candidate/Score/LinkedIn; Verdict, Reason, and Note
+     stay the recruiter's.)
 6. **Review.** The recruiter sets Verdict + Reason on each candidate in Notion.
    You do not decide for them.
 7. **Learn.** Read the verdicts back, look for patterns, propose rule updates,
