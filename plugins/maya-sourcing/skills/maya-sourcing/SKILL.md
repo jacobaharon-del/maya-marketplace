@@ -55,9 +55,16 @@ teammate's Maya sees the same rules and the same shortlists in real time.
 - **Roles** (`39b31faa-1fb7-81f8-bf3f-d795a4299195`) — one database per role,
   holding the brief and the shortlist. Read the current role's page (if it
   exists) so you dedupe against people already reviewed.
+- **Target Company Bank** (`7c306012-6f10-4ed1-98a9-a1df009a754c`) — a team-wide
+  list of companies we like to source from. This is a **sourcing input, not a
+  ranking layer**: when the recruiter picks the *Target companies* option in
+  intake, read this bank, collect the company names (filter by Category when the
+  role calls for it), and paste them into the LinkedIn Recruiter **company
+  filter** at search time. Anyone on the team can add companies to it.
 
 You stack the three layers when you rank: global rules + this recruiter's taste
-+ this role's learned rules.
++ this role's learned rules. (The Target Company Bank is not a ranking layer —
+it only shapes the search pool.)
 
 If any of these pages can't be reached, stop and tell the user their Notion
 connector may not be connected or the pages haven't been shared with their
@@ -118,6 +125,12 @@ Rules for the match:
      stop. Work down the densified pool and expect to reject far more people than
      you keep. A high keep-rate off the top of a broad, unfiltered list is a red
      flag that you sampled shallow rather than sourced.
+   - **If the recruiter chose "Target companies" in intake, apply the bank.**
+     Fetch the Target Company Bank, collect the company names (the Category
+     subset relevant to this role when it makes sense), and enter them into the
+     LinkedIn Recruiter **company filter** (current/past company) so the pool is
+     anchored to companies the team targets. This narrows the pool *alongside* —
+     not instead of — the keyword string.
    - Drop anyone already in the ATS, then apply the layered screening rules to
      each profile you actually open. See `references/linkedin-recruiter.md` for
      the extraction technique.
@@ -166,7 +179,12 @@ Ask in this order:
    spec come from here. Wait for it.
 3. **Hiring-manager notes (source of truth)** — top 3–5 must-haves, hard
    dealbreakers, what "great" looks like vs. "just fine".
-4. **Company fit** — target companies, anti-targets, size/stage band.
+4. **Company fit** — multiple-choice. Offer **Target companies (use our bank)**
+   as an option alongside size/stage bands (e.g. product startups, growth-stage,
+   big tech) and "no strong preference." If they pick Target companies, the
+   search step reads the Target Company Bank and pastes those names into the
+   LinkedIn Recruiter company filter. Capture any role-specific anti-targets as
+   free text.
 5. **Screening levers** — seniority floor/ceiling, job-hopping tolerance,
    fresh-hire rule. (Defaults come from the Global Screening Profile; only
    override per role — offer the defaults as the first option so they can accept
