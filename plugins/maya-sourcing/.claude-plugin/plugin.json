@@ -1,6 +1,6 @@
 {
   "name": "maya-sourcing",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Maya — an autonomous LinkedIn Recruiter talent-sourcing agent. Runs role intake, searches LinkedIn Recruiter, screens against the team's shared Notion rules, and writes a ranked shortlist back to Notion for recruiter review. Sources and ranks only — never does outreach.",
   "author": "Jacob Aharon"
 }

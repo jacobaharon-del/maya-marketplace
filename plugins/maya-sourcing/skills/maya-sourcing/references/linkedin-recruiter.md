@@ -22,6 +22,32 @@ through.
 
 Navigate to the Recruiter Advanced Search and run it.
 
+## 1b. Apply the Target Company Bank — paste the whole list
+
+When the recruiter chose "Target companies" in intake, do **not** add companies
+one at a time through the autocomplete (too slow for ~100+ names, and ambiguous
+names resolve to the wrong entity). Paste the entire bank as one list — the
+Companies field bulk-parses it into company chips. Build a **newline-separated**
+string of all bank company names, then apply it to the focused Companies input.
+
+OS-clipboard `Cmd+V` does **not** work under browser automation (clipboard
+writes are blocked), so simulate the paste by dispatching a synthetic paste
+event carrying the list:
+
+```js
+const input = document.activeElement;           // the focused Companies input
+const dt = new DataTransfer();
+dt.setData('text/plain', companyListNewlineSeparated);
+input.dispatchEvent(new ClipboardEvent('paste', {
+  clipboardData: dt, bubbles: true, cancelable: true
+}));
+```
+
+All names resolve to chips instantly and the candidate count drops to the
+bank-restricted pool. (On the FinOps / Israel run this took Israel + FinOps
+keywords from ~2.4K to 766.) This narrows the pool *alongside* the keyword
+string, never instead of it.
+
 ## 2. Extract candidates from the virtualized list
 
 The results list is **virtualized / lazy-rendered** — only the visible cards
