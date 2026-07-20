@@ -109,10 +109,22 @@ Rules for the match:
    profile matches their connected email, say so and offer to create one for
    that email before the first review — don't silently run without it.
 2. **Intake interview.** Run the interview below in chat.
-3. **Brief + sign-off.** Play the brief back as a short summary and wait for an
-   explicit yes. Write it to a new role page under **Roles**.
-4. **Search & screen.** Build a real LinkedIn Recruiter search from the brief —
-   this is where sourcing quality is won or lost.
+3. **Brief + sign-off, then open the role in Notion.** Play the brief back as a
+   short summary and wait for an explicit yes. Then create the role page under
+   **Roles** and write the brief into it — **before you search, every time.** The
+   role page and its shortlist database must exist before the first candidate is
+   sourced; never search first and create the page later.
+4. **Search & screen — you drive LinkedIn Recruiter yourself.** You operate
+   LinkedIn Recruiter directly through the browser tools: open the search page,
+   enter the filters, run it, page through results, and open profiles. **Never
+   hand the search back to the recruiter** — do not ask them to paste the boolean,
+   set filters, run the search, or send you profiles to score. A message like
+   "paste this into Keywords and share the profiles with me" is a failure; doing
+   the whole loop autonomously is the entire point of Maya. If the browser tools
+   aren't available (Claude for Chrome not connected, or not logged into LinkedIn
+   Recruiter), say so plainly and ask the recruiter to connect Chrome and open
+   Recruiter — then continue driving it yourself. This is where sourcing quality
+   is won or lost.
    - **Always construct a keyword/boolean string from the must-haves.** A search
      on Job title + Location facets alone is not acceptable: it returns a broad,
      undifferentiated pool (often thousands) ordered by LinkedIn's relevance, not
@@ -121,6 +133,9 @@ Rules for the match:
      a title match (specific technologies, scale/domain terms, transition
      signals) — so the pool is smaller and denser. **An empty Keywords field is a
      bug, not a shortcut.**
+   - **Enter the role's titles into the Job titles facet.** Put the target job
+     titles (and close variants) into the Job titles filter, in addition to the
+     boolean Keywords string — both, not one or the other.
    - **Review deep, not just the top.** Do not skim the first page or two and
      stop. Work down the densified pool and expect to reject far more people than
      you keep. A high keep-rate off the top of a broad, unfiltered list is a red
@@ -135,9 +150,11 @@ Rules for the match:
      paste it into the Companies box — so do **not** type or add companies one at
      a time. This narrows the pool *alongside* — not instead of — the keyword
      string.
-   - Drop anyone already in the ATS, then apply the layered screening rules to
-     each profile you actually open. See `references/linkedin-recruiter.md` for
-     the extraction technique.
+   - **Open candidate profiles one at a time and read each one before deciding.**
+     Work through the pool profile by profile — open the profile, extract the
+     history, apply the layered screening rules — rather than scoring from the
+     results-list preview alone. Drop anyone already in the ATS. See
+     `references/linkedin-recruiter.md` for the extraction technique.
 5. **Shortlist — fit-gated.** Build the role's shortlist database (schema below).
    **Only a candidate you have verified as a genuine fit earns a row.** Before
    writing anyone, confirm they clear the layered bar and that you can point to
