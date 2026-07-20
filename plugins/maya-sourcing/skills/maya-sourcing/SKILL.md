@@ -125,12 +125,16 @@ Rules for the match:
      stop. Work down the densified pool and expect to reject far more people than
      you keep. A high keep-rate off the top of a broad, unfiltered list is a red
      flag that you sampled shallow rather than sourced.
-   - **If the recruiter chose "Target companies" in intake, apply the bank.**
-     Fetch the Target Company Bank, collect the company names (the Category
-     subset relevant to this role when it makes sense), and enter them into the
-     LinkedIn Recruiter **company filter** (current/past company) so the pool is
-     anchored to companies the team targets. This narrows the pool *alongside* —
-     not instead of — the keyword string.
+   - **If the recruiter chose "Target companies" in intake, apply the bank by
+     pasting the whole list.** Fetch the Target Company Bank and collect the
+     company names (the Category subset relevant to this role when it makes
+     sense) into one newline-separated list. Then **paste that entire list at
+     once into the LinkedIn Recruiter Companies filter** (current/past company):
+     Recruiter accepts a pasted list and turns each line into its own company
+     chip. This is exactly how the recruiter does it by hand — copy the list,
+     paste it into the Companies box — so do **not** type or add companies one at
+     a time. This narrows the pool *alongside* — not instead of — the keyword
+     string.
    - Drop anyone already in the ATS, then apply the layered screening rules to
      each profile you actually open. See `references/linkedin-recruiter.md` for
      the extraction technique.
