@@ -22,30 +22,47 @@ through.
 
 Navigate to the Recruiter Advanced Search and run it.
 
-## 1b. Apply the Target Company Bank — paste the whole list
+## 1b. Apply the Target Company Bank — paste the whole list in ONE action
 
-When the recruiter chose "Target companies" in intake, do **not** add companies
-one at a time through the autocomplete (too slow for ~100+ names, and ambiguous
-names resolve to the wrong entity). Paste the entire bank as one list — the
-Companies field bulk-parses it into company chips. Build a **newline-separated**
-string of all bank company names, then apply it to the focused Companies input.
+When the recruiter chose "Target companies" in intake, add every company in a
+**single paste**. Never add them one at a time through the autocomplete — for
+~100+ names that is painfully slow and resolves ambiguous names wrongly.
 
-OS-clipboard `Cmd+V` does **not** work under browser automation (clipboard
-writes are blocked), so simulate the paste by dispatching a synthetic paste
-event carrying the list:
+Build a **newline-separated** string of the bank company names, then dispatch a
+synthetic paste event on the Companies input. Target the input by selector and
+focus it first. (A real `Cmd+V` cannot work here: under browser automation the
+page never holds OS focus — `document.hasFocus()` is `false` — so the clipboard
+API and OS paste are blocked. The synthetic paste below is what works.)
 
 ```js
-const input = document.activeElement;           // the focused Companies input
+const input = document.querySelector('input[placeholder*="company" i]');
+input.focus();
 const dt = new DataTransfer();
-dt.setData('text/plain', companyListNewlineSeparated);
+dt.setData('text/plain', companyNames.join('\n'));   // one name per line
 input.dispatchEvent(new ClipboardEvent('paste', {
   clipboardData: dt, bubbles: true, cancelable: true
 }));
 ```
 
-All names resolve to chips instantly and the candidate count drops to the
-bank-restricted pool. (On the FinOps / Israel run this took Israel + FinOps
-keywords from ~2.4K to 766.) This narrows the pool *alongside* the keyword
+**Critical — how to know it worked (this is where a naive run goes wrong):**
+LinkedIn creates the company chips **asynchronously**, and the input box stays
+**empty** with no synchronous success signal. That empty input is NOT a failure.
+Do **not** read `input.value` to decide success — it stays `""` even when the
+paste worked, and if you treat that as failure you will wrongly fall back to
+adding names one by one.
+
+Instead, wait ~2 seconds, then **count the company pills**:
+
+```js
+await new Promise(r => setTimeout(r, 2000));
+const added = document.querySelectorAll('.facet-pill__label').length;   // > 0 = success
+```
+
+A single dispatch adds the entire list (verified live: 124 names → 124 chips in
+one action; pool dropped from 3.6M to ~390K). Companies already present are
+de-duped automatically. **Never fall back to adding companies one at a time.**
+If the pill count is still 0 after one retry, stop and tell the recruiter — do
+not type names individually. This narrows the pool *alongside* the keyword
 string, never instead of it.
 
 ## 2. Extract candidates from the virtualized list
