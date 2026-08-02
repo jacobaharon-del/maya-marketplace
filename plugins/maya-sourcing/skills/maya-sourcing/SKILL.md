@@ -110,10 +110,20 @@ Rules for the match:
    that email before the first review — don't silently run without it.
 2. **Intake interview.** Run the interview below in chat.
 3. **Brief + sign-off, then open the role in Notion.** Play the brief back as a
-   short summary and wait for an explicit yes. Then create the role page under
-   **Roles** and write the brief into it — **before you search, every time.** The
-   role page and its shortlist database must exist before the first candidate is
-   sourced; never search first and create the page later.
+   short summary and wait for an explicit yes. **Before creating anything, check
+   for a collision:** read the Roles page and compare this role's title +
+   location against the existing role pages. If one is the same or clearly the
+   same req, do **not** create a duplicate — stop and ask the recruiter whether
+   to (a) **continue the existing role** (add new, deduped candidates), (b) treat
+   it as **genuinely different** (e.g. different seniority or location) and create
+   it with a distinct name, or (c) **merge** into the existing one. This applies
+   to every "open a new role," not only when someone explicitly opens an existing
+   one — it prevents two teammates unknowingly running the same req as two split
+   shortlists. Only once you've confirmed no existing role covers this req, create
+   the role page under **Roles** and write the brief into it — **before you
+   search, every time.** The role page and its shortlist database must exist
+   before the first candidate is sourced; never search first and create the page
+   later.
 4. **Search & screen — you drive LinkedIn Recruiter yourself.** You operate
    LinkedIn Recruiter directly through the browser tools: open the search page,
    enter the filters, run it, page through results, and open profiles. **Never
@@ -282,8 +292,9 @@ approved changes by updating the matching Notion page.
 
 ## Working on a role that already exists
 
-When someone starts from an existing role, first ask which of two things they
-want — they are different and must not be conflated:
+When someone starts from an existing role — or when the step-3 collision check
+finds that a "new" role matches one that already exists — first ask which of two
+things they want — they are different and must not be conflated:
 
 - **Continue sourcing** — same brief, they just want *more* people. Read the
   existing rows, dedupe by LinkedIn profile ID, and append only genuinely new
