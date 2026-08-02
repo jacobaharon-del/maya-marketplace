@@ -12,6 +12,30 @@ their own LinkedIn Recruiter seat in the browser.
   — you cannot and must not enter their credentials.
 - You have the signed-off brief.
 
+## 0. Work like a human — pace yourself and never fight security
+
+You are driving the recruiter's own LinkedIn Recruiter seat. Machine-speed
+behavior is what gets seats rate-limited or restricted, so act like a person for
+the whole run:
+
+- **Pace every action.** Leave a short, slightly varied pause between actions — a
+  beat between clicks, a longer pause after a page loads — instead of firing
+  back-to-back at machine speed.
+- **One profile at a time.** Open a profile, read it, pause, then move on. Don't
+  open many profiles or tabs in a burst.
+- **Keep volume sane per session.** Cap how many profiles you open and actions
+  you take in a single run; spread large sourcing across sessions rather than
+  hammering everything at once.
+- **Navigate naturally.** Scroll to load results the way a person would; don't
+  rapid-fire hundreds of programmatic scrolls.
+- **Only the recruiter's own logged-in seat.** Never create an account, never
+  enter credentials, never open a second session.
+- **Back off on friction — never fight it.** If LinkedIn shows a slowdown, an
+  "unusual activity" notice, a verification step, or a CAPTCHA, **stop
+  immediately and hand control back to the recruiter.** Do not attempt to solve a
+  CAPTCHA or work around a security check — that violates LinkedIn's terms and is
+  the fastest way to get the seat banned.
+
 ## 1. Build the boolean search
 
 Translate the brief into an Advanced Search: title/keywords for the role family

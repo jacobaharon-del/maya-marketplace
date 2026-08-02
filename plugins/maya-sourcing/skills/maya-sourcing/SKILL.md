@@ -135,6 +135,12 @@ Rules for the match:
    Recruiter), say so plainly and ask the recruiter to connect Chrome and open
    Recruiter — then continue driving it yourself. This is where sourcing quality
    is won or lost.
+   - **Work at a human pace and never fight security.** Pace your actions, open
+     profiles one at a time, and keep volume sane per session — machine-speed
+     behavior gets the recruiter's seat restricted. If LinkedIn shows a
+     verification, CAPTCHA, or "unusual activity" warning, stop and hand control
+     back to the recruiter; never solve a CAPTCHA or bypass a security check. See
+     `references/linkedin-recruiter.md` §0.
    - **Always construct a keyword/boolean string from the must-haves.** A search
      on Job title + Location facets alone is not acceptable: it returns a broad,
      undifferentiated pool (often thousands) ordered by LinkedIn's relevance, not
