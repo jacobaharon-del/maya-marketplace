@@ -46,6 +46,31 @@ through.
 
 Navigate to the Recruiter Advanced Search and run it.
 
+## 1a. Applying filters — go slow, verify each one
+
+Filters are the foundation of the search. A filter that silently didn't land is
+worse than not applying it at all — it gives you a falsely confident broad pool.
+**One filter at a time, verified before moving on.** Never apply multiple filters
+in a row. Apply one, confirm it registered (look for the chip/pill/badge LinkedIn
+shows for active filters), then move to the next.
+
+**Use `find` to locate the input, not hardcoded selectors.** Describe what you're
+looking for in plain language (e.g. "the Location input", "the Seniority
+checkboxes") — this is more reliable than CSS selectors as LinkedIn's DOM changes.
+
+**For autocomplete inputs (Location, Job title, etc.):** type the value slowly
+with the `computer` type action, then pause (~1s) for the suggestion dropdown to
+appear, then use `find` to locate the matching suggestion and click it. If the
+dropdown disappears before you click, don't retype immediately — wait a beat,
+re-focus the input, and try again. Confirm the chip appeared before moving on.
+
+**For checkboxes and toggles:** click the filter group to expand it, pause for
+the panel to open, then click the specific option. Verify it's checked.
+
+**If a filter isn't sticking after two clean attempts**, note it and move on
+rather than looping — tell the recruiter at the end which filters couldn't be
+applied so they can set them manually.
+
 ## 1b. Apply the Target Company Bank — paste the whole list in ONE action
 
 When the recruiter chose "Target companies" in intake, add every company in a
