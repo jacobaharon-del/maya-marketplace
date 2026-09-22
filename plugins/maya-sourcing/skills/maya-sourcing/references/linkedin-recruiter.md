@@ -176,21 +176,32 @@ anyway. Read each card's text and reject/skip on any of:
 
 ```js
 // cardText = the visible text of one result card
-const inATS        = /\bIn Comeet\b/i.test(cardText);           // swap "Comeet" for your ATS's name
-const alreadyContacted = /Contacted on/i.test(cardText);        // "Contacted on <date> by <name>"
-const alreadyInPipeline = /Change stage/i.test(cardText) && !/Save to pipeline/i.test(cardText);
+const inATS        = /\bIn Comeet\b/i.test(cardText);          // swap "Comeet" for your ATS's name
+const alreadyContacted = /Contacted on/i.test(cardText);       // "Contacted on <date> by <name>"
 
-const alreadyEngaged = inATS || alreadyContacted || alreadyInPipeline;
+// A fresh, untouched candidate's card shows "Save to pipeline". A candidate
+// already saved to some project instead shows "Change stage" / "Archive"
+// plus a stage label ("In uncontacted", "In contacted", "In replied", ...).
+const stageMatch = cardText.match(/\bIn (uncontacted|contacted|replied|\S.*?InMail)\b/i);
+const merelySaved   = !!stageMatch && /uncontacted/i.test(stageMatch[0]);
+const engagedStage  = !!stageMatch && !merelySaved;
+
+const alreadyEngaged = inATS || alreadyContacted || engagedStage;
 ```
 
-`alreadyInPipeline` works because a fresh, untouched candidate's card shows a
-**"Save to pipeline"** button; a candidate already in *some* project's
-pipeline shows **"Change stage" / "Archive"** instead, plus a stage label like
-"In contacted" or "In replied".
+**"Uncontacted" is not engagement — don't skip on it alone.** A candidate
+sitting in "uncontacted" stage somewhere just means *some* project has saved
+them, possibly one of Maya's own from a different role. That's not the same
+as someone actually reaching out, and it shouldn't block them from a
+different, genuinely-fitting role. Only skip on a real stage (contacted,
+replied, any InMail stage) or an explicit "Contacted on" line. The one
+exception is a duplicate within *this same role's* "- Maya Sourcing" project
+— that's handled by the continue-sourcing dedup, not this check.
 
-Exclude all of these from the ranked shortlist (you may note them separately,
-but they never occupy one of the ~20 slots, and you never spend an open+read
-cycle confirming them further). Keep a running count to report at the end.
+Exclude the truly-engaged ones from the ranked shortlist (you may note them
+separately, but they never occupy one of the ~20 slots, and you never spend
+an open+read cycle confirming them further). Keep a running count to report
+at the end.
 
 ## 5. Work around javascript_tool truncation
 
@@ -228,27 +239,38 @@ the recruiter rather than padding with poor matches.
 ## 8. Stage 2 — score, then write straight into the project
 
 For each Stage-1 survivor: open the profile, extract the history, and run the
-Scoring rubric in `SKILL.md` — Must-Have Gates first, then the weighted score
-(Core requirements 50% / Experience 35% / Stability 15%), then the band. For
-everyone who lands Good Match (60+) or above:
+Scoring rubric in `SKILL.md` — Must-Have Gates first (fresh-hire handled
+specially, see below), then the weighted score (Core requirements 50% /
+Experience 35% / Stability 15%), then the band.
+
+For **No Go**: do nothing, move to the next candidate.
+
+For **Good Match / Strong Match / Not Sure / a parked fresh-hire** (anyone
+who gets saved at all):
 
 1. **Save to pipeline** — from the candidate's card or open profile, click
    **Save to pipeline**. Because you're working from inside the role's
    project's own search tab (§2), this saves straight into that project.
-2. **Add the rationale** — open the **⋯** menu on the candidate and choose
+2. **Set the stage, if not the default:**
+   - Good Match / Strong Match → leave the default stage ("uncontacted").
+   - Not Sure → **Change stage → "Maybe"** (verified live: an existing
+     account-wide stage, available on every project, no setup needed).
+   - Fresh-hire, otherwise a Good Match+ → **Change stage → "Moved Recently -
+     Less than 1 year"** (also verified live, account-wide).
+3. **Add the rationale** — open the **⋯** menu on the candidate and choose
    **Add note**. Lead with the band, then the score breakdown, then a short
    evidence-based rationale, e.g.:
    `Strong Match — Score: 87/100 — Core requirements 90/100 (50%), Experience
    85/100 (35%), Stability 80/100 (15%). 6y B2B SaaS AE, hit 130%+ quota 3
    years running, direct healthcare-vertical experience.`
    Leave visibility on its default, **"Members of \<project\>"**, so the
-   whole team can see it. **Don't try to add a "Good Match"/"Strong Match"
-   tag** — LinkedIn Recruiter's tag list (⋯ → Add tag) is a fixed,
-   pre-existing set per account with no free-text or on-the-fly creation
-   (verified live: typing a new name shows no "create" option, just a
-   checklist of existing tags). Use an existing tag only if one already
-   clearly means the same thing; otherwise the note is enough.
+   whole team can see it. **No tags, ever** — LinkedIn Recruiter's tag list
+   (⋯ → Add tag) is a fixed, pre-existing set per account with no free-text
+   or on-the-fly creation (verified live: typing a new name shows no
+   "create" option, just a checklist of existing tags). The band goes in the
+   note and, where relevant, the stage — never a tag.
 
-Stop once you have ~20 genuine fits, ~50 profile opens, or the pool runs out
-— see `SKILL.md` for the fit-gate, the profile-open cap, and the
-ceiling-not-floor rule.
+Stop once you have ~20 Good Match/Strong Match fits, ~50 profile opens, or
+the pool runs out — see `SKILL.md` for the fit-gate, the profile-open cap,
+and the ceiling-not-floor rule. Not Sure and parked fresh-hires don't count
+toward that ~20.

@@ -50,8 +50,11 @@ last refined 2026-07-12) — refine further as more roles run.
   Experience older than 7 years shouldn't compensate for weak recent
   relevance, unless the role brief explicitly wants deep historical
   experience.
-- **Fresh-hire rule** — under 6 months in the current role = drop, unless
-  their history shows they consistently move in under ~2 years anyway.
+- **Fresh-hire rule** — under 6 months in the current role = not shortlisted
+  now, unless their history shows they consistently move in under ~2 years
+  anyway. This is a "not yet," not a "no": see the Scoring rubric for how
+  Maya parks these instead of dropping them, matching how this account
+  already tracks fresh hires manually.
 - **Job-hopper threshold** — 3+ roles under 18 months within the last 6 years
   = decline. Ignore short stints caused by acquisitions or internal
   promotions.
@@ -79,14 +82,27 @@ number computed explicitly (don't estimate the final number, add it up), then
 a band that decides whether they make the shortlist.
 
 **1. Must-Have Gates — pass/fail, checked first.** Fail any one → reject
-immediately, don't bother scoring the rest:
+immediately, don't bother scoring the rest — **except the fresh-hire gate,
+which is handled differently, below:**
 
 - The role's own must-haves and hard dealbreakers from intake (step 3).
-- The global hard gates above: fresh-hire rule, job-hopper threshold,
-  seniority floor, and the company hard-gate (no-name shops, pure
-  consultancies, integration/outsourcing firms) — **using this role's
-  overridden values from the screening-levers question (intake step 5) when
-  the recruiter set one, not the global default.**
+- The global hard gates above: job-hopper threshold, seniority floor, and the
+  company hard-gate (no-name shops, pure consultancies,
+  integration/outsourcing firms) — **using this role's overridden values from
+  the screening-levers question (intake step 5) when the recruiter set one,
+  not the global default.**
+
+**Fresh-hire gate — park, don't drop.** If a candidate fails *only* the
+fresh-hire rule (started their current role under 6 months ago) and clears
+every other gate, don't reject them — score them through the rest of the
+rubric as normal. If they'd otherwise land Good Match or above, **save them
+to pipeline and set the stage to "Moved Recently - Less than 1 year"**
+(an existing account-wide stage) instead of the default, with a note
+explaining they're a strong fit but too fresh in their current role to
+approach yet. This mirrors how fresh hires are already tracked manually on
+this account — it's a "revisit later," not a rejection. They don't count
+toward the ~20 ceiling. If a candidate fails the fresh-hire rule *and* another
+gate, that's a normal reject — no special handling.
 
 **2. Weighted score — for gate-passers only.** These three categories apply
 to every function — engineering, GTM, ops, whatever the role is. Their
@@ -138,23 +154,21 @@ way*. Don't treat these the same:
 
 | Band | Score | Action |
 |---|---|---|
-| No Go | 0–39 | Exclude. |
-| Not Sure | 40–59 | Exclude by default (quality over quantity). Only mention to the recruiter if the pool is thin and these are the best available. |
-| Good Match | 60–79 | Add to the project. |
-| Strong Match | 80–100 | Add to the project. |
+| No Go | 0–39 | Exclude entirely — never saved to the project. |
+| Not Sure | 40–59 | Save to pipeline, then **Change stage → "Maybe"** (an existing account-wide stage — don't leave it at the default "uncontacted"). Doesn't count toward the ~20 ceiling. |
+| Good Match | 60–79 | Save to pipeline (default stage is fine — nobody's been contacted yet). Counts toward the ~20 ceiling. |
+| Strong Match | 80–100 | Save to pipeline. Counts toward the ~20 ceiling. |
 
 The **fit-gate** referenced elsewhere in this file means **Good Match (60) or
-above.** When you write the note (workflow step 7), lead with the band, then
-the per-dimension breakdown — never just the final number — e.g.
-`Strong Match — Score: 87/100 — Core requirements 90/100 (50%), Experience
-85/100 (35%), Stability 80/100 (15%)` — so the recruiter can see the verdict
-and exactly what drove it at a glance, without needing an account-specific
-tag to exist. **Don't try to add a "Good Match" / "Strong Match" tag** —
-LinkedIn Recruiter's tag list is a fixed, pre-existing set per account (no
-free-text or on-the-fly creation), so a tag named for the band almost
-certainly doesn't exist. If the account already has a tag that clearly means
-the same thing (check via ⋯ → Add tag), use it; otherwise the band in the
-note is sufficient — don't ask the recruiter to create one mid-run.
+above** — that's the ~20-slot shortlist. Not Sure candidates are saved too,
+just staged separately as "Maybe" so they never get confused with the actual
+shortlist. For every candidate you save — any band — write the note (workflow
+step 7) leading with the band, then the per-dimension breakdown, never just
+the final number, e.g. `Strong Match — Score: 87/100 — Core requirements
+90/100 (50%), Experience 85/100 (35%), Stability 80/100 (15%)`, so the
+recruiter can see the verdict and exactly what drove it at a glance. No tags
+anywhere in this workflow — bands are conveyed by the pipeline stage (Not
+Sure only) and the note text (every band), never by trying to create a tag.
 
 ## Target company list
 
@@ -178,17 +192,24 @@ a profile does. Before opening a profile, check the card for:
 - **ATS sync** — an "In Comeet" (or your ATS's name) line under Activity, or a
   visible ATS tab if you do end up on the profile. Already in the applicant
   tracking system — exclude from the shortlist entirely.
-- **Already in a pipeline** — the card shows **Change stage / Archive**
-  buttons instead of **Save to pipeline**, plus a stage label like "In
-  contacted" or "In replied". Already in some project's pipeline — skip here.
-- **Already contacted** — a "Contacted on \<date\> by \<name\>" line, regardless
-  of which teammate sent it. Treat as engaged; don't re-surface as a fresh
-  find.
+- **Genuinely engaged** — the card shows a stage beyond "uncontacted" (e.g.
+  "In contacted," "In replied," any InMail stage), or a "Contacted on \<date\>
+  by \<name\>" line. Someone has actually reached out — skip regardless of
+  which project that happened in.
+- **Merely saved elsewhere, not engaged** — the card shows **Change stage /
+  Archive** instead of **Save to pipeline**, but the stage is still
+  "uncontacted." This means the candidate is sitting in *some* project (maybe
+  one of Maya's own from a different role) with no outreach yet — **don't
+  skip them just for this.** Being sourced for a different req isn't the same
+  as being engaged; a real fit for two open roles at once is legitimate, not
+  a duplicate. The one exception: if it's *this same role's* "- Maya
+  Sourcing" project, that's a true duplicate within this search — the
+  continue-sourcing dedup (below) already handles that case.
 
-Reject or skip on any of these signals **before** spending a profile-open
-cycle on that candidate. Keep a running count of how many you skipped this way
-and report it to the recruiter at the end — it's a real signal about how
-saturated the pool already is.
+Skip on the first two **before** spending a profile-open cycle on that
+candidate; don't skip on the third alone. Keep a running count of how many
+you skipped this way and report it to the recruiter at the end — it's a real
+signal about how saturated the pool already is.
 
 ## The workflow, end to end
 
