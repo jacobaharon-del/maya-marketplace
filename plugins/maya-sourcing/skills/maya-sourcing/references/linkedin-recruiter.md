@@ -1,9 +1,10 @@
 # Searching LinkedIn Recruiter and extracting candidates
 
-This is the mechanical part of a run: turning the signed-off brief into a
-LinkedIn Recruiter search and pulling real candidate profiles out of the page.
-It uses the Claude in Chrome tools and requires the recruiter to be logged into
-their own LinkedIn Recruiter seat in the browser.
+This is the mechanical part of a run: finding or creating the role's project,
+turning the signed-off brief into a LinkedIn Recruiter search, pulling real
+candidate profiles out of the page, and writing qualified ones straight into
+the project. It uses the Claude in Chrome tools and requires the recruiter to
+be logged into their own LinkedIn Recruiter seat in the browser.
 
 ## Prerequisites
 
@@ -39,12 +40,14 @@ the whole run:
 ## 1. Build the boolean search
 
 Translate the brief into an Advanced Search: title/keywords for the role family
-(be tight — adjacent/generic titles hurt precision, per the Global title-match
-rule), location, seniority, and any must-have skills. Prefer a tighter query
-that returns fewer, better-matched people over a broad one you have to wade
-through.
+(be tight — adjacent/generic titles hurt precision, per the Screening rules'
+title-match rule), location, seniority, and any must-have skills. Prefer a
+tighter query that returns fewer, better-matched people over a broad one you
+have to wade through.
 
-Navigate to the Recruiter Advanced Search and run it.
+Run the search **from inside the role's project** (see §2) — its own
+"Recruiter search" tab, not a standalone global search — so every result's
+"Save to pipeline" action is already scoped to this project.
 
 ## 1a. Applying filters — go slow, verify each one
 
@@ -71,13 +74,15 @@ the panel to open, then click the specific option. Verify it's checked.
 rather than looping — tell the recruiter at the end which filters couldn't be
 applied so they can set them manually.
 
-## 1b. Apply the Target Company Bank — paste the whole list in ONE action
+## 1b. Apply the target company list — paste the whole list in ONE action
 
-When the recruiter chose "Target companies" in intake, add every company in a
-**single paste**. Never add them one at a time through the autocomplete — for
-~100+ names that is painfully slow and resolves ambiguous names wrongly.
+When the recruiter chose "Target companies" in intake, read
+`../references/target-companies.md` (or the same file relative to
+`SKILL.md`: `references/target-companies.md`) and add every listed company in
+a **single paste**. Never add them one at a time through the autocomplete —
+for a long list that is painfully slow and resolves ambiguous names wrongly.
 
-Build a **newline-separated** string of the bank company names, then dispatch a
+Build a **newline-separated** string of the company names, then dispatch a
 synthetic paste event on the Companies input. Target the input by selector and
 focus it first. (A real `Cmd+V` cannot work here: under browser automation the
 page never holds OS focus — `document.hasFocus()` is `false` — so the clipboard
@@ -107,14 +112,33 @@ await new Promise(r => setTimeout(r, 2000));
 const added = document.querySelectorAll('.facet-pill__label').length;   // > 0 = success
 ```
 
-A single dispatch adds the entire list (verified live: 124 names → 124 chips in
-one action; pool dropped from 3.6M to ~390K). Companies already present are
-de-duped automatically. **Never fall back to adding companies one at a time.**
-If the pill count is still 0 after one retry, stop and tell the recruiter — do
-not type names individually. This narrows the pool *alongside* the keyword
+A single dispatch adds the entire list. Companies already present are de-duped
+automatically. **Never fall back to adding companies one at a time.** If the
+pill count is still 0 after one retry, stop and tell the recruiter — do not
+type names individually. This narrows the pool *alongside* the keyword
 string, never instead of it.
 
-## 2. Extract candidates from the virtualized list
+## 2. Finding or creating the role's project
+
+Maya keeps her own project per role — this replaces any external
+role/shortlist tracker, and it's kept separate from whatever project the
+recruiter already uses to manually track that req.
+
+- Name it **"\<Role title\> - Maya Sourcing"** (add location only if needed
+  to disambiguate two open reqs with the same title). Never reuse or write
+  into a project that doesn't have that suffix — that's the recruiter's own
+  project, not Maya's.
+- Navigate to **Projects** (`/talent/projects`) and use the **"Search for a
+  project"** box to check for an existing project with that exact name before
+  creating a new one. This is the collision check from `SKILL.md` step 4.
+- If none matches, create a new one. Use `find` to locate the project-creation
+  control on the Projects page (its exact placement can shift) rather than a
+  hardcoded selector.
+- Once you're in the right project, use its own left-sidebar **Recruiter
+  search** tab to run the search described in §1 — this keeps every result
+  scoped to this project automatically.
+
+## 3. Extract candidates from the virtualized list
 
 The results list is **virtualized / lazy-rendered** — only the visible cards
 exist in the DOM. You must scroll to force new cards to render, then read them.
@@ -144,19 +168,31 @@ exist in the DOM. You must scroll to force new cards to render, then read them.
   These are Recruiter-seat URLs — they open inside Recruiter and require the
   user's login. That is expected; they are the correct links to store.
 
-## 3. Deduplicate against the ATS
+## 4. Stage 1 — dedup / already-engaged signals, at the card level
 
-Anyone already in the applicant tracking system must not take a shortlist slot.
-On each card, the ATS shows as activity text like "In Comeet-Parent". Detect it:
+Do this **before** opening any profile — it's the main cost lever, since it
+skips the expensive open+read cycle entirely for candidates you'd reject
+anyway. Read each card's text and reject/skip on any of:
 
 ```js
-/\bComeet\b/i.test(cardText)   // true = already in ATS, exclude from shortlist
+// cardText = the visible text of one result card
+const inATS        = /\bIn Comeet\b/i.test(cardText);           // swap "Comeet" for your ATS's name
+const alreadyContacted = /Contacted on/i.test(cardText);        // "Contacted on <date> by <name>"
+const alreadyInPipeline = /Change stage/i.test(cardText) && !/Save to pipeline/i.test(cardText);
+
+const alreadyEngaged = inATS || alreadyContacted || alreadyInPipeline;
 ```
 
-Exclude these from the ranked shortlist (you may note them separately, but they
-never occupy one of the ~20 slots).
+`alreadyInPipeline` works because a fresh, untouched candidate's card shows a
+**"Save to pipeline"** button; a candidate already in *some* project's
+pipeline shows **"Change stage" / "Archive"** instead, plus a stage label like
+"In contacted" or "In replied".
 
-## 4. Work around javascript_tool truncation
+Exclude all of these from the ranked shortlist (you may note them separately,
+but they never occupy one of the ~20 slots, and you never spend an open+read
+cycle confirming them further). Keep a running count to report at the end.
+
+## 5. Work around javascript_tool truncation
 
 `javascript_tool` truncates long output strings, which corrupts extraction if
 you dump everything at once. Two habits fix this:
@@ -168,7 +204,7 @@ you dump everything at once. Two habits fix this:
   s.replace(/\d{4,}/g, '#').replace(/[?&=]/g, ' ')
   ```
 
-## 5. Accumulate across scrolls
+## 6. Accumulate across scrolls
 
 Because the DOM only holds visible cards, keep a running accumulator keyed by
 profile ID so you don't lose people as they scroll out of view. A page-scoped
@@ -182,14 +218,37 @@ localStorage.setItem('__MAYA_RUN', JSON.stringify(window.__M));
 
 Restore from localStorage after any navigation.
 
-## 6. Fill to the target count
+## 7. Fill to the target count
 
-Keep scrolling and extracting until you have enough **non-ATS** candidates to
-deliver ~20 after screening. If the pool is thin, widen the query slightly and
-note that to the recruiter rather than padding with poor matches.
+Keep scrolling and extracting until you have enough **Stage-1 survivors** (not
+already-engaged, plausible on title/location/seniority) to deliver ~20 after
+full screening. If the pool is thin, widen the query slightly and note that to
+the recruiter rather than padding with poor matches.
 
-## 7. Hand off to scoring
+## 8. Stage 2 — score, then write straight into the project
 
-Once you have the raw pool, score each candidate 0–100 against the brief and the
-layered Notion rules, attach a short rationale and explicit flags, take the top
-~20, and write them to the role's shortlist database (see SKILL.md).
+For each Stage-1 survivor: open the profile, extract the history, and run the
+Scoring rubric in `SKILL.md` — Must-Have Gates first, then the weighted score
+(Core requirements 50% / Experience 35% / Stability 15%), then the band. For
+everyone who lands Good Match (60+) or above:
+
+1. **Save to pipeline** — from the candidate's card or open profile, click
+   **Save to pipeline**. Because you're working from inside the role's
+   project's own search tab (§2), this saves straight into that project.
+2. **Add the rationale** — open the **⋯** menu on the candidate and choose
+   **Add note**. Lead with the band, then the score breakdown, then a short
+   evidence-based rationale, e.g.:
+   `Strong Match — Score: 87/100 — Core requirements 90/100 (50%), Experience
+   85/100 (35%), Stability 80/100 (15%). 6y B2B SaaS AE, hit 130%+ quota 3
+   years running, direct healthcare-vertical experience.`
+   Leave visibility on its default, **"Members of \<project\>"**, so the
+   whole team can see it. **Don't try to add a "Good Match"/"Strong Match"
+   tag** — LinkedIn Recruiter's tag list (⋯ → Add tag) is a fixed,
+   pre-existing set per account with no free-text or on-the-fly creation
+   (verified live: typing a new name shows no "create" option, just a
+   checklist of existing tags). Use an existing tag only if one already
+   clearly means the same thing; otherwise the note is enough.
+
+Stop once you have ~20 genuine fits, ~50 profile opens, or the pool runs out
+— see `SKILL.md` for the fit-gate, the profile-open cap, and the
+ceiling-not-floor rule.

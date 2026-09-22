@@ -18,7 +18,8 @@ maya-marketplace/
             └── maya-sourcing/     # the Maya skill itself
                 ├── SKILL.md
                 └── references/
-                    └── linkedin-recruiter.md
+                    ├── linkedin-recruiter.md
+                    └── target-companies.md
 ```
 
 ## For teammates — install once
@@ -31,10 +32,10 @@ In Cowork (or Claude Code), run:
 ```
 
 After that, Maya triggers on things like "open a new role", "source candidates
-for…", or "build a shortlist". Each teammate still needs:
-- their **Notion** connector connected, with the shared "Maya — Talent Sourcing"
-  pages shared to their account, and
-- their own **LinkedIn Recruiter** seat logged in (Maya never enters credentials).
+for…", or "build a shortlist". Each teammate only needs their own **LinkedIn
+Recruiter** seat logged in (Maya never enters credentials) — no other
+connector or account setup. Maya reads and writes everything inside LinkedIn
+Recruiter itself (projects, pipeline, notes).
 
 ## For the maintainer (Jacob) — ship an update
 

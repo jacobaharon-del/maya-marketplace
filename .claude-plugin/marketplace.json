@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "maya-sourcing",
-      "description": "Maya — LinkedIn Recruiter talent-sourcing agent. Intake, search, screen, and ranked shortlist in Notion. No outreach.",
+      "description": "Maya — LinkedIn Recruiter talent-sourcing agent. Intake, search, screen, and add qualified candidates straight into a LinkedIn Recruiter project. No Notion, no outreach.",
       "source": "./plugins/maya-sourcing",
       "category": "productivity"
     }
