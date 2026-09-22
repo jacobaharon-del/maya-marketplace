@@ -37,6 +37,33 @@ the whole run:
   CAPTCHA or work around a security check — that violates LinkedIn's terms and is
   the fastest way to get the seat banned.
 
+## 0a. Read efficiently — minimize tokens, not just time
+
+Pacing (§0) controls wall-clock speed to protect the seat. This controls
+token cost, which is separate and just as real — full profile opens are the
+single biggest cost driver in a run (up to ~50 of them), so how you read each
+one matters:
+
+- **Scope reads to the relevant content, not the whole page.** A candidate
+  profile page also renders a "Recruiting Tools" sidebar (Similar Profiles,
+  Recommended matches) that has nothing to do with scoring this candidate.
+  Read the profile card itself — via a scoped `read_page` (pass `ref_id` for
+  the profile section) or a targeted `javascript_tool` query for the
+  experience/about/education blocks — instead of pulling the entire page
+  into context.
+- **Prefer text over screenshots.** `find`, `get_page_text`, and targeted
+  `javascript_tool` queries return plain text at a fraction of the token cost
+  of a screenshot. Reserve `computer` screenshots for genuinely ambiguous
+  visual states (e.g. confirming a filter chip rendered) — they shouldn't be
+  the default way to check whether something worked.
+- **Batch sequences in one `browser_batch` call** wherever the steps are
+  deterministic (scroll-then-read, open-then-extract) instead of separate
+  round trips — this cuts overhead from re-transmitting context on every call.
+- **Read each profile once, fully.** Extract everything needed for the
+  Must-Have Gates and all three scoring dimensions in a single pass. Going
+  back to re-check something on a profile you already read multiplies cost
+  for no accuracy gain.
+
 ## 1. Build the boolean search
 
 Translate the brief into an Advanced Search: title/keywords for the role family
@@ -118,22 +145,24 @@ pill count is still 0 after one retry, stop and tell the recruiter — do not
 type names individually. This narrows the pool *alongside* the keyword
 string, never instead of it.
 
-## 2. Finding or creating the role's project
+## 2. Opening the project and reading/writing its brief
 
-Maya keeps her own project per role — this replaces any external
-role/shortlist tracker, and it's kept separate from whatever project the
-recruiter already uses to manually track that req.
+The recruiter creates and names their own project — **Maya never creates or
+searches for one on her own; she asks which project to work in** (`SKILL.md`
+step 2) and opens exactly that one.
 
-- Name it **"\<Role title\> - Maya Sourcing"** (add location only if needed
-  to disambiguate two open reqs with the same title). Never reuse or write
-  into a project that doesn't have that suffix — that's the recruiter's own
-  project, not Maya's.
-- Navigate to **Projects** (`/talent/projects`) and use the **"Search for a
-  project"** box to check for an existing project with that exact name before
-  creating a new one. This is the collision check from `SKILL.md` step 4.
-- If none matches, create a new one. Use `find` to locate the project-creation
-  control on the Projects page (its exact placement can shift) rather than a
-  hardcoded selector.
+- Navigate to **Projects** (`/talent/projects`) and open the named project
+  directly (use the **"Search for a project"** box to find it by name if it's
+  not on the first page).
+- Once inside, go to **⚙ (gear icon, top right) → Project details** to read
+  the **Project description** field — this is a genuine free-text textarea
+  (verified live), and it's where the signed-off brief lives. Empty = new
+  role, go to full intake. Already has text = continuing role, read it back
+  and route to "Working on a role that already exists" in `SKILL.md`.
+- After sign-off (new role) or after confirming/updating (continuing role),
+  write the current, canonical brief into that same **Project description**
+  field via **Edit → Save**. Overwrite, don't append — it should always read
+  as the current brief, not a history of every version.
 - Once you're in the right project, use its own left-sidebar **Recruiter
   search** tab to run the search described in §1 — this keeps every result
   scoped to this project automatically.
@@ -189,14 +218,15 @@ const engagedStage  = !!stageMatch && !merelySaved;
 const alreadyEngaged = inATS || alreadyContacted || engagedStage;
 ```
 
-**"Uncontacted" is not engagement — don't skip on it alone.** A candidate
-sitting in "uncontacted" stage somewhere just means *some* project has saved
-them, possibly one of Maya's own from a different role. That's not the same
-as someone actually reaching out, and it shouldn't block them from a
+**"Uncontacted" is not engagement — don't skip on it alone at Stage 1.** A
+candidate sitting in "uncontacted" stage somewhere just means *some* project
+has saved them, and the card text doesn't reliably say which one. That's not
+the same as someone actually reaching out, and it shouldn't block them from a
 different, genuinely-fitting role. Only skip on a real stage (contacted,
-replied, any InMail stage) or an explicit "Contacted on" line. The one
-exception is a duplicate within *this same role's* "- Maya Sourcing" project
-— that's handled by the continue-sourcing dedup, not this check.
+replied, any InMail stage) or an explicit "Contacted on" line. Whether
+they're already in *this* project specifically gets resolved unambiguously
+at Stage 2 by the "Current project" tag check (§8) — that's the authoritative
+check, not this card-level guess.
 
 Exclude the truly-engaged ones from the ranked shortlist (you may note them
 separately, but they never occupy one of the ~20 slots, and you never spend
@@ -238,12 +268,28 @@ the recruiter rather than padding with poor matches.
 
 ## 8. Stage 2 — score, then write straight into the project
 
-For each Stage-1 survivor: open the profile, extract the history, and run the
-Scoring rubric in `SKILL.md` — Must-Have Gates first (fresh-hire handled
-specially, see below), then the weighted score (Core requirements 50% /
-Experience 35% / Stability 15%), then the band.
+For each Stage-1 survivor, open the profile and **check for a "Current
+project" tag first, before anything else.** The candidate view shows a line
+like `In 1 project · <project name> · Current project` when they're already
+in the project you're working from. If that tag is present, skip them —
+they're already covered by a prior run on this exact project, regardless of
+what Stage 1's card-level check suggested. This is the authoritative check
+that makes repeat runs on the same project safe.
 
-For **No Go**: do nothing, move to the next candidate.
+Otherwise, extract the history and run the Scoring rubric in `SKILL.md` —
+Must-Have Gates first (fresh-hire handled specially, see below), then the
+weighted score (Core requirements 50% / Experience 35% / Stability 15%),
+then the band.
+
+**Every candidate gets a disposition — never move on without one.**
+
+For **No Go** (or any other failed gate): click **Hide** on the candidate's
+card or profile. Verified live: this collapses the card to "won't appear in
+any of your search results for this project" and increments the project's
+Hidden count — it's project-scoped and reversible by the recruiter, not
+destructive. This is what makes a later run on the same project cheap: a
+hidden candidate is filtered out of this project's search entirely, so
+there's no Stage-1 or Stage-2 cost re-encountering them at all.
 
 For **Good Match / Strong Match / Not Sure / a parked fresh-hire** (anyone
 who gets saved at all):

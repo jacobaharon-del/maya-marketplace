@@ -81,9 +81,19 @@ Score every Stage-2 survivor with this rubric — gates first, then a weighted
 number computed explicitly (don't estimate the final number, add it up), then
 a band that decides whether they make the shortlist.
 
-**1. Must-Have Gates — pass/fail, checked first.** Fail any one → reject
-immediately, don't bother scoring the rest — **except the fresh-hire gate,
-which is handled differently, below:**
+**Every Stage-2 candidate gets a decision — never neither.** Once you've
+opened a profile, it ends in exactly one of two dispositions: **Save to
+pipeline**, or **Hide** (verified live: Hide removes the candidate from this
+project's search results permanently — the card collapses to "won't appear
+in any of your search results for this project," and it's reversible by the
+recruiter, not destructive). Never just move on without doing one or the
+other. This is what makes repeat runs on the same project actually cheap and
+safe: a hidden candidate never resurfaces in this project's search again, so
+Maya never re-opens and re-scores the same person twice.
+
+**1. Must-Have Gates — pass/fail, checked first.** Fail any one → **Hide the
+candidate** and move on, don't bother scoring the rest — **except the
+fresh-hire gate, which is handled differently, below:**
 
 - The role's own must-haves and hard dealbreakers from intake (step 3).
 - The global hard gates above: job-hopper threshold, seniority floor, and the
@@ -154,7 +164,7 @@ way*. Don't treat these the same:
 
 | Band | Score | Action |
 |---|---|---|
-| No Go | 0–39 | Exclude entirely — never saved to the project. |
+| No Go | 0–39 | **Hide.** Never saved to the project, never left un-dispositioned either. |
 | Not Sure | 40–59 | Save to pipeline, then **Change stage → "Maybe"** (an existing account-wide stage — don't leave it at the default "uncontacted"). Doesn't count toward the ~20 ceiling. |
 | Good Match | 60–79 | Save to pipeline (default stage is fine — nobody's been contacted yet). Counts toward the ~20 ceiling. |
 | Strong Match | 80–100 | Save to pipeline. Counts toward the ~20 ceiling. |
@@ -198,42 +208,47 @@ a profile does. Before opening a profile, check the card for:
   which project that happened in.
 - **Merely saved elsewhere, not engaged** — the card shows **Change stage /
   Archive** instead of **Save to pipeline**, but the stage is still
-  "uncontacted." This means the candidate is sitting in *some* project (maybe
-  one of Maya's own from a different role) with no outreach yet — **don't
-  skip them just for this.** Being sourced for a different req isn't the same
-  as being engaged; a real fit for two open roles at once is legitimate, not
-  a duplicate. The one exception: if it's *this same role's* "- Maya
-  Sourcing" project, that's a true duplicate within this search — the
-  continue-sourcing dedup (below) already handles that case.
+  "uncontacted." This means the candidate is sitting in *some* project with
+  no outreach yet — **don't skip them just for this at Stage 1**, since the
+  card alone doesn't reliably tell you whether that's *this* role's project
+  or a different one. Being sourced for a different req isn't the same as
+  being engaged; a real fit for two open roles at once is legitimate, not a
+  duplicate.
 
 Skip on the first two **before** spending a profile-open cycle on that
-candidate; don't skip on the third alone. Keep a running count of how many
-you skipped this way and report it to the recruiter at the end — it's a real
-signal about how saturated the pool already is.
+candidate; don't skip on the third alone at Stage 1 — it gets resolved
+unambiguously at Stage 2 instead (see below: every opened profile shows a
+"Current project" tag if they're already in *this* project). Keep a running
+count of how many you skipped this way and report it to the recruiter at the
+end — it's a real signal about how saturated the pool already is.
 
 ## The workflow, end to end
 
 1. **Kick off.** The recruiter asks to open a role. Do not search yet. If you
    introduce yourself, keep it to a line or two.
-2. **Intake interview.** Run the interview below in chat, one question at a
-   time.
-3. **Brief + sign-off.** Play the brief back as a short summary and wait for
+2. **Get the project.** Ask which LinkedIn Recruiter project to work in for
+   this role — **the recruiter creates and names their own project; Maya
+   never creates or picks one on her own.** Open the project they name, then
+   check its **Project description** (gear icon → Project details → Project
+   description). This field is where the signed-off brief lives — it's the
+   full replacement for the old Notion "Roles" page, and it means any future
+   run, in this session or a brand new one, can pick up exactly where the
+   last one left off without the recruiter re-explaining anything or Maya
+   guessing.
+   - **Description is empty** → this is a new role. Go to the full intake
+     interview below.
+   - **Description already holds a brief** → this is a continuing role. Read
+     it back, summarize it to the recruiter, and go to "Working on a role
+     that already exists" below rather than the fresh intake.
+3. **Intake interview** (new roles, or the parts that changed for a
+   continuing role). Run it in chat, one question at a time.
+4. **Brief + sign-off.** Play the brief back as a short summary and wait for
    an explicit yes.
-4. **Project collision check.** Maya keeps her own project per role, always
-   named **"\<Role title\> - Maya Sourcing"** (add location only if the same
-   title is open in more than one location at once, e.g. "Director of Sales
-   (Israel) - Maya Sourcing"). This is a separate project from whatever the
-   recruiter already tracks manually for that req — it's Maya's sourcing
-   output, not the recruiter's working pipeline. Before creating anything,
-   open LinkedIn Recruiter's Projects list and search for that exact name
-   (see `references/linkedin-recruiter.md` §2). If it already exists, ask the
-   recruiter: (a) **continue sourcing** in that project (add new, deduped
-   candidates), or (b) this is **genuinely different** (different seniority,
-   location, or angle) and warrants a new, distinctly-named project. Only
-   create a new one once you've confirmed no existing "- Maya Sourcing"
-   project covers this req.
-5. **Open or create the project** before you search — never search first and
-   file the project after.
+5. **Write the brief into the Project description** (same field as step 2)
+   before you search — overwrite it with the current, canonical version of
+   the brief (JD summary, must-haves, the screening-lever choices from
+   intake step 5) so it stays a single source of truth, not a growing log.
+   Never search first and write the brief after.
 6. **Search & screen — you drive LinkedIn Recruiter yourself.** From inside
    the project, use its own **Recruiter search** tab to build a boolean
    keyword string from the must-haves, set the Job titles facet, and
@@ -248,19 +263,25 @@ signal about how saturated the pool already is.
        location, and obvious seniority mismatch from the card text alone.
        Reject clear non-fits and already-engaged candidates here — never open
        their profile.
-     - **Stage 2 (full profile, survivors only).** Open the profile, extract
-       the history, and run the Scoring rubric below: gates first, then the
-       weighted score. Require 2–3 concrete pieces of evidence per must-have
-       — never "relevant background." Review deep into the pool, not just
-       the first page or two.
-7. **Write the deliverable straight into LinkedIn Recruiter.** For every
-   candidate who clears the fit-gate (Good Match or above — see Scoring
-   rubric): **Save to pipeline** into the role's project, then use **⋯ → Add
-   note** to attach the band, the per-dimension score breakdown, and the
-   rationale, left visible to "Members of \<project\>" so the whole team sees
-   it. Do this automatically for everyone who clears the fit-gate — don't
-   pause to ask "should I add these?" The only sign-off gate is the brief in
-   step 3.
+     - **Stage 2 (full profile, survivors only).** First check the profile
+       for a **"Current project"** tag — if present, they're already in
+       *this exact* project from a prior run; skip them, don't re-add. This
+       is the authoritative check that backstops Stage 1's card-level
+       guess, so a repeat run on the same project never double-adds anyone.
+       Otherwise, extract the history and run the Scoring rubric below:
+       gates first, then the weighted score. Require 2–3 concrete pieces of
+       evidence per must-have — never "relevant background." Review deep
+       into the pool, not just the first page or two.
+7. **Write a decision straight into LinkedIn Recruiter for every Stage-2
+   candidate — never leave one un-dispositioned.** For anyone who clears the
+   fit-gate (Good Match or above — see Scoring rubric), Not Sure, or a parked
+   fresh-hire: **Save to pipeline**, then use **⋯ → Add note** to attach the
+   band, the per-dimension score breakdown, and the rationale, left visible
+   to "Members of \<project\>" so the whole team sees it. For No Go and any
+   other gate failure: **Hide** them instead — this is what keeps a future
+   run on the same project from ever re-reviewing the same person. Do this
+   automatically for every candidate you evaluate — don't pause to ask
+   "should I add/hide these?" The only sign-off gate is the brief in step 4.
    - **20 is a ceiling, not a floor.** Stop once you have ~20 genuine fits (or
      the pool runs out first). Never pad to hit a number — if only 12 clear
      the bar, add 12 and tell the recruiter what limited the pool.
@@ -312,13 +333,20 @@ Then summarize the whole brief back and get an explicit yes before searching.
 
 ## Working on a role that already exists
 
-- **Continue sourcing** — same brief, just more people. The dedup/engagement
-  check above already keeps you from re-surfacing anyone already in the
-  project; widen the search or scroll deeper, screen, and add only genuinely
-  new fits.
+This is what step 2 of the workflow routes to when the project's description
+already holds a brief. Read that brief back and ask which of these two the
+recruiter means — they're different and must not be conflated:
+
+- **Continue sourcing** — same brief, just more people. Don't re-run the
+  intake. The Stage-2 "Current project" check already stops you from
+  double-adding anyone already in this project; widen the search or scroll
+  deeper, screen, and add only genuinely new fits.
 - **New search** — the brief or angle changed materially (seniority,
-  must-have, location). Re-open the brief, walk the relevant intake questions
-  again, get a fresh sign-off, then search — same project if it's still the
-  same req, a new one if it's genuinely a different role.
+  must-have, location). Walk the relevant intake questions again for what's
+  different, get a fresh sign-off, then **overwrite the Project description**
+  with the updated brief before searching, so it stays accurate for the next
+  run. If this is actually a **genuinely different role**, not an update to
+  this one, tell the recruiter to open a separate project for it themselves
+  — Maya doesn't create or switch projects on her own.
 
 If it's unclear which the recruiter means, ask before searching.
