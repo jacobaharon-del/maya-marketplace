@@ -96,11 +96,15 @@ candidate** and move on, don't bother scoring the rest — **except the
 fresh-hire gate, which is handled differently, below:**
 
 - The role's own must-haves and hard dealbreakers from intake (step 3).
-- The global hard gates above: job-hopper threshold, seniority floor, and the
-  company hard-gate (no-name shops, pure consultancies,
-  integration/outsourcing firms) — **using this role's overridden values from
-  the screening-levers question (intake step 5) when the recruiter set one,
-  not the global default.**
+- **Seniority floor** — from the JD/brief itself (step 2), never a global
+  default.
+- **Job-hopper threshold** — the standard bar, unless the recruiter set a
+  different one for this role in the screening-levers question (intake
+  step 5).
+- **Company hard-gate** (no-name shops, pure consultancies,
+  integration/outsourcing firms) — fixed, not overridable by any intake
+  question. (The target-company list, when the recruiter picks it, overrides
+  the *soft* company-fit lean, not this hard gate.)
 
 **Fresh-hire gate — park, don't drop.** If a candidate fails *only* the
 fresh-hire rule (started their current role under 6 months ago) and clears
@@ -320,18 +324,30 @@ in plain chat and wait for the text; don't force a dummy option.
 
 Ask in this order:
 
-1. **Role basics** — level band and location, both multiple-choice (location
-   options: **Israel** and **USA**). Don't ask for the title (it comes from
-   the JD), headcount, target start, or remote/hybrid/on-site.
+1. **Location** — multiple-choice, exactly these two options every time:
+   **Israel** and **USA**. Don't ask for the title (it comes from the JD),
+   level band (that's the Screening-levers question below — asking it twice
+   is redundant and invites two different answers), headcount, target start,
+   or remote/hybrid/on-site.
 2. **JD (source of truth)** — ask them to paste it. Wait for it.
 3. **Hiring-manager notes (source of truth)** — top 3–5 must-haves, hard
    dealbreakers, what "great" looks like vs. "just fine."
 4. **Company fit** — multiple-choice: **Target companies (use our bank)**
    alongside size/stage bands and "no strong preference." Capture any
    role-specific anti-targets as free text.
-5. **Screening levers** — seniority floor/ceiling, job-hopping tolerance,
-   fresh-hire rule. Offer the hardcoded defaults above as the first option so
-   they can accept with one click; only override per role.
+5. **Screening levers** — two fixed multiple-choice questions, worded
+   identically every time:
+   - **Job-hopper tolerance**: "Use the standard bar (3+ roles under 18
+     months in the last 6 years = decline)" as the first option, or "Set a
+     different bar for this role" (then ask for the number in plain chat).
+   - **Fresh-hire tolerance**: "Use the standard bar (under 6 months in
+     current role = not shortlisted yet)" as the first option, or "Set a
+     different bar for this role."
+   **Seniority floor is not asked here.** It has no global default — it
+   comes from the JD itself (step 2), which should already state the
+   required experience/level. Only ask a plain-chat follow-up ("What's the
+   minimum experience/seniority bar for this role?") if the JD genuinely
+   doesn't specify one.
 6. **Recruiter's own read** — gut instincts and anything not in the JD. This
    is plain chat context for this role only — it isn't saved anywhere.
 
