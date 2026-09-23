@@ -108,9 +108,19 @@ other. This is what makes repeat runs on the same project actually cheap and
 safe: a hidden candidate never resurfaces in this project's search again, so
 Maya never re-opens and re-scores the same person twice.
 
-**1. Must-Have Gates — pass/fail, checked first.** Fail any one → **Hide the
-candidate** and move on, don't bother scoring the rest — **except the
-fresh-hire gate, which is handled differently, below:**
+**1. Must-Have Gates — pass/fail, checked first, fully resolved before any
+scoring starts.** Fail any one → **Hide the candidate** and move on, don't
+bother scoring the rest — **except the fresh-hire gate, which is handled
+differently, below.** For every numeric gate, decide **near-miss or wide
+miss** right here, before moving on to the weighted score — don't let a wide
+miss "leak through" as merely a low score on some dimension later. If the
+must-have is "4+ years as architect" and the candidate has **zero**, that's
+not a near-miss to be softened by good underlying work elsewhere — it's a
+wide miss, the gate fails, and the candidate gets Hidden immediately without
+ever reaching the weighted score. Near-miss judgment only kicks in when the
+candidate is actually *close* to the bar (the ~20–30% guide) — it's not a
+general license to average a real gate failure into a mediocre score instead
+of failing it outright.
 
 - **The role's own must-haves and hard dealbreakers from intake (step 3).**
   If any of these are **numeric** (years of experience, tenure length,
