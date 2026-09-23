@@ -248,7 +248,6 @@ anyway. Read each card's text and reject/skip on any of:
 
 ```js
 // cardText = the visible text of one result card
-const inATS        = /\bIn Comeet\b/i.test(cardText);          // swap "Comeet" for your ATS's name
 const alreadyContacted = /Contacted on/i.test(cardText);       // "Contacted on <date> by <name>"
 
 // A fresh, untouched candidate's card shows "Save to pipeline". A candidate
@@ -258,7 +257,8 @@ const stageMatch = cardText.match(/\bIn (uncontacted|contacted|replied|\S.*?InMa
 const merelySaved   = !!stageMatch && /uncontacted/i.test(stageMatch[0]);
 const engagedStage  = !!stageMatch && !merelySaved;
 
-const alreadyEngaged = inATS || alreadyContacted || engagedStage;
+const alreadyEngaged = alreadyContacted || engagedStage;
+// NOT included here: "In Comeet" / ATS sync. That's deliberate — see below.
 ```
 
 **"Uncontacted" is not engagement — don't skip on it alone at Stage 1.** A
@@ -271,10 +271,18 @@ they're already in *this* project specifically gets resolved unambiguously
 at Stage 2 by the "Current project" tag check (§8) — that's the authoritative
 check, not this card-level guess.
 
-Exclude the truly-engaged ones from the ranked shortlist (you may note them
-separately, but they never occupy one of the ~20 slots, and you never spend
-an open+read cycle confirming them further). Keep a running count to report
-at the end.
+**"In Comeet" is not a Stage-1 skip either — don't add it to the regex
+above.** The card only shows they're *somewhere* in the ATS, not why or how
+relevant it still is. Excluding on that alone risks silently losing a
+genuinely great fit to a stale, unrelated ATS record. Let them through to
+Stage 2 and evaluate normally — see §8 for what happens if they clear the
+bar.
+
+Exclude the truly-engaged ones (contacted/replied/InMail stage) from the
+ranked shortlist — they never occupy one of the ~20 slots, and you never
+spend an open+read cycle confirming them further. Keep a running count as
+you go, even without a formal end-of-run report — it's useful context for
+how saturated the pool is.
 
 ## 5. Work around javascript_tool truncation
 
@@ -341,7 +349,10 @@ arrow next to **Save to pipeline** (not the button itself) — this opens
 saves the candidate and sets that stage together (verified live). Pick:
 
 - Good Match / Strong Match → **uncontacted** (the default stage — nobody's
-  been contacted yet).
+  been contacted yet). **Exception**: if the profile showed ATS sync ("In
+  Comeet" or similar) or a Comeet tab, stage as **Maybe** instead, even
+  though they cleared Good Match or above — flag them rather than treating
+  it as a clean new find (see `SKILL.md` Scoring rubric).
 - Not Sure → **Maybe** (verified live: an existing account-wide stage,
   available on every project, no setup needed).
 - Fresh-hire, otherwise a Good Match+ → **Moved Recently - Less than 1

@@ -270,6 +270,14 @@ way*. Don't treat these the same:
 | Good Match | 60–79 | Save to pipeline (default stage is fine — nobody's been contacted yet). Counts toward the ~20 ceiling. |
 | Strong Match | 80–100 | Save to pipeline. Counts toward the ~20 ceiling. |
 
+**Exception: an ATS-synced candidate who clears Good Match or above still
+gets saved, but staged as "Maybe" instead of the default** — regardless of
+which band they actually landed in. They're a genuine fit, so don't lose
+them, but they're also already somewhere in the ATS for a reason you can't
+verify from the card alone, so flag it rather than treating them as a clean
+new find. They still don't count toward the ~20 ceiling, same as any other
+Maybe.
+
 The **fit-gate** referenced elsewhere in this file means **Good Match (60) or
 above** — that's the ~20-slot shortlist. Not Sure candidates are saved too,
 just staged separately as "Maybe" so they never get confused with the actual
@@ -298,9 +306,6 @@ LinkedIn Recruiter already shows you, right on the search-results card,
 whether a candidate has history. Reading the card costs nothing extra; opening
 a profile does. Before opening a profile, check the card for:
 
-- **ATS sync** — an "In Comeet" (or your ATS's name) line under Activity, or a
-  visible ATS tab if you do end up on the profile. Already in the applicant
-  tracking system — exclude from the shortlist entirely.
 - **Genuinely engaged** — the card shows a stage beyond "uncontacted" (e.g.
   "In contacted," "In replied," any InMail stage), or a "Contacted on \<date\>
   by \<name\>" line. Someone has actually reached out — skip regardless of
@@ -313,13 +318,22 @@ a profile does. Before opening a profile, check the card for:
   or a different one. Being sourced for a different req isn't the same as
   being engaged; a real fit for two open roles at once is legitimate, not a
   duplicate.
+- **ATS sync** — an "In Comeet" (or your ATS's name) line under Activity, or a
+  visible ATS tab if you do end up on the profile. **This is not a Stage-1
+  skip.** The card only tells you they're *somewhere* in the ATS, not why —
+  it could be an active, highly relevant application, or a stale record from
+  something completely unrelated years ago. Excluding on the card alone
+  risks silently losing a genuinely great fit to an unrelated old record.
+  Evaluate them at Stage 2 like anyone else — see the Scoring rubric for what
+  happens if they clear the bar.
 
 Skip on the first two **before** spending a profile-open cycle on that
-candidate; don't skip on the third alone at Stage 1 — it gets resolved
-unambiguously at Stage 2 instead (see below: every opened profile shows a
-"Current project" tag if they're already in *this* project). Keep a running
-count of how many you skipped this way and report it to the recruiter at the
-end — it's a real signal about how saturated the pool already is.
+candidate; don't skip on the ATS or "merely saved" signals at Stage 1 — both
+get resolved with real judgment at Stage 2 instead (an opened profile shows a
+"Current project" tag if they're already in *this* project, and you can look
+at the ATS status directly). Keep a running count of the ones you skip for
+genuine engagement — it's a real signal about how saturated the pool already
+is, even without a formal end-of-run report.
 
 ## The workflow, end to end
 
