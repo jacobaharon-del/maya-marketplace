@@ -210,6 +210,23 @@ show the math:
 (core × 0.50) + (experience × 0.35) + (stability × 0.15) = final score
 ```
 
+**A whole missing capability area scores very differently from a partial
+gap — don't treat them the same.** "Weaker on a dimension" (some evidence of
+a required skill, just less depth than ideal) deserves a modest deduction.
+**"Zero evidence of an entire required capability area"** — a whole pillar
+of the JD's core responsibilities with nothing in the profile pointing to
+it at all, not "less of it" but none — is categorically worse and should
+drag Core requirements match down sharply, not just a few points. Example:
+a JD split roughly evenly between general platform architecture and
+org-wide AI-tooling evangelism, evaluated against a candidate whose entire
+demonstrated background is data-infrastructure-specific with nothing
+showing either of those two pillars — that's not "somewhat adjacent," it's
+a full capability area unaddressed, and Core requirements should reflect
+that severity (well under 50), not land in the 70s–80s the way a partial
+gap would. When you notice yourself scoring a total blank the same as a
+partial one, stop and re-score — this is exactly the mistake that's easy to
+make by defaulting to "just dock a few points" for every kind of gap.
+
 **Missing information is not disqualifying information.** LinkedIn profiles
 rarely spell out hard numbers — a salesperson's profile almost never states
 quota attainment or ACV, and plenty of engineers don't list every tool they
