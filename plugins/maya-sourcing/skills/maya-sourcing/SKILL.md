@@ -407,8 +407,17 @@ Ask in this order:
    floor comes from here, not a separate question — if the JD genuinely
    doesn't state one, ask a plain-chat follow-up.
 3. **Hiring-manager notes (source of truth)** — top 3–5 must-haves, hard
-   dealbreakers, what "great" looks like vs. "just fine." **This is also
-   where any override of a global default belongs** — if the recruiter wants
+   dealbreakers, what "great" looks like vs. "just fine." **The "great vs.
+   just fine" part is optional — don't block sign-off chasing it, and don't
+   follow up more than once if the answer is thin or N/A.** When it's not
+   answered, the fallback is the Scoring rubric's own bands: Strong Match
+   (80–100) already *is* "great," Good Match (60–79) already *is* "just
+   fine." That's a role-agnostic definition that doesn't depend on the
+   hiring manager articulating it upfront — if real signal shows up later
+   (a pattern in which borderline candidates get approved vs. declined),
+   that's what the Learn step is for, not something to chase during intake.
+   **This step is also where any override of a global default belongs** — if
+   the recruiter wants
    a different job-hopper/tenure bar, fresh-hire tolerance, or wants a
    specific numeric must-have treated as a hard cutoff instead of the
    default near-miss flexibility, they say so here in their own words. Don't

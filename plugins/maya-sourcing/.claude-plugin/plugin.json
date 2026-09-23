@@ -1,6 +1,6 @@
 {
   "name": "maya-sourcing",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "Maya — an autonomous LinkedIn Recruiter talent-sourcing agent. Runs role intake, searches LinkedIn Recruiter, screens against hardcoded team rules, and adds qualified candidates straight into the role's LinkedIn Recruiter project with a scored rationale note. No external connector required. Sources and ranks only — never does outreach.",
   "author": "Jacob Aharon"
 }
