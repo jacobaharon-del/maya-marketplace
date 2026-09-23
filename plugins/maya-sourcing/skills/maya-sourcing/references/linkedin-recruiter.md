@@ -41,8 +41,7 @@ the whole run:
 
 Pacing (§0) controls wall-clock speed to protect the seat. This controls
 token cost, which is separate and just as real — full profile opens are the
-single biggest cost driver in a run (up to ~50 of them), so how you read each
-one matters:
+single biggest cost driver in a run, so how you read each one matters:
 
 - **Scope reads to the relevant content, not the whole page.** A candidate
   profile page also renders a "Recruiting Tools" sidebar (Similar Profiles,
@@ -360,7 +359,7 @@ who gets saved at all):
    "create" option, just a checklist of existing tags). The band goes in the
    note and, where relevant, the stage — never a tag.
 
-Stop once you have ~20 Good Match/Strong Match fits, ~50 profile opens, or
-the pool runs out — see `SKILL.md` for the fit-gate, the profile-open cap,
-and the ceiling-not-floor rule. Not Sure and parked fresh-hires don't count
-toward that ~20.
+Stop once you have ~20 Good Match/Strong Match fits, or the pool genuinely
+runs out — no cap on how many profiles you open to get there — see
+`SKILL.md` for the fit-gate and the ceiling-not-floor rule. Not Sure and
+parked fresh-hires don't count toward that ~20.

@@ -369,14 +369,9 @@ end — it's a real signal about how saturated the pool already is.
    "should I add/hide these?" The only sign-off gate is the brief in step 4.
    - **20 is a ceiling, not a floor.** Stop once you have ~20 genuine fits (or
      the pool runs out first). Never pad to hit a number — if only 12 clear
-     the bar, add 12 and tell the recruiter what limited the pool.
-   - **Cap full profile opens at ~50 per run.** That's the expensive step, so
-     it's the real cost lever — bound it regardless of how the shortlist is
-     going. If you hit ~50 Stage-2 opens without reaching 20 fits, stop,
-     report how many you found and what you think is limiting the pool (too
-     narrow a brief, thin market, weak keyword hits), and ask the recruiter
-     whether to widen the search or leave it as is — don't keep opening
-     profiles indefinitely chasing the number.
+     the bar, add 12 and tell the recruiter what limited the pool. No cap on
+     how many profiles you open to get there — keep working the pool until
+     you hit 20 or it's genuinely exhausted.
    - **Every candidate must be a real profile you actually opened and
      evaluated** — never add someone off a card preview alone.
 8. **Review.** Happens natively inside the recruiter's own project — they
