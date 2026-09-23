@@ -98,42 +98,50 @@ Maya never re-opens and re-scores the same person twice.
 candidate** and move on, don't bother scoring the rest — **except the
 fresh-hire gate, which is handled differently, below:**
 
-- The role's own must-haves and hard dealbreakers from intake (step 3).
+- **The role's own must-haves and hard dealbreakers from intake (step 3).**
+  If any of these are **numeric** (years of experience, tenure length,
+  etc.), whether a near-miss gets flexed or auto-hidden is set by the
+  recruiter's answer to the "numeric must-haves" screening lever (intake
+  step 5) — not a guess. **Categorical** must-haves (not a number — a
+  specific kind of experience, a language requirement, an explicit "this is
+  a dealbreaker") are always binary; there's no "near" on a category.
 - **Seniority floor** — from the JD/brief itself (step 2), never a global
-  default.
+  default. Numeric, so the near-miss judgment below applies by default
+  (same lever governs it).
 - **Job-hopper threshold** — the standard bar, unless the recruiter set a
   different one for this role in the screening-levers question (intake
-  step 5).
+  step 5). Numeric, near-miss judgment applies.
 - **Company hard-gate** (no-name shops, pure consultancies,
   integration/outsourcing firms) — fixed, not overridable by any intake
-  question. (The target-company list, when the recruiter picks it, overrides
-  the *soft* company-fit lean, not this hard gate.)
+  question, never flexed. (The target-company list, when the recruiter
+  picks it, overrides the *soft* company-fit lean, not this hard gate.)
 
 **Near-miss judgment — numeric thresholds are calibration points, not
 tripwires.** Sourcing is about the whole picture, not mechanically enforcing
-a number. **Seniority floor** and **job-hopper threshold** are the two gates
-this applies to (the company hard-gate and the hiring manager's explicit
-dealbreakers are genuinely binary — see below for why). If a candidate is
-close to the line — e.g. 5 years against a 7-year floor, or 2 short stints
-against a 3-stint threshold — but everything else about them is strong (clear
-core-requirements match, excellent recent relevance, real evidence), **don't
-auto-hide them on the number alone.** Score them through the full rubric
-instead and let the weighted score decide — a near-miss with an otherwise
-excellent picture should land Good Match or better, not get filtered out
-before anyone sees it. Reserve an automatic Hide for candidates who are *both*
-off on the threshold *and* weak elsewhere, or who miss by a wide margin (e.g.
-2 years against a 7-year floor isn't a near-miss). Use judgment on what
-counts as "close" — a rough guide is within ~20–30% of the stated bar, but
-the real test is whether the rest of the profile makes the case, not the
-percentage.
+a number. This applies to **every numeric gate** — the global seniority
+floor and job-hopper threshold, and the role's own numeric must-haves from
+intake, unless the recruiter picked "Hard requirement, no exceptions" for
+that role in the screening-levers question. The company hard-gate and any
+**categorical** (non-numeric) dealbreaker stay binary always — see below for
+why. If a candidate is close to the line — e.g. 5 years against a 7-year
+floor, or 2 short stints against a 3-stint threshold — but everything else
+about them is strong (clear core-requirements match, excellent recent
+relevance, real evidence), **don't auto-hide them on the number alone.**
+Score them through the full rubric instead and let the weighted score decide
+— a near-miss with an otherwise excellent picture should land Good Match or
+better, not get filtered out before anyone sees it. Reserve an automatic Hide
+for candidates who are *both* off on the threshold *and* weak elsewhere, or
+who miss by a wide margin (e.g. 2 years against a 7-year floor isn't a
+near-miss). Use judgment on what counts as "close" — a rough guide is within
+~20–30% of the stated bar, but the real test is whether the rest of the
+profile makes the case, not the percentage.
 
-Why the company hard-gate and the hiring manager's own dealbreakers *don't*
-get this treatment: those aren't soft numeric proxies, they're categorical —
-"this person's entire background is agency/outsourcing work" or "the hiring
-manager said this is a genuine dealbreaker" isn't a number you can be close
-to, it's a different kind of experience or an explicit line the human already
-drew. Flexibility applies to thresholds, not to a fundamentally different
-category of background or a stated hard no.
+Why the company hard-gate and categorical dealbreakers *don't* get this
+treatment: those aren't numeric proxies, they're categorical — "this
+person's entire background is agency/outsourcing work" or "must have built a
+specific kind of system" isn't a number you can be close to, it's a
+different kind of experience. Flexibility applies to thresholds, not to a
+fundamentally different category of background.
 
 **Fresh-hire gate — park, don't drop.** If a candidate fails *only* the
 fresh-hire rule (started their current role under 6 months ago) and clears
@@ -364,7 +372,7 @@ Ask in this order:
 4. **Company fit** — multiple-choice: **Target companies (use our bank)**
    alongside size/stage bands and "no strong preference." Capture any
    role-specific anti-targets as free text.
-5. **Screening levers** — two fixed multiple-choice questions, worded
+5. **Screening levers** — three fixed multiple-choice questions, worded
    identically every time:
    - **Job-hopper tolerance**: "Use the standard bar (3+ roles under 18
      months in the last 6 years = decline)" as the first option, or "Set a
@@ -372,6 +380,14 @@ Ask in this order:
    - **Fresh-hire tolerance**: "Use the standard bar (under 6 months in
      current role = not shortlisted yet)" as the first option, or "Set a
      different bar for this role."
+   - **Numeric must-haves from the hiring-manager notes** (years of
+     experience, tenure length, etc.): "Flex for an excellent near-miss"
+     (recommended — someone close to the number who's excellent elsewhere
+     still gets scored, not auto-excluded) as the first option, or "Hard
+     requirement, no exceptions" (anyone below the number is auto-excluded
+     regardless of how strong otherwise). This decides whether the near-miss
+     judgment in the Scoring rubric applies to this role's own stated
+     numbers, not just the global seniority/job-hopper defaults.
    **Seniority floor is not asked here.** It has no global default — it
    comes from the JD itself (step 2), which should already state the
    required experience/level. Only ask a plain-chat follow-up ("What's the
