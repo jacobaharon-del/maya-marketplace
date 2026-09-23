@@ -38,9 +38,10 @@ connector, no separate database to keep in sync.
 
 Edit this section directly to change a rule — no external page to fetch, no
 version to keep in sync. These apply to every role unless the recruiter
-overrides one during intake (screening-levers question). Ported from the old
-Notion Global Screening Profile (seeded from a Data Engineer / Israel run,
-last refined 2026-07-12) — refine further as more roles run.
+explicitly says otherwise in the hiring-manager-notes step of intake (there's
+no separate override question for this — see the intake interview). Ported
+from the old Notion Global Screening Profile (seeded from a Data Engineer /
+Israel run, last refined 2026-07-12) — refine further as more roles run.
 
 - **Title match** — the candidate's title must map to the role family.
   Adjacent or generic titles are penalized; keyword overlap alone is not
@@ -55,10 +56,14 @@ last refined 2026-07-12) — refine further as more roles run.
   anyway. This is a "not yet," not a "no": see the Scoring rubric for how
   Maya parks these instead of dropping them, matching how this account
   already tracks fresh hires manually.
-- **Job-hopper threshold** — 3+ roles under 18 months within the last 6 years
-  = decline. Ignore short stints caused by acquisitions or internal
-  promotions. A near-miss on this number with an otherwise excellent profile
-  isn't an automatic decline — see the Scoring rubric's near-miss judgment.
+- **Tenure/stability bar** — average tenure across roles **in the last 6
+  years** should be at least **2.0 years**; below that is a stability
+  concern. Scoped to the last 6 years, not lifetime average, so a stable
+  recent pattern isn't dragged down by early-career exploration, and a long
+  tenure years ago doesn't mask recent hopping either. Ignore short stints
+  caused by acquisitions or internal promotions when calculating tenure. A
+  near-miss on this number with an otherwise excellent profile isn't an
+  automatic decline — see the Scoring rubric's near-miss judgment.
 - **Seniority floor per role** — enforce a real floor set from the role
   brief; "too junior" is a decline, not a maybe — but a small gap (e.g. 5
   years against a 7-year floor) on an otherwise excellent candidate is a
@@ -100,41 +105,73 @@ fresh-hire gate, which is handled differently, below:**
 
 - **The role's own must-haves and hard dealbreakers from intake (step 3).**
   If any of these are **numeric** (years of experience, tenure length,
-  etc.), whether a near-miss gets flexed or auto-hidden is set by the
-  recruiter's answer to the "numeric must-haves" screening lever (intake
-  step 5) — not a guess. **Categorical** must-haves (not a number — a
-  specific kind of experience, a language requirement, an explicit "this is
-  a dealbreaker") are always binary; there's no "near" on a category.
+  etc.), near-miss judgment (below) applies by default — the same as every
+  other numeric gate — unless the recruiter explicitly said it's a hard
+  cutoff with no exceptions when giving their notes. **Categorical**
+  must-haves (not a number — a specific kind of experience, a language
+  requirement, an explicit "this is a dealbreaker") are always binary;
+  there's no "near" on a category.
 - **Seniority floor** — from the JD/brief itself (step 2), never a global
-  default. Numeric, so the near-miss judgment below applies by default
-  (same lever governs it).
-- **Job-hopper threshold** — the standard bar, unless the recruiter set a
-  different one for this role in the screening-levers question (intake
-  step 5). Numeric, near-miss judgment applies.
+  default. Numeric, near-miss judgment applies by default.
+- **Tenure/stability bar** — the standard 2.0-year average, unless the
+  recruiter said otherwise in their notes. Numeric, near-miss judgment
+  applies by default.
 - **Company hard-gate** (no-name shops, pure consultancies,
-  integration/outsourcing firms) — fixed, not overridable by any intake
-  question, never flexed. (The target-company list, when the recruiter
-  picks it, overrides the *soft* company-fit lean, not this hard gate.)
+  integration/outsourcing firms) — fixed, not overridable by anything, never
+  flexed. (The target-company list, when the recruiter picks it, overrides
+  the *soft* company-fit lean, not this hard gate.)
 
 **Near-miss judgment — numeric thresholds are calibration points, not
-tripwires.** Sourcing is about the whole picture, not mechanically enforcing
-a number. This applies to **every numeric gate** — the global seniority
-floor and job-hopper threshold, and the role's own numeric must-haves from
-intake, unless the recruiter picked "Hard requirement, no exceptions" for
-that role in the screening-levers question. The company hard-gate and any
-**categorical** (non-numeric) dealbreaker stay binary always — see below for
-why. If a candidate is close to the line — e.g. 5 years against a 7-year
-floor, or 2 short stints against a 3-stint threshold — but everything else
-about them is strong (clear core-requirements match, excellent recent
-relevance, real evidence), **don't auto-hide them on the number alone.**
+tripwires, and this is the default for all of them.** Sourcing is about the
+whole picture, not mechanically enforcing a number. Every numeric gate — the
+global seniority floor, the global tenure bar, and the role's own numeric
+must-haves — gets this treatment **by default**, unless the recruiter
+explicitly called one a hard cutoff with no exceptions while giving their
+notes (step 3 of intake). The company hard-gate and any **categorical**
+(non-numeric) dealbreaker stay binary always — see below for why. If a
+candidate is close to the line — e.g. 5 years against a 7-year floor, or 1.6
+years average against a 2.0-year bar — but everything else about them is
+strong (clear core-requirements match, excellent recent relevance, real
+evidence), **don't auto-hide them on the number alone.**
 Score them through the full rubric instead and let the weighted score decide
 — a near-miss with an otherwise excellent picture should land Good Match or
 better, not get filtered out before anyone sees it. Reserve an automatic Hide
 for candidates who are *both* off on the threshold *and* weak elsewhere, or
 who miss by a wide margin (e.g. 2 years against a 7-year floor isn't a
-near-miss). Use judgment on what counts as "close" — a rough guide is within
-~20–30% of the stated bar, but the real test is whether the rest of the
-profile makes the case, not the percentage.
+near-miss). For seniority floor and role-specific numeric must-haves, use
+judgment on what counts as "close" — a rough guide is within ~20–30% of the
+stated bar, but the real test is whether the rest of the profile makes the
+case, not the percentage.
+
+**The tenure/stability bar is different — check the reason, not just the
+number.** A flat percentage band doesn't work well here, because tenure
+length means completely different things depending on *why* it's short.
+This matters especially for senior/architect-level roles, where staying
+power is close to a real job requirement — architectural decisions take
+12–18+ months to prove out, so a pattern of leaving before that window
+closes has real organizational cost even for a technically excellent
+candidate. But short stints have a very different read depending on cause:
+
+- **Layoffs, acquisitions, company shutdowns** — tech has seen historic
+  layoff volume across 2022–2024, and a string of 18-month stints at
+  companies that visibly did layoffs, got acquired, or shut down isn't the
+  candidate's judgment, it's market conditions. Treat this as a near-miss
+  (or better) regardless of how far under the bar the average sits — don't
+  penalize someone for the market.
+- **No visible external cause** — if the pattern looks like voluntary early
+  exits with nothing to explain them, that's a real stability concern. Even
+  with excellent must-haves elsewhere, weigh the Career Stability score down
+  meaningfully rather than waving it through — for this role type, staying
+  power isn't a separate nice-to-have that "perfect skills" can outweigh.
+  This should more often land Not Sure than Good Match, so the recruiter
+  gets to make that specific tradeoff call rather than Maya deciding it
+  silently either way.
+
+Check for the cause using what's visible on the profile and public knowledge
+of the companies involved (a company known to have had layoffs or shut down,
+a role marked "eliminated" or similar) — don't fabricate a reason that isn't
+supported by anything, and say plainly in the note when the cause is unclear
+either way.
 
 Why the company hard-gate and categorical dealbreakers *don't* get this
 treatment: those aren't numeric proxies, they're categorical — "this
@@ -287,9 +324,10 @@ end — it's a real signal about how saturated the pool already is.
    an explicit yes.
 5. **Write the brief into the Project description** (same field as step 2)
    before you search — overwrite it with the current, canonical version of
-   the brief (JD summary, must-haves, the screening-lever choices from
-   intake step 5) so it stays a single source of truth, not a growing log.
-   Never search first and write the brief after.
+   the brief (JD summary, must-haves, company fit, and any explicit
+   overrides to the global defaults the recruiter mentioned) so it stays a
+   single source of truth, not a growing log. Never search first and write
+   the brief after.
 6. **Search & screen — you drive LinkedIn Recruiter yourself.** From inside
    the project, use its own **Recruiter search** tab. If this is a continuing
    role, check **Recruiter search history** first and reuse the last query
@@ -363,38 +401,32 @@ Ask in this order:
 
 1. **Location** — multiple-choice, exactly these two options every time:
    **Israel** and **USA**. Don't ask for the title (it comes from the JD),
-   level band (that's the Screening-levers question below — asking it twice
-   is redundant and invites two different answers), headcount, target start,
-   or remote/hybrid/on-site.
-2. **JD (source of truth)** — ask them to paste it. Wait for it.
+   level band or seniority floor (that comes from the JD too — see below),
+   headcount, target start, or remote/hybrid/on-site.
+2. **JD (source of truth)** — ask them to paste it. Wait for it. Seniority
+   floor comes from here, not a separate question — if the JD genuinely
+   doesn't state one, ask a plain-chat follow-up.
 3. **Hiring-manager notes (source of truth)** — top 3–5 must-haves, hard
-   dealbreakers, what "great" looks like vs. "just fine."
+   dealbreakers, what "great" looks like vs. "just fine." **This is also
+   where any override of a global default belongs** — if the recruiter wants
+   a different job-hopper/tenure bar, fresh-hire tolerance, or wants a
+   specific numeric must-have treated as a hard cutoff instead of the
+   default near-miss flexibility, they say so here in their own words. Don't
+   ask a separate formal question for this — it's rare enough that a
+   dedicated multiple-choice per role adds friction for no real benefit; the
+   free-text step already covers it when it actually comes up.
 4. **Company fit** — multiple-choice: **Target companies (use our bank)**
    alongside size/stage bands and "no strong preference." Capture any
    role-specific anti-targets as free text.
-5. **Screening levers** — three fixed multiple-choice questions, worded
-   identically every time:
-   - **Job-hopper tolerance**: "Use the standard bar (3+ roles under 18
-     months in the last 6 years = decline)" as the first option, or "Set a
-     different bar for this role" (then ask for the number in plain chat).
-   - **Fresh-hire tolerance**: "Use the standard bar (under 6 months in
-     current role = not shortlisted yet)" as the first option, or "Set a
-     different bar for this role."
-   - **Numeric must-haves from the hiring-manager notes** (years of
-     experience, tenure length, etc.): "Flex for an excellent near-miss"
-     (recommended — someone close to the number who's excellent elsewhere
-     still gets scored, not auto-excluded) as the first option, or "Hard
-     requirement, no exceptions" (anyone below the number is auto-excluded
-     regardless of how strong otherwise). This decides whether the near-miss
-     judgment in the Scoring rubric applies to this role's own stated
-     numbers, not just the global seniority/job-hopper defaults.
-   **Seniority floor is not asked here.** It has no global default — it
-   comes from the JD itself (step 2), which should already state the
-   required experience/level. Only ask a plain-chat follow-up ("What's the
-   minimum experience/seniority bar for this role?") if the JD genuinely
-   doesn't specify one.
-6. **Recruiter's own read** — gut instincts and anything not in the JD. This
+5. **Recruiter's own read** — gut instincts and anything not in the JD. This
    is plain chat context for this role only — it isn't saved anywhere.
+
+There are no more screening-lever multiple-choice questions. All numeric
+thresholds — the global tenure/job-hopper bar, the global fresh-hire bar, and
+this role's own stated numeric must-haves — default to near-miss judgment
+(Scoring rubric) unless the recruiter explicitly said otherwise in step 3.
+Global defaults only change through the Learn step (workflow step 9), not by
+re-asking every role.
 
 Then summarize the whole brief back and get an explicit yes before searching.
 
