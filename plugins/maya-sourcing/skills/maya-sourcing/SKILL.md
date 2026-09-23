@@ -393,15 +393,22 @@ is, even without a formal end-of-run report.
        a "High qualification relevance" badge, if present, is a free extra
        signal here. Reject clear non-fits and already-engaged candidates
        here — never open their profile.
-     - **Stage 2 (full profile, survivors only).** First check the profile
-       for a **"Current project"** tag — if present, they're already in
-       *this exact* project from a prior run; skip them, don't re-add. This
-       is the authoritative check that backstops Stage 1's card-level
-       guess, so a repeat run on the same project never double-adds anyone.
-       Otherwise, extract the history and run the Scoring rubric below:
-       gates first, then the weighted score. Require 2–3 concrete pieces of
-       evidence per must-have — never "relevant background." Review deep
-       into the pool, not just the first page or two.
+     - **Stage 2 (full profile, survivors only).** "Full profile" means the
+       actual LinkedIn profile page — not the search-results card, even with
+       its "Show all" experience list expanded. Always navigate to the real
+       profile for every Stage-1 survivor, no exceptions for candidates that
+       look clear-cut from the card; the About section, full skill list, and
+       recommendations routinely change a call that looked obvious from the
+       card alone. First check the profile for a **"Current project"** tag —
+       if present, they're already in *this exact* project from a prior run;
+       skip them, don't re-add. This is the authoritative check that
+       backstops Stage 1's card-level guess, so a repeat run on the same
+       project never double-adds anyone. Otherwise, extract the history —
+       About, full skills, recommendations included — and run the Scoring
+       rubric below: gates first, then the weighted score. Require 2–3
+       concrete pieces of evidence per must-have — never "relevant
+       background." Review deep into the pool, not just the first page or
+       two.
 7. **Write a decision straight into LinkedIn Recruiter for every Stage-2
    candidate — never leave one un-dispositioned.** For anyone who clears the
    fit-gate (Good Match or above — see Scoring rubric), Not Sure, or a parked

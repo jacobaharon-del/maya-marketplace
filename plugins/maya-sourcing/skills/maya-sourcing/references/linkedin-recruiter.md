@@ -319,15 +319,30 @@ the recruiter rather than padding with poor matches.
 
 ## 8. Stage 2 — score, then write straight into the project
 
-For each Stage-1 survivor, open the profile and **check for a "Current
-project" tag first, before anything else.** The candidate view shows a line
-like `In 1 project · <project name> · Current project` when they're already
-in the project you're working from. If that tag is present, skip them —
-they're already covered by a prior run on this exact project, regardless of
-what Stage 1's card-level check suggested. This is the authoritative check
-that makes repeat runs on the same project safe.
+**"Open the profile" means the actual full LinkedIn profile page, not the
+expanded search-results card.** The search-results list has a "Show all"
+toggle that expands the job-history list inline — that is still Stage 1's
+card, not Stage 2. It's tempting to treat the expanded card as "good enough"
+since it shows full dates and titles, but it's missing the About/summary
+section, the candidate's full skill list (not just LinkedIn's auto-picked
+"matches"), and recommendations — exactly the content that resolves
+borderline calls (a specialization that reframes a title, a stated
+skill the JD needs that the card didn't surface, a recommendation that
+corroborates or contradicts a claimed scope). For every Stage-1 survivor,
+without exception — not just the ones that look borderline from the card —
+navigate to their full profile before applying any gate or score. Never
+gate or score off the expanded card alone.
 
-Otherwise, extract the history and run the Scoring rubric in `SKILL.md` —
+Once on the full profile, **check for a "Current project" tag first, before
+anything else.** The candidate view shows a line like `In 1 project ·
+<project name> · Current project` when they're already in the project you're
+working from. If that tag is present, skip them — they're already covered by
+a prior run on this exact project, regardless of what Stage 1's card-level
+check suggested. This is the authoritative check that makes repeat runs on
+the same project safe.
+
+Otherwise, extract the history — including the About section, full skills
+list, and any recommendations — and run the Scoring rubric in `SKILL.md` —
 Must-Have Gates first (fresh-hire handled specially, see below), then the
 weighted score (Core requirements 50% / Experience 35% / Stability 15%),
 then the band.
