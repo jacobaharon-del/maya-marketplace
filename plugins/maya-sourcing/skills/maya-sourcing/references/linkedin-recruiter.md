@@ -76,7 +76,51 @@ Run the search **from inside the role's project** (see §2) — its own
 "Recruiter search" tab, not a standalone global search — so every result's
 "Save to pipeline" action is already scoped to this project.
 
-## 1a. Applying filters — go slow, verify each one
+**Continuing an existing role? Check search history first, don't rebuild from
+scratch.** Go to **Recruiter search history**
+(`/talent/search/recruiter-search-history`) and find this project's most
+recent entry — it shows the exact boolean query last used, tagged by project
+name. Reopen and reuse it as the starting point instead of reconstructing the
+whole keyword string from the brief again; only adjust what's actually
+changed. Saves real time and avoids drifting from a query that already worked.
+
+## 1b. Add a Qualification — semantic matching on top of keywords
+
+Alongside the boolean keyword string, use LinkedIn's own **"+ Qualification"**
+field (in the filter panel, under "No qualifications evaluated") for the
+must-haves that are hard to express as a keyword AND/OR — verified live: it
+takes a plain sentence (e.g. "Experience managing enterprise healthcare
+technology accounts and renewals") and matches on meaning, not exact wording,
+which is exactly what nuanced must-haves need. This is a built-in LinkedIn
+feature — no external tool, no added cost.
+
+- It measurably tightens the pool: on a live test this took one search from
+  "1K+" results down to 492, all still keyword-matched, now also ranked by
+  relevance to that sentence.
+- Cards that match well show a **"High qualification relevance"** badge —
+  read this at Stage 1, for free, as an extra plausibility signal alongside
+  title/location/seniority, before deciding whether a card is worth opening.
+- Add one qualification per distinct must-have that keywords can't capture
+  well (e.g. a scope-of-role or outcome-based requirement); don't overload it
+  with everything from the brief — the boolean keywords still carry the hard
+  filters (title, skills, tools).
+
+## 1c. Sanity-check the pool size before committing to it
+
+After building the query (keywords + filters + any Qualification), look at
+the result count and **"See search breakdown"** (verified live: shows a bar
+chart of the pool by current/past company, and other dimensions via the
+"View" dropdown) before scrolling through candidates:
+
+- **Still huge (1K+)** — the query is still too broad; tighten the keyword
+  string or add a Qualification before spending time scrolling.
+- **Very small (a handful)** — likely over-constrained; consider whether a
+  filter or keyword is too strict before concluding the market is thin.
+- Use the breakdown to sanity-check composition too — e.g. if company results
+  are dominated by one or two employers, that's worth noticing before you
+  conclude the pool represents the market broadly.
+
+## 1d. Applying filters — go slow, verify each one
 
 Filters are the foundation of the search. A filter that silently didn't land is
 worse than not applying it at all — it gives you a falsely confident broad pool.
@@ -101,7 +145,7 @@ the panel to open, then click the specific option. Verify it's checked.
 rather than looping — tell the recruiter at the end which filters couldn't be
 applied so they can set them manually.
 
-## 1b. Apply the target company list — paste the whole list in ONE action
+## 1e. Apply the target company list — paste the whole list in ONE action
 
 When the recruiter chose "Target companies" in intake, read
 `../references/target-companies.md` (or the same file relative to

@@ -187,7 +187,7 @@ likes to source from, grouped by category. When the recruiter picks **Target
 companies** in intake, read that file, pull the relevant company names (filter
 by category when the role calls for it), and paste the whole list into the
 LinkedIn Recruiter **Companies** filter at search time (mechanics in
-`references/linkedin-recruiter.md` §1b). This is a sourcing input, not a
+`references/linkedin-recruiter.md` §1e). This is a sourcing input, not a
 ranking layer — it narrows the pool, it doesn't score anyone.
 
 Anyone on the team can add companies to that file directly; no connector
@@ -250,19 +250,25 @@ end — it's a real signal about how saturated the pool already is.
    intake step 5) so it stays a single source of truth, not a growing log.
    Never search first and write the brief after.
 6. **Search & screen — you drive LinkedIn Recruiter yourself.** From inside
-   the project, use its own **Recruiter search** tab to build a boolean
-   keyword string from the must-haves, set the Job titles facet, and
-   optionally paste the target-company list, then work the virtualized
-   results list. Full mechanics, pacing, and security rules are in
+   the project, use its own **Recruiter search** tab. If this is a continuing
+   role, check **Recruiter search history** first and reuse the last query
+   rather than rebuilding it. Otherwise build a boolean keyword string from
+   the must-haves, set the Job titles facet, add a **Qualification** for
+   must-haves that don't reduce well to keywords, and optionally paste the
+   target-company list. Check the result count and **search breakdown**
+   before committing to it — still huge, tighten it; oddly small, check
+   you haven't over-constrained it. Then work the virtualized results list.
+   Full mechanics, pacing, and security rules are in
    `references/linkedin-recruiter.md` — never fight a CAPTCHA or "unusual
    activity" warning, stop and hand back to the recruiter.
    - **Two-stage screen, in order — this is what keeps cost down without
      losing accuracy:**
      - **Stage 1 (card-level, no profile open).** Run the dedup/engagement
        check above first, then a quick plausibility check on title,
-       location, and obvious seniority mismatch from the card text alone.
-       Reject clear non-fits and already-engaged candidates here — never open
-       their profile.
+       location, and obvious seniority mismatch from the card text alone —
+       a "High qualification relevance" badge, if present, is a free extra
+       signal here. Reject clear non-fits and already-engaged candidates
+       here — never open their profile.
      - **Stage 2 (full profile, survivors only).** First check the profile
        for a **"Current project"** tag — if present, they're already in
        *this exact* project from a prior run; skip them, don't re-add. This
