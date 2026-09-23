@@ -335,29 +335,25 @@ hidden candidate is filtered out of this project's search entirely, so
 there's no Stage-1 or Stage-2 cost re-encountering them at all.
 
 For **Good Match / Strong Match / Not Sure / a parked fresh-hire** (anyone
-who gets saved at all):
+who gets saved at all), save and stage in **one action**: click the dropdown
+arrow next to **Save to pipeline** (not the button itself) — this opens
+**"Save to pipeline stage..."** with every stage listed, and clicking one
+saves the candidate and sets that stage together (verified live). Pick:
 
-1. **Save to pipeline** — from the candidate's card or open profile, click
-   **Save to pipeline**. Because you're working from inside the role's
-   project's own search tab (§2), this saves straight into that project.
-2. **Set the stage, if not the default:**
-   - Good Match / Strong Match → leave the default stage ("uncontacted").
-   - Not Sure → **Change stage → "Maybe"** (verified live: an existing
-     account-wide stage, available on every project, no setup needed).
-   - Fresh-hire, otherwise a Good Match+ → **Change stage → "Moved Recently -
-     Less than 1 year"** (also verified live, account-wide).
-3. **Add the rationale** — open the **⋯** menu on the candidate and choose
-   **Add note**. Lead with the band, then the score breakdown, then a short
-   evidence-based rationale, e.g.:
-   `Strong Match — Score: 87/100 — Core requirements 90/100 (50%), Experience
-   85/100 (35%), Stability 80/100 (15%). 6y B2B SaaS AE, hit 130%+ quota 3
-   years running, direct healthcare-vertical experience.`
-   Leave visibility on its default, **"Members of \<project\>"**, so the
-   whole team can see it. **No tags, ever** — LinkedIn Recruiter's tag list
-   (⋯ → Add tag) is a fixed, pre-existing set per account with no free-text
-   or on-the-fly creation (verified live: typing a new name shows no
-   "create" option, just a checklist of existing tags). The band goes in the
-   note and, where relevant, the stage — never a tag.
+- Good Match / Strong Match → **uncontacted** (the default stage — nobody's
+  been contacted yet).
+- Not Sure → **Maybe** (verified live: an existing account-wide stage,
+  available on every project, no setup needed).
+- Fresh-hire, otherwise a Good Match+ → **Moved Recently - Less than 1
+  year** (also verified live, account-wide).
+
+That's the entire disposition — no note, no tag. **No notes, ever** — the
+stage alone carries the band; adding a note is extra clicking for
+information the recruiter can already see from the stage and the profile
+itself. **No tags, ever** — LinkedIn Recruiter's tag list (⋯ → Add tag) is a
+fixed, pre-existing set per account with no free-text or on-the-fly creation
+(verified live: typing a new name shows no "create" option, just a
+checklist of existing tags).
 
 Stop once you have ~20 Good Match/Strong Match fits, or the pool genuinely
 runs out — no cap on how many profiles you open to get there — see
