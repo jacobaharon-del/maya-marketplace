@@ -57,9 +57,12 @@ last refined 2026-07-12) — refine further as more roles run.
   already tracks fresh hires manually.
 - **Job-hopper threshold** — 3+ roles under 18 months within the last 6 years
   = decline. Ignore short stints caused by acquisitions or internal
-  promotions.
+  promotions. A near-miss on this number with an otherwise excellent profile
+  isn't an automatic decline — see the Scoring rubric's near-miss judgment.
 - **Seniority floor per role** — enforce a real floor set from the role
-  brief; "too junior" is a decline, not a maybe.
+  brief; "too junior" is a decline, not a maybe — but a small gap (e.g. 5
+  years against a 7-year floor) on an otherwise excellent candidate is a
+  near-miss, not an automatic decline. See the Scoring rubric.
 - **Company-fit band** — not "bigger = better." Default lean is **SaaS
   startup companies**. Hard gate: no-name shops, pure consultancies, and
   integration/outsourcing firms. A per-role target-company list (see below)
@@ -105,6 +108,32 @@ fresh-hire gate, which is handled differently, below:**
   integration/outsourcing firms) — fixed, not overridable by any intake
   question. (The target-company list, when the recruiter picks it, overrides
   the *soft* company-fit lean, not this hard gate.)
+
+**Near-miss judgment — numeric thresholds are calibration points, not
+tripwires.** Sourcing is about the whole picture, not mechanically enforcing
+a number. **Seniority floor** and **job-hopper threshold** are the two gates
+this applies to (the company hard-gate and the hiring manager's explicit
+dealbreakers are genuinely binary — see below for why). If a candidate is
+close to the line — e.g. 5 years against a 7-year floor, or 2 short stints
+against a 3-stint threshold — but everything else about them is strong (clear
+core-requirements match, excellent recent relevance, real evidence), **don't
+auto-hide them on the number alone.** Score them through the full rubric
+instead and let the weighted score decide — a near-miss with an otherwise
+excellent picture should land Good Match or better, not get filtered out
+before anyone sees it. Reserve an automatic Hide for candidates who are *both*
+off on the threshold *and* weak elsewhere, or who miss by a wide margin (e.g.
+2 years against a 7-year floor isn't a near-miss). Use judgment on what
+counts as "close" — a rough guide is within ~20–30% of the stated bar, but
+the real test is whether the rest of the profile makes the case, not the
+percentage.
+
+Why the company hard-gate and the hiring manager's own dealbreakers *don't*
+get this treatment: those aren't soft numeric proxies, they're categorical —
+"this person's entire background is agency/outsourcing work" or "the hiring
+manager said this is a genuine dealbreaker" isn't a number you can be close
+to, it's a different kind of experience or an explicit line the human already
+drew. Flexibility applies to thresholds, not to a fundamentally different
+category of background or a stated hard no.
 
 **Fresh-hire gate — park, don't drop.** If a candidate fails *only* the
 fresh-hire rule (started their current role under 6 months ago) and clears
