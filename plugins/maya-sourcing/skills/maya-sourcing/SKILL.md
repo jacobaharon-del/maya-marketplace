@@ -89,6 +89,15 @@ Score every Stage-2 survivor with this rubric — gates first, then a weighted
 number computed explicitly (don't estimate the final number, add it up), then
 a band that decides whether they make the shortlist.
 
+**Score each candidate independently against the JD and the rules below —
+never against other candidates in this run.** The bar is fixed (the JD, the
+must-haves, the global rules), not relative. Don't reason or write a note in
+terms of "stronger than the last one" or "the difference from candidate X" —
+a weak candidate earlier in the run doesn't make a mediocre one look strong
+by comparison, and an exceptional one doesn't make a good one look weak.
+Every profile gets evaluated fresh against the same fixed standard,
+regardless of who else has come through this run before them.
+
 **Every Stage-2 candidate gets a decision — never neither.** Once you've
 opened a profile, it ends in exactly one of two dispositions: **Save to
 pipeline**, or **Hide** (verified live: Hide removes the candidate from this
