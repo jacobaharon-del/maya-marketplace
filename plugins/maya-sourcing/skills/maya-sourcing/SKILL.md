@@ -318,36 +318,46 @@ a profile does. Before opening a profile, check the card for:
 
 - **Genuinely engaged, live** — the card shows a stage beyond "uncontacted"
   (e.g. "In contacted," "In replied," any InMail stage), a "Contacted on
-  \<date\> by \<name\>" line, or an accepted InMail. Someone has actually
-  reached out and it's still an open thread — skip regardless of which
-  project that happened in. This takes priority over anything below: a live
-  thread on one req is a reason to skip even if a *different* application
-  shows up concluded in the ATS.
+  \<date\> by \<name\>" line, or an accepted/declined InMail. Someone has
+  actually reached out on *some* project for what's usually this same role
+  (companies often run several differently-named projects for one role), so
+  never leave this un-dispositioned in *this* project — but never collapse
+  it into one generic bucket either. **Mirror the real stage into this
+  project**, straight from the card, no profile open:
+  - "In contacted" / "Contacted on \<date\>" → **contacted**
+  - "In replied" → **replied**
+  - Accepted an InMail → **replied** (accepting is itself a response)
+  - Declined an InMail → **replied** (declining is itself a response)
+  - "3rd + 4th InMail" → **3rd + 4th InMail** (mirror the exact stage)
+  - "5th + 6th InMail" → **5th + 6th InMail** (mirror the exact stage)
 - **Merely saved elsewhere, not engaged** — the card shows **Change stage /
   Archive** instead of **Save to pipeline**, but the stage is still
   "uncontacted." This means the candidate is sitting in *some* project with
-  no outreach yet — **don't skip them just for this at Stage 1**, since the
-  card alone doesn't reliably tell you whether that's *this* role's project
-  or a different one. Being sourced for a different req isn't the same as
-  being engaged; a real fit for two open roles at once is legitimate, not a
-  duplicate.
-- **Applied to a job, or ATS-synced ("In Comeet" or your ATS's name)** — if
-  this is the *only* signal on the card (no live thread per the first
-  bullet), don't open anything — not the profile, not the ATS record.
-  Opening the real ATS record to find out what actually happened there
-  (verified live: LinkedIn's own project/requisition panel is unreliable for
-  this — it can show "Unreviewed" while the real ATS record shows a
-  completed rejection from months earlier) costs a full profile-open cycle
-  per candidate, and that's too expensive to spend on a bucket this size.
-  Instead, save the candidate straight to the **"Already in ATS"** pipeline
-  stage directly from the card — the recruiter reviews that bucket manually.
-  This is a Stage-1 action, not a Stage-2 one.
+  no outreach yet — **this one still gets full Stage 2 evaluation,** not a
+  card-level shortcut, since the card alone doesn't reliably tell you
+  whether that's *this* role's project or a different one, and a real fit
+  for two open roles at once is legitimate, not a duplicate.
+- **Applied to a job, or ATS-synced ("In Comeet" or your ATS's name)** — a
+  separate bucket from the engagement stages above, not a mirrored stage.
+  Don't open anything — not the profile, not the ATS record. Opening the
+  real ATS record to find out what actually happened there (verified live:
+  LinkedIn's own project/requisition panel is unreliable for this — it can
+  show "Unreviewed" while the real ATS record shows a completed rejection
+  from months earlier) costs a full profile-open cycle per candidate, which
+  is too expensive for a bucket this size. Save straight to the
+  **"Already in ATS"** pipeline stage directly from the card instead — the
+  recruiter reviews that bucket manually.
 
-Skip on the first two signals, and route the third straight to "Already in
-ATS," **all before spending a profile-open cycle on that candidate.** None
-of the three costs a full evaluation. Keep a running count of everyone you
-skip for genuine engagement — it's a real signal about how saturated the
-pool already is, even without a formal end-of-run report.
+Route the first and third bullets straight to their stage, **all before
+spending a profile-open cycle on that candidate.** Only the second bullet
+(merely saved, not engaged) goes on to full evaluation. None of this costs a
+full evaluation, and saving into this project's own pipeline — instead of
+leaving a candidate untouched in the raw search results — means a future run
+on this same project skips past them for free via the "Current project" tag
+check, rather than re-checking their engagement status from scratch every
+time. Keep a running count of everyone you route this way — it's a real
+signal about how saturated the pool already is, even without a formal
+end-of-run report.
 
 ## The workflow, end to end
 

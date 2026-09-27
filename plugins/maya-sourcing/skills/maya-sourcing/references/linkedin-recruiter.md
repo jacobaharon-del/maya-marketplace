@@ -282,68 +282,92 @@ exist in the DOM. You must scroll to force new cards to render, then read them.
 ## 4. Stage 1 — dedup / already-engaged signals, at the card level
 
 Do this **before** opening any profile — it's the main cost lever, since it
-skips the expensive open+read cycle entirely for candidates you'd reject
-anyway. Read each card's text and reject/skip on any of:
+skips the expensive open+read cycle entirely for candidates who get routed
+away without ever reaching Stage 2. Read each card's text and route on any
+of:
 
 ```js
 // cardText = the visible text of one result card
-const alreadyContacted = /Contacted on/i.test(cardText);       // "Contacted on <date> by <name>"
+const contactedLine = /Contacted on/i.test(cardText);   // "Contacted on <date> by <name>"
+const atsOrApplied  = /In Comeet|Applied to/i.test(cardText);   // ATS sync or self-applied
+const inMailAccepted = /accepted.*InMail/i.test(cardText);
+const inMailDeclined = /declined.*InMail/i.test(cardText);
 
 // A fresh, untouched candidate's card shows "Save to pipeline". A candidate
 // already saved to some project instead shows "Change stage" / "Archive"
-// plus a stage label ("In uncontacted", "In contacted", "In replied", ...).
-const stageMatch = cardText.match(/\bIn (uncontacted|contacted|replied|\S.*?InMail)\b/i);
-const merelySaved   = !!stageMatch && /uncontacted/i.test(stageMatch[0]);
-const engagedStage  = !!stageMatch && !merelySaved;
+// plus a stage label ("In uncontacted", "In contacted", "In replied",
+// "In 3rd + 4th InMail", "In 5th + 6th InMail", ...).
+const stageMatch = cardText.match(/\bIn (uncontacted|contacted|replied|3rd \+ 4th InMail|5th \+ 6th InMail)\b/i);
+const merelySaved = !!stageMatch && /uncontacted/i.test(stageMatch[0]);
 
-const alreadyEngaged = alreadyContacted || engagedStage;
-// NOT included here: "In Comeet" / ATS sync. That's deliberate — see below.
+// Map each live-engagement signal to the exact stage to mirror in THIS
+// project (see the table in §4a) — never a plain skip, never one generic
+// bucket for all of them:
+//   "In contacted" / contactedLine        → contacted
+//   "In replied"                          → replied
+//   inMailAccepted / inMailDeclined       → replied
+//   "In 3rd + 4th InMail"                 → 3rd + 4th InMail (mirror exact)
+//   "In 5th + 6th InMail"                 → 5th + 6th InMail (mirror exact)
+// atsOrApplied is a separate bucket, not mirrored — see §4a.
+// merelySaved (uncontacted elsewhere) gets full Stage 2 evaluation instead.
 ```
 
-**"Uncontacted" is not engagement — don't skip on it alone at Stage 1.** A
-candidate sitting in "uncontacted" stage somewhere just means *some* project
-has saved them, and the card text doesn't reliably say which one. That's not
-the same as someone actually reaching out, and it shouldn't block them from a
-different, genuinely-fitting role. Only skip on a real stage (contacted,
-replied, any InMail stage) or an explicit "Contacted on" line. Whether
-they're already in *this* project specifically gets resolved unambiguously
-at Stage 2 by the "Current project" tag check (§8) — that's the authoritative
-check, not this card-level guess.
+**"Uncontacted" elsewhere is not engagement — it still gets full evaluation,
+not a card-level shortcut.** A candidate sitting in "uncontacted" stage
+somewhere just means *some* project has saved them, and the card text
+doesn't reliably say which one. That's not the same as someone actually
+reaching out or being in the ATS, and it shouldn't block them from a
+different, genuinely-fitting role. Whether they're already in *this* project
+specifically gets resolved unambiguously at Stage 2 by the "Current project"
+tag check (§8) — that's the authoritative check, not this card-level guess.
 
-**"In Comeet" / ATS sync, and "Applied to \<job\>," are Stage-1 actions, not
-skips and not Stage-2 evaluations.** The card only shows they're *somewhere*
-in the ATS, not what actually happened there — but finding out by opening
-the real ATS record costs a full profile-open cycle per candidate, which is
-too expensive for a bucket this size. So don't try to resolve it at all: if
-this is the *only* signal on the card (no live-engagement signal per the
-regex above), route the candidate straight to the **"Already in ATS"**
-pipeline stage — see §4a. Never add this signal to the `alreadyEngaged`
-regex either, since routing to "Already in ATS" is its own action, not a
-skip.
+**A real engagement stage, InMail accept/decline, or ATS sync/"Applied to"
+all route away at Stage 1, but not into one bucket.** Companies often run
+several differently-named projects for what's really one role, so this
+shows up often. Mirror the live-engagement signals into the *matching* real
+stage in this project (contacted → contacted, replied/accepted/declined →
+replied, 3rd+4th or 5th+6th InMail → the same InMail stage) — see §4a for
+the mechanics. ATS sync and "Applied to" are a separate bucket
+("Already in ATS," see §4a), not mirrored, since there's no equivalent
+account-wide stage to map them to and opening the real ATS record to find
+out more is too costly for a bucket this size.
 
-Exclude the truly-engaged ones (contacted/replied/InMail stage) from the
-ranked shortlist — they never occupy one of the ~20 slots, and you never
-spend an open+read cycle confirming them further. Keep a running count as
-you go, even without a formal end-of-run report — it's useful context for
-how saturated the pool is.
+Keep a running count as you go, even without a formal end-of-run report —
+it's useful context for how saturated the pool is.
 
-## 4a. Routing an ATS-synced or "Applied" candidate to "Already in ATS"
+## 4a. Routing live-engagement and ATS-synced candidates — no profile open
 
-Don't open anything for these — not the profile, not the ATS record, not
-the in-app "Comeet" tab. All three cost a real open+read cycle, and the
-whole point of this stage is to avoid spending that on a bucket this size.
+Don't open anything for either bucket below — not the profile, not any ATS
+record, not the in-app "Comeet" tab. All of that costs a real open+read
+cycle, and the point of routing at Stage 1 is to avoid spending that on
+candidates who are already accounted for somewhere.
 
-From the search-results card, use the **"Save to pipeline" dropdown arrow**
-(same one-action mechanic as any other disposition — see §8) and pick the
-**"Already in ATS"** stage. That's the entire action: no profile read, no
-gate, no score, no note. The recruiter reviews this bucket manually inside
-the project — that's a deliberate choice to trade Maya's scoring signal for
-lower cost on a bucket that's expensive to resolve automatically.
+**Live engagement → mirror the exact stage**, from the search-results card,
+using the **"Save to pipeline" dropdown arrow** (same one-action mechanic as
+any other disposition — see §8):
 
-This candidate never reaches Stage 2 and never gets a "Current project" tag
-check, a gate, or a score — "Already in ATS" is the disposition, full stop.
-They don't count toward the ~20 ceiling, same as "Maybe" or "Moved
-Recently."
+| Card signal | Stage to pick in this project |
+|---|---|
+| "In contacted" / "Contacted on \<date\>" | **contacted** |
+| "In replied" | **replied** |
+| Accepted an InMail | **replied** |
+| Declined an InMail | **replied** |
+| "In 3rd + 4th InMail" | **3rd + 4th InMail** |
+| "In 5th + 6th InMail" | **5th + 6th InMail** |
+
+**ATS sync ("In Comeet") or "Applied to \<job\>," with no live-engagement
+signal on the card → "Already in ATS"** instead — same dropdown, different
+stage. This one stays a single generic bucket (unlike the table above)
+because there's no equivalent account-wide stage that captures "somewhere
+in a real ATS," and resolving what actually happened there costs a full
+profile-open cycle this bucket is meant to avoid.
+
+Either way: no profile read, no gate, no score, no note. The recruiter
+reviews "Already in ATS" manually inside the project; the mirrored
+engagement stages are just accurate bookkeeping of something that's already
+visible elsewhere. None of these candidates reach Stage 2, get a "Current
+project" tag check, a gate, or a score, and none of them count toward the
+~20 ceiling, same as "Maybe" or "Moved Recently."
 
 ## 5. Work around javascript_tool truncation
 
@@ -434,9 +458,10 @@ saves the candidate and sets that stage together (verified live). Pick:
   available on every project, no setup needed).
 - Fresh-hire, otherwise a Good Match+ → **Moved Recently - Less than 1
   year** (also verified live, account-wide).
-- Applied/ATS-synced with no other signal → **Already in ATS**, from the
-  card, before ever reaching this Stage-2 list — see §4a. This one never
-  goes through the gate/score/stage decision above at all.
+- Live engagement or ATS-synced/applied → the matching mirrored stage or
+  **Already in ATS**, from the card, before ever reaching this Stage-2 list
+  — see §4a for the full mapping. These never go through the
+  gate/score/stage decision above at all.
 
 That's the entire disposition — no note, no tag. **No notes, ever** — the
 stage alone carries the band; adding a note is extra clicking for
