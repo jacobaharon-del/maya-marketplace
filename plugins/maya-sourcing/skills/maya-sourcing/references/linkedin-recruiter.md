@@ -69,10 +69,10 @@ Translate the brief into an Advanced Search: title/keywords for the role family
 (be tight — adjacent/generic titles hurt precision, per the Screening rules'
 title-match rule), location, seniority, and any must-have skills. Prefer a
 tighter query that returns fewer, better-matched people over a broad one you
-have to wade through. "Tight" means matching the right function and
-seniority, not one literal title string — see §1a for the Job titles facet
-itself, which should carry a researched set of equivalent titles from the
-start, not just the title named in the brief.
+have to wade through. Start the Job titles facet with the literal title from
+the brief — see §1a for when and how to widen it to a researched set of
+equivalent titles, which is a fallback lever for once this focused pool is
+exhausted, not part of the initial search.
 
 Run the search **from inside the role's project** (see §2) — its own
 "Recruiter search" tab, not a standalone global search — so every result's
@@ -86,32 +86,33 @@ name. Reopen and reuse it as the starting point instead of reconstructing the
 whole keyword string from the brief again; only adjust what's actually
 changed. Saves real time and avoids drifting from a query that already worked.
 
-## 1a. Build the Job titles facet from a researched set, not one title
+## 1a. When the pool runs out: widen the Job titles facet first
 
-The Job titles facet takes multiple entries — use that. The title named in
-the brief is the starting point, never the whole list. Before running the
-search, work out what other titles real companies use for the identical job
-and add all of them: seniority variants (Director / Senior Director / VP /
-Head of), function-label variants (Customer Success / Client Success /
-Account Management / Client Partnerships), and combinations. A Series B
-startup's "Head of Customer Success" and an enterprise's "VP of Customer
-Success" can be the exact same job at the exact same seniority — the
-difference is company-specific titling convention, not a real difference in
-role. A search scoped to one literal title string misses those candidates on
-a labeling technicality, not because they're a worse fit.
+Run the initial search on the literal title from the brief and take that
+pool all the way to exhaustion (or ~20 dispositioned fits, whichever comes
+first — see `SKILL.md` workflow steps 6–7) before touching anything. Only
+once that focused pool is genuinely used up does title-widening come in, and
+it's the *first* lever to reach for — before loosening boolean keywords or
+softening a must-have.
+
+To widen: the Job titles facet takes multiple entries. Research what other
+titles real companies use for the identical job and add them alongside the
+original — seniority variants (Director / Senior Director / VP / Head of),
+function-label variants (Customer Success / Client Success / Account
+Management / Client Partnerships), and combinations. A Series B startup's
+"Head of Customer Success" and an enterprise's "VP of Customer Success" can
+be the exact same job at the exact same seniority — the difference is
+company-specific titling convention, not a real difference in role. A search
+scoped to one literal title string misses those candidates on a labeling
+technicality, not because they're a worse fit.
 
 This is a precision-preserving move, not a precision-loosening one — the goal
-is still the right function and seniority (the "be tight" rule in §1 still
-holds), just expressed as a researched set of equivalent labels instead of
-a single string that happens to undercount the real market.
-
-**This is also the first lever when a pool runs thin or the search exhausts
-before the ~20 ceiling** (`SKILL.md` workflow steps 6–7) — before loosening
-boolean keywords or softening a must-have, go back and research more
-equivalent titles for the facet. A title-only miss (same job, different
-label) is a cheaper, more precise fix than broadening the substantive
-requirements, and it's usually the real reason a pool looked thinner than
-the market actually is.
+is still the right function and seniority, just expressed as a researched
+set of equivalent labels instead of a single string that undercounts the
+real market. A title-only miss (same job, different label) is a cheaper,
+more precise fix than broadening the substantive requirements, and it's
+usually the real reason a pool looked thinner than the market actually is.
+Note to the recruiter what titles you added and why.
 
 ## 1b. Add a Qualification — semantic matching on top of keywords
 

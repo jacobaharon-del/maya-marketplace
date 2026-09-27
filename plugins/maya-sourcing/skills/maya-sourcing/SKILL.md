@@ -377,14 +377,15 @@ is, even without a formal end-of-run report.
    the project, use its own **Recruiter search** tab. If this is a continuing
    role, check **Recruiter search history** first and reuse the last query
    rather than rebuilding it. Otherwise build a boolean keyword string from
-   the must-haves, set the Job titles facet with a **researched set of
-   equivalent titles** for the role family — not just the title named in the
-   brief (see `references/linkedin-recruiter.md` §1a) — add a
-   **Qualification** for must-haves that don't reduce well to keywords, and
-   optionally paste the target-company list. Check the result count and
-   **search breakdown** before committing to it — still huge, tighten it;
-   oddly small, check you haven't over-constrained it. Then work the
-   virtualized results list.
+   the must-haves, set the Job titles facet to the literal title from the
+   brief, add a **Qualification** for must-haves that don't reduce well to
+   keywords, and optionally paste the target-company list. Check the result
+   count and **search breakdown** before committing to it — still huge,
+   tighten it; oddly small, check you haven't over-constrained it. Then work
+   the virtualized results list. Stay with this focused, single-title search
+   until that pool is actually exhausted — the researched multi-title
+   expansion (`references/linkedin-recruiter.md` §1a) is the widening lever
+   for *after* that, not part of the initial search.
    Full mechanics, pacing, and security rules are in
    `references/linkedin-recruiter.md` — never fight a CAPTCHA or "unusual
    activity" warning, stop and hand back to the recruiter.
