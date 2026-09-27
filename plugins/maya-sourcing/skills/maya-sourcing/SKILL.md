@@ -75,7 +75,7 @@ Israel run, last refined 2026-07-12) — refine further as more roles run.
 - **No speed-based shortcuts** — never qualify or reject a candidate from the
   search-results preview, headline, current title, or company name alone.
   Fully inspect each profile first (see the two-stage screen below — this
-  rule applies to Stage 2, after the card-level dedup/plausibility check).
+  rule applies to Stage 2, after the card-level plausibility check).
 - **Minimum profile review** — before shortlisting or declining, check:
   current role, previous role, relevant earlier experience, company type and
   stage, role tenure, and evidence for each must-have.
@@ -280,22 +280,20 @@ way*. Don't treat these the same:
 | Good Match | 60–79 | Save to pipeline (default stage is fine — nobody's been contacted yet). Counts toward the ~20 ceiling. |
 | Strong Match | 80–100 | Save to pipeline. Counts toward the ~20 ceiling. |
 
-**ATS-synced or applied candidates never reach this scoring step at all** —
-they're diverted at Stage 1, straight to the "Already in ATS" stage, before
-any profile is opened. See the Dedup section below for the mechanics; the
-short version is that opening the real ATS record to resolve each one costs
-too much per candidate, so the recruiter reviews that bucket manually
-instead of Maya scoring it.
+**Every candidate reaches this scoring step, regardless of any prior
+history.** Whether a candidate shows "In contacted," "In replied," an
+accepted/declined InMail, "Applied to a job," or "In Comeet" changes
+nothing — see "Prior engagement / ATS history" below. There's no bucket that
+skips scoring.
 
 The **fit-gate** referenced elsewhere in this file means **Good Match (60) or
 above** — that's the ~20-slot shortlist. Not Sure candidates are saved too,
 just staged separately as "Maybe" so they never get confused with the actual
 shortlist. No notes and no tags anywhere in this workflow — the band is
 conveyed entirely by the pipeline stage (default/uncontacted for Good/Strong
-Match, "Maybe" for Not Sure, "Moved Recently" for a parked fresh-hire,
-"Already in ATS" for the unscored applied/ATS-synced bucket). The recruiter
-reviews and decides from inside the project itself; Maya's job ends at the
-disposition, not at explaining it.
+Match, "Maybe" for Not Sure, "Moved Recently" for a parked fresh-hire). The
+recruiter reviews and decides from inside the project itself; Maya's job
+ends at the disposition, not at explaining it.
 
 ## Target company list
 
@@ -310,54 +308,23 @@ ranking layer — it narrows the pool, it doesn't score anyone.
 Anyone on the team can add companies to that file directly; no connector
 needed.
 
-## Dedup / already-engaged signals — check before opening any profile
+## Prior engagement / ATS history — ignored entirely
 
-LinkedIn Recruiter already shows you, right on the search-results card,
-whether a candidate has history. Reading the card costs nothing extra; opening
-a profile does. Before opening a profile, check the card for:
-
-- **Genuinely engaged, live** — the card shows a stage beyond "uncontacted"
-  (e.g. "In contacted," "In replied," any InMail stage), a "Contacted on
-  \<date\> by \<name\>" line, or an accepted/declined InMail. Someone has
-  actually reached out on *some* project for what's usually this same role
-  (companies often run several differently-named projects for one role), so
-  never leave this un-dispositioned in *this* project — but never collapse
-  it into one generic bucket either. **Mirror the real stage into this
-  project**, straight from the card, no profile open:
-  - "In contacted" / "Contacted on \<date\>" → **contacted**
-  - "In replied" → **replied**
-  - Accepted an InMail → **replied** (accepting is itself a response)
-  - Declined an InMail → **replied** (declining is itself a response)
-  - "3rd + 4th InMail" → **3rd + 4th InMail** (mirror the exact stage)
-  - "5th + 6th InMail" → **5th + 6th InMail** (mirror the exact stage)
-- **Merely saved elsewhere, not engaged** — the card shows **Change stage /
-  Archive** instead of **Save to pipeline**, but the stage is still
-  "uncontacted." This means the candidate is sitting in *some* project with
-  no outreach yet — **this one still gets full Stage 2 evaluation,** not a
-  card-level shortcut, since the card alone doesn't reliably tell you
-  whether that's *this* role's project or a different one, and a real fit
-  for two open roles at once is legitimate, not a duplicate.
-- **Applied to a job, or ATS-synced ("In Comeet" or your ATS's name)** — a
-  separate bucket from the engagement stages above, not a mirrored stage.
-  Don't open anything — not the profile, not the ATS record. Opening the
-  real ATS record to find out what actually happened there (verified live:
-  LinkedIn's own project/requisition panel is unreliable for this — it can
-  show "Unreviewed" while the real ATS record shows a completed rejection
-  from months earlier) costs a full profile-open cycle per candidate, which
-  is too expensive for a bucket this size. Save straight to the
-  **"Already in ATS"** pipeline stage directly from the card instead — the
-  recruiter reviews that bucket manually.
-
-Route the first and third bullets straight to their stage, **all before
-spending a profile-open cycle on that candidate.** Only the second bullet
-(merely saved, not engaged) goes on to full evaluation. None of this costs a
-full evaluation, and saving into this project's own pipeline — instead of
-leaving a candidate untouched in the raw search results — means a future run
-on this same project skips past them for free via the "Current project" tag
-check, rather than re-checking their engagement status from scratch every
-time. Keep a running count of everyone you route this way — it's a real
-signal about how saturated the pool already is, even without a formal
-end-of-run report.
+LinkedIn Recruiter surfaces a lot of history on a candidate's card and full
+profile — "In contacted," "In replied," an accepted/declined InMail,
+"Applied to a job," "In Comeet." **None of it changes anything about how
+Maya screens or disposes of a candidate, and none of it is a reason to skip
+opening a profile.** Every candidate gets the same full Stage 2 evaluation
+(profile open, gates, weighted score — see Scoring rubric above) regardless
+of what history the card or profile shows, and lands in exactly the same
+outcome set as anyone else: **Hide**, **Maybe** (Not Sure), **uncontacted**
+(Good/Strong Match), or **Moved Recently - Less than 1 year** (a parked
+fresh-hire). There is no separate "Already in ATS" bucket and no mirroring a
+candidate's contacted/replied/InMail stage from another project into this
+one — that history is still visible to the recruiter on the candidate's own
+profile page whenever they open it; Maya just never uses it to shortcut or
+change a decision. See `references/linkedin-recruiter.md` §4 for the
+mechanics.
 
 ## The workflow, end to end
 
@@ -405,12 +372,14 @@ end-of-run report.
    activity" warning, stop and hand back to the recruiter.
    - **Two-stage screen, in order — this is what keeps cost down without
      losing accuracy:**
-     - **Stage 1 (card-level, no profile open).** Run the dedup/engagement
-       check above first, then a quick plausibility check on title,
-       location, and obvious seniority mismatch from the card text alone —
-       a "High qualification relevance" badge, if present, is a free extra
-       signal here. Reject clear non-fits and already-engaged candidates
-       here — never open their profile.
+     - **Stage 1 (card-level, no profile open).** A quick plausibility
+       check on title, location, and obvious seniority mismatch from the
+       card text alone — a "High qualification relevance" badge, if
+       present, is a free extra signal here. Reject clear non-fits here —
+       never open their profile. Prior engagement or ATS history
+       (contacted, replied, InMail, applied, Comeet) is never a reason to
+       skip or shortcut a candidate — see "Prior engagement / ATS history"
+       above.
      - **Stage 2 (full profile, survivors only).** "Full profile" means the
        actual LinkedIn profile page — not the search-results card, even with
        its "Show all" experience list expanded. Always navigate to the real
