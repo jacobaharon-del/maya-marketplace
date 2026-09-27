@@ -75,7 +75,7 @@ Israel run, last refined 2026-07-12) — refine further as more roles run.
 - **No speed-based shortcuts** — never qualify or reject a candidate from the
   search-results preview, headline, current title, or company name alone.
   Fully inspect each profile first (see the two-stage screen below — this
-  rule applies to Stage 2, after the card-level plausibility check).
+  rule applies to Stage 2, after the card-level ATS-sync/plausibility check).
 - **Minimum profile review** — before shortlisting or declining, check:
   current role, previous role, relevant earlier experience, company type and
   stage, role tenure, and evidence for each must-have.
@@ -292,20 +292,22 @@ way*. Don't treat these the same:
 | Good Match | 60–79 | Save to pipeline (default stage is fine — nobody's been contacted yet). Counts toward the ~20 ceiling. |
 | Strong Match | 80–100 | Save to pipeline. Counts toward the ~20 ceiling. |
 
-**Every candidate reaches this scoring step, regardless of any prior
-history.** Whether a candidate shows "In contacted," "In replied," an
-accepted/declined InMail, "Applied to a job," or "In Comeet" changes
-nothing — see "Prior engagement / ATS history" below. There's no bucket that
-skips scoring.
+**Every candidate reaches this scoring step, regardless of prior engagement
+history.** Whether a candidate shows "In contacted," "In replied," or an
+accepted/declined InMail changes nothing — see "Prior engagement / ATS
+history" below. The one exception is an ATS-sync or applied signal ("In
+Comeet," "Applied to a job"), which is diverted straight to "Already in
+ATS" before ever reaching this step — same section below.
 
 The **fit-gate** referenced elsewhere in this file means **Good Match (60) or
 above** — that's the ~20-slot shortlist. Not Sure candidates are saved too,
 just staged separately as "Maybe" so they never get confused with the actual
 shortlist. No notes and no tags anywhere in this workflow — the band is
 conveyed entirely by the pipeline stage (default/uncontacted for Good/Strong
-Match, "Maybe" for Not Sure, "Moved Recently" for a parked fresh-hire). The
-recruiter reviews and decides from inside the project itself; Maya's job
-ends at the disposition, not at explaining it.
+Match, "Maybe" for Not Sure, "Moved Recently" for a parked fresh-hire,
+"Already in ATS" for the unscored ATS-synced/applied bucket). The recruiter
+reviews and decides from inside the project itself; Maya's job ends at the
+disposition, not at explaining it.
 
 ## Target company list
 
@@ -320,23 +322,33 @@ ranking layer — it narrows the pool, it doesn't score anyone.
 Anyone on the team can add companies to that file directly; no connector
 needed.
 
-## Prior engagement / ATS history — ignored entirely
+## Prior engagement / ATS history
 
 LinkedIn Recruiter surfaces a lot of history on a candidate's card and full
 profile — "In contacted," "In replied," an accepted/declined InMail,
-"Applied to a job," "In Comeet." **None of it changes anything about how
-Maya screens or disposes of a candidate, and none of it is a reason to skip
-opening a profile.** Every candidate gets the same full Stage 2 evaluation
-(profile open, gates, weighted score — see Scoring rubric above) regardless
-of what history the card or profile shows, and lands in exactly the same
-outcome set as anyone else: **Hide**, **Maybe** (Not Sure), **uncontacted**
-(Good/Strong Match), or **Moved Recently - Less than 1 year** (a parked
-fresh-hire). There is no separate "Already in ATS" bucket and no mirroring a
-candidate's contacted/replied/InMail stage from another project into this
-one — that history is still visible to the recruiter on the candidate's own
-profile page whenever they open it; Maya just never uses it to shortcut or
-change a decision. See `references/linkedin-recruiter.md` §4 for the
-mechanics.
+"Applied to a job," "In Comeet." These split into two very different
+buckets:
+
+- **ATS-sync or applied ("In Comeet" or your ATS's name, "Applied to a
+  job")** — save straight to the **"Already in ATS"** pipeline stage, from
+  the card, before opening anything. No profile open, no gate, no score.
+  The recruiter reviews that bucket manually; resolving what actually
+  happened in the real ATS costs a full profile-open cycle per candidate,
+  which is too expensive for a bucket this size.
+- **Everything else — contacted, replied, an accepted/declined InMail, any
+  InMail stage on another project — changes nothing.** None of it is a
+  reason to skip opening a profile. Every one of these candidates gets the
+  same full Stage 2 evaluation (profile open, gates, weighted score — see
+  Scoring rubric above) regardless of what the card or profile shows, and
+  lands in the same outcome set as anyone else: **Hide**, **Maybe** (Not
+  Sure), **uncontacted** (Good/Strong Match), or **Moved Recently - Less
+  than 1 year** (a parked fresh-hire). There's no mirroring a candidate's
+  contacted/replied/InMail stage from another project into this one — that
+  history is still visible to the recruiter on the candidate's own profile
+  page whenever they open it; Maya just never uses it to shortcut or change
+  a decision.
+
+See `references/linkedin-recruiter.md` §4 for the mechanics.
 
 ## The workflow, end to end
 
@@ -384,14 +396,16 @@ mechanics.
    activity" warning, stop and hand back to the recruiter.
    - **Two-stage screen, in order — this is what keeps cost down without
      losing accuracy:**
-     - **Stage 1 (card-level, no profile open).** A quick plausibility
-       check on title, location, and obvious seniority mismatch from the
-       card text alone — a "High qualification relevance" badge, if
-       present, is a free extra signal here. Reject clear non-fits here —
-       never open their profile. Prior engagement or ATS history
-       (contacted, replied, InMail, applied, Comeet) is never a reason to
-       skip or shortcut a candidate — see "Prior engagement / ATS history"
-       above.
+     - **Stage 1 (card-level, no profile open).** Check for an ATS-sync or
+       applied signal first ("In Comeet," "Applied to a job") — divert
+       straight to "Already in ATS," no profile open, no gate, no score.
+       Otherwise, run a quick plausibility check on title, location, and
+       obvious seniority mismatch from the card text alone — a "High
+       qualification relevance" badge, if present, is a free extra signal
+       here. Reject clear non-fits here — never open their profile. Every
+       other kind of prior engagement (contacted, replied, InMail) is never
+       a reason to skip or shortcut a candidate — see "Prior engagement /
+       ATS history" above.
      - **Stage 2 (full profile, survivors only).** "Full profile" means the
        actual LinkedIn profile page — not the search-results card, even with
        its "Show all" experience list expanded. Always navigate to the real
@@ -434,7 +448,10 @@ mechanics.
      still thin after widening titles, stop and report what limited it
      rather than going further on your own.
    - **Every candidate must be a real profile you actually opened and
-     evaluated** — never add someone off a card preview alone.
+     evaluated** — never add someone off a card preview alone. The one
+     exception is the ATS-synced/applied bucket (see "Prior engagement /
+     ATS history" above), which is deliberately saved straight from the
+     card with no profile open.
 8. **Review.** Happens natively inside the recruiter's own project — they
    change stages, tag, and note candidates in LinkedIn's own UI. That's
    outside your scope.

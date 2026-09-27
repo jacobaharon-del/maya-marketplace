@@ -279,22 +279,42 @@ exist in the DOM. You must scroll to force new cards to render, then read them.
   These are Recruiter-seat URLs — they open inside Recruiter and require the
   user's login. That is expected; they are the correct links to store.
 
-## 4. Prior engagement / ATS history — never a routing signal
+## 4. Prior engagement / ATS history
 
 LinkedIn Recruiter surfaces a lot of history right on the card and on the
 full profile — "In contacted," "In replied," an accepted/declined InMail,
-"Applied to \<job\>," "In Comeet." **None of it changes anything about how a
-candidate gets screened.** Every candidate proceeds to the same full
+"Applied to \<job\>," "In Comeet." This splits into two very different
+buckets:
+
+**ATS-sync or applied ("In Comeet" or your ATS's name, "Applied to \<job\>")
+— route at the card level, before opening anything.** Read each card's text:
+
+```js
+// cardText = the visible text of one result card
+const atsOrApplied = /In Comeet|Applied to/i.test(cardText);
+```
+
+If true, save straight to the **"Already in ATS"** pipeline stage using the
+**"Save to pipeline" dropdown arrow** (same one-action mechanic as any other
+disposition — see §8). No profile read, no gate, no score, no note. The
+recruiter reviews "Already in ATS" manually inside the project. Opening the
+real ATS record or the in-app "Comeet" tab to find out what actually
+happened there costs a full profile-open cycle per candidate, which is too
+expensive for a bucket this size — don't open either one.
+
+**Everything else — contacted, replied, an accepted/declined InMail, any
+InMail stage on another project — changes nothing about how a candidate
+gets screened.** Every one of these candidates proceeds to the same full
 profile-open and scoring pass in §8, regardless of what history shows, and
-lands in exactly the same outcome set as anyone else: Hide, Maybe,
-uncontacted, or Moved Recently - Less than 1 year (see §8). There's no
-separate "Already in ATS" bucket and no mirroring a candidate's
-contacted/replied/InMail stage from another project into this one — that
-history is still visible to the recruiter on the candidate's own profile
-page whenever they open it; it's just never used to shortcut or change a
-decision. Companies often run several differently-named projects for what's
-really one role, so seeing this kind of history on a candidate is common and
-expected — it's not a signal to act on.
+lands in the same outcome set as anyone else: Hide, Maybe, uncontacted, or
+Moved Recently - Less than 1 year (see §8). There's no mirroring a
+candidate's contacted/replied/InMail stage from another project into this
+one — that history is still visible to the recruiter on the candidate's own
+profile page whenever they open it; it's just never used to shortcut or
+change a decision. Companies often run several differently-named projects
+for what's really one role, so seeing this kind of history on a candidate
+is common and expected — it's not a signal to act on, beyond the ATS/applied
+case above.
 
 ## 5. Work around javascript_tool truncation
 
@@ -385,8 +405,11 @@ saves the candidate and sets that stage together (verified live). Pick:
 - Fresh-hire, otherwise a Good Match+ → **Moved Recently - Less than 1
   year** (also verified live, account-wide).
 
-Every candidate goes through this same gate/score/stage decision — prior
-engagement or ATS history never routes a candidate around it (§4).
+Every candidate who reaches this point goes through the same gate/score/
+stage decision — prior engagement (contacted, replied, InMail) never routes
+a candidate around it. The one exception is an ATS-sync/applied signal,
+which is diverted to "Already in ATS" at §4, before ever reaching this
+Stage-2 list at all.
 
 That's the entire disposition — no note, no tag. **No notes, ever** — the
 stage alone carries the band; adding a note is extra clicking for
@@ -398,5 +421,6 @@ checklist of existing tags).
 
 Stop once you have ~20 Good Match/Strong Match fits, or the pool genuinely
 runs out — no cap on how many profiles you open to get there — see
-`SKILL.md` for the fit-gate and the ceiling-not-floor rule. Not Sure and
-parked fresh-hires don't count toward that ~20.
+`SKILL.md` for the fit-gate and the ceiling-not-floor rule. Not Sure,
+parked fresh-hires, and the ATS-synced/applied bucket don't count toward
+that ~20.
