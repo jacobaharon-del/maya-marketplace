@@ -377,11 +377,14 @@ is, even without a formal end-of-run report.
    the project, use its own **Recruiter search** tab. If this is a continuing
    role, check **Recruiter search history** first and reuse the last query
    rather than rebuilding it. Otherwise build a boolean keyword string from
-   the must-haves, set the Job titles facet, add a **Qualification** for
-   must-haves that don't reduce well to keywords, and optionally paste the
-   target-company list. Check the result count and **search breakdown**
-   before committing to it — still huge, tighten it; oddly small, check
-   you haven't over-constrained it. Then work the virtualized results list.
+   the must-haves, set the Job titles facet with a **researched set of
+   equivalent titles** for the role family — not just the title named in the
+   brief (see `references/linkedin-recruiter.md` §1a) — add a
+   **Qualification** for must-haves that don't reduce well to keywords, and
+   optionally paste the target-company list. Check the result count and
+   **search breakdown** before committing to it — still huge, tighten it;
+   oddly small, check you haven't over-constrained it. Then work the
+   virtualized results list.
    Full mechanics, pacing, and security rules are in
    `references/linkedin-recruiter.md` — never fight a CAPTCHA or "unusual
    activity" warning, stop and hand back to the recruiter.
@@ -426,6 +429,12 @@ is, even without a formal end-of-run report.
      the bar, add 12 and tell the recruiter what limited the pool. No cap on
      how many profiles you open to get there — keep working the pool until
      you hit 20 or it's genuinely exhausted.
+   - **If the pool runs out before ~20, widen — titles first.** Go back and
+     research more equivalent titles for the Job titles facet before
+     loosening keywords or softening a must-have (see
+     `references/linkedin-recruiter.md` §1a) — a thin pool is more often a
+     labeling gap (same job, different title at a different company) than a
+     genuinely thin market. Report what you widened and why.
    - **Every candidate must be a real profile you actually opened and
      evaluated** — never add someone off a card preview alone.
 8. **Review.** Happens natively inside the recruiter's own project — they
