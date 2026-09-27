@@ -50,11 +50,20 @@ single biggest cost driver in a run, so how you read each one matters:
   the profile section) or a targeted `javascript_tool` query for the
   experience/about/education blocks — instead of pulling the entire page
   into context.
-- **Prefer text over screenshots.** `find`, `get_page_text`, and targeted
-  `javascript_tool` queries return plain text at a fraction of the token cost
-  of a screenshot. Reserve `computer` screenshots for genuinely ambiguous
-  visual states (e.g. confirming a filter chip rendered) — they shouldn't be
-  the default way to check whether something worked.
+- **Prefer text over screenshots — this means routine confirmations too, not
+  just reading.** `find`, `get_page_text`, and targeted `javascript_tool`
+  queries return plain text at a fraction of the token cost of a screenshot.
+  After a stage change, save, hide, or archive action, confirm it landed by
+  checking the toast/status text or the new stage label with a text query —
+  not by taking a screenshot to read a sentence you could grep for. The same
+  goes for confirming a dropdown menu opened: a text query for the expected
+  option label confirms it exists without a screenshot. Reserve `computer`
+  screenshots for genuinely visual questions you can't answer from text —
+  where an element actually rendered on screen, whether a layout is broken,
+  confirming a menu's *click coordinates* before clicking it for the first
+  time in a session. If you catch yourself screenshotting after every single
+  click just to read a one-line confirmation, that's the anti-pattern this
+  bullet exists to prevent.
 - **Batch sequences in one `browser_batch` call** wherever the steps are
   deterministic (scroll-then-read, open-then-extract) instead of separate
   round trips — this cuts overhead from re-transmitting context on every call.
