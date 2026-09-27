@@ -98,15 +98,21 @@ still thin after widening titles, stop and tell the recruiter rather than
 loosening anything else on your own.
 
 To widen: the Job titles facet takes multiple entries. Research what other
-titles real companies use for the identical job and add them alongside the
-original — seniority variants (Director / Senior Director / VP / Head of),
-function-label variants (Customer Success / Client Success / Account
-Management / Client Partnerships), and combinations. A Series B startup's
-"Head of Customer Success" and an enterprise's "VP of Customer Success" can
-be the exact same job at the exact same seniority — the difference is
-company-specific titling convention, not a real difference in role. A search
-scoped to one literal title string misses those candidates on a labeling
-technicality, not because they're a worse fit.
+titles real companies use for the identical job — this is role-agnostic,
+not a fixed list, and applies the same way to any function. For a "Director
+of Customer Success" role that might mean seniority variants (Director /
+Senior Director / VP / Head of) crossed with function-label variants
+(Customer Success / Client Success / Account Management / Client
+Partnerships). For a "Full Stack Engineer" role it might mean Full Stack
+Developer, Software Engineer (Full Stack), Full Stack Software Engineer,
+Senior/Staff Full Stack Engineer, or plain "Software Engineer" at companies
+that don't split front/back-end titling at all. Same principle either way: a
+Series B startup's "Head of Customer Success" and an enterprise's "VP of
+Customer Success" can be the exact same job at the exact same seniority —
+the difference is company-specific titling convention, not a real
+difference in role. A search scoped to one literal title string misses
+those candidates on a labeling technicality, not because they're a worse
+fit.
 
 This is a precision-preserving move, not a precision-loosening one — the goal
 is still the right function and seniority, just expressed as a researched
