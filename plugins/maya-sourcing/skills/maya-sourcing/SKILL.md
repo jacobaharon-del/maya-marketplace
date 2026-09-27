@@ -280,13 +280,21 @@ way*. Don't treat these the same:
 | Good Match | 60–79 | Save to pipeline (default stage is fine — nobody's been contacted yet). Counts toward the ~20 ceiling. |
 | Strong Match | 80–100 | Save to pipeline. Counts toward the ~20 ceiling. |
 
-**Exception: an ATS-synced candidate who clears Good Match or above still
-gets saved, but staged as "Maybe" instead of the default** — regardless of
-which band they actually landed in. They're a genuine fit, so don't lose
-them, but they're also already somewhere in the ATS for a reason you can't
-verify from the card alone, so flag it rather than treating them as a clean
-new find. They still don't count toward the ~20 ceiling, same as any other
-Maybe.
+**ATS-synced candidates get the default stage for their band, not an
+automatic downgrade to "Maybe"** — once you've actually opened their ATS
+record and resolved it (see the Dedup section above), there's nothing left
+to be unsure about: either they're still live elsewhere (skip, never reach
+scoring) or they're concluded and you scored them fresh, ignoring the old
+reason entirely. A resolved candidate is a clean find, same as anyone else.
+Mention the prior rejection in your summary to the recruiter for
+transparency (e.g. "rejected 6 months ago for X, re-evaluated independently,
+scores as Good Match now") — that's a reporting note, not a reason to stage
+them differently.
+**Fallback: if the ATS record genuinely can't be resolved** (e.g. the link
+doesn't open, or the record is ambiguous even after checking) — stage as
+"Maybe" instead of the default, same as the old caution, so a genuine fit
+still isn't lost to an unresolved unknown. They still don't count toward the
+~20 ceiling in that case.
 
 The **fit-gate** referenced elsewhere in this file means **Good Match (60) or
 above** — that's the ~20-slot shortlist. Not Sure candidates are saved too,
@@ -316,10 +324,13 @@ LinkedIn Recruiter already shows you, right on the search-results card,
 whether a candidate has history. Reading the card costs nothing extra; opening
 a profile does. Before opening a profile, check the card for:
 
-- **Genuinely engaged** — the card shows a stage beyond "uncontacted" (e.g.
-  "In contacted," "In replied," any InMail stage), or a "Contacted on \<date\>
-  by \<name\>" line. Someone has actually reached out — skip regardless of
-  which project that happened in.
+- **Genuinely engaged, live** — the card shows a stage beyond "uncontacted"
+  (e.g. "In contacted," "In replied," any InMail stage), a "Contacted on
+  \<date\> by \<name\>" line, or an accepted InMail. Someone has actually
+  reached out and it's still an open thread — skip regardless of which
+  project that happened in. This takes priority over anything below: a live
+  thread on one req is a reason to skip even if a *different* application
+  shows up concluded in the ATS.
 - **Merely saved elsewhere, not engaged** — the card shows **Change stage /
   Archive** instead of **Save to pipeline**, but the stage is still
   "uncontacted." This means the candidate is sitting in *some* project with
@@ -328,22 +339,35 @@ a profile does. Before opening a profile, check the card for:
   or a different one. Being sourced for a different req isn't the same as
   being engaged; a real fit for two open roles at once is legitimate, not a
   duplicate.
-- **ATS sync** — an "In Comeet" (or your ATS's name) line under Activity, or a
-  visible ATS tab if you do end up on the profile. **This is not a Stage-1
-  skip.** The card only tells you they're *somewhere* in the ATS, not why —
-  it could be an active, highly relevant application, or a stale record from
-  something completely unrelated years ago. Excluding on the card alone
-  risks silently losing a genuinely great fit to an unrelated old record.
-  Evaluate them at Stage 2 like anyone else — see the Scoring rubric for what
-  happens if they clear the bar.
+- **Applied to a job, or ATS-synced ("In Comeet" or your ATS's name)** — not a
+  Stage-1 skip, and not resolved by LinkedIn's own project/requisition
+  panel either (verified live: it can show "Unreviewed" while the real ATS
+  record shows a completed rejection from months earlier — LinkedIn's own
+  display isn't reliable here). Resolve this at Stage 2 by opening the actual
+  ATS record — see `references/linkedin-recruiter.md` for how — not the
+  in-app "Comeet" tab inside LinkedIn Recruiter, which only shows export-sync
+  status and contact info, nothing about the real disposition.
+  - **No rejected/terminal status found** → treat as still live, skip, don't
+    touch — same as any other active thread.
+  - **Rejected (or any other concluded/terminal status)** → the disposition
+    is resolved, but **completely ignore the stated reason** — verified live
+    that reasons range from real substantive calls ("doesn't meet
+    requirements: experience") to pure administrative noise ("position
+    closed," which says nothing about the person at all) with no reliable
+    way to tell which from the outside. Evaluate the candidate fresh through
+    the normal gate + score rubric, exactly like a brand-new candidate, and
+    disposition on the merits alone. If they're genuinely a bad fit, your own
+    scoring will land them in No Go anyway — nothing about this can turn a
+    correct old rejection into a wrongful save, since the old reason never
+    factors into the score either way.
 
-Skip on the first two **before** spending a profile-open cycle on that
-candidate; don't skip on the ATS or "merely saved" signals at Stage 1 — both
-get resolved with real judgment at Stage 2 instead (an opened profile shows a
-"Current project" tag if they're already in *this* project, and you can look
-at the ATS status directly). Keep a running count of the ones you skip for
-genuine engagement — it's a real signal about how saturated the pool already
-is, even without a formal end-of-run report.
+Skip on the first two signals **before** spending a profile-open cycle on
+that candidate. The third (applied/ATS-synced) needs the ATS check above to
+resolve, which does cost a profile-open cycle — that's accepted cost, because
+the alternative is silently losing a genuinely great fit to a stale or
+administrative record. Keep a running count of everyone you skip for genuine
+engagement — it's a real signal about how saturated the pool already is,
+even without a formal end-of-run report.
 
 ## The workflow, end to end
 
