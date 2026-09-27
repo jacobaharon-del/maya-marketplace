@@ -280,30 +280,22 @@ way*. Don't treat these the same:
 | Good Match | 60–79 | Save to pipeline (default stage is fine — nobody's been contacted yet). Counts toward the ~20 ceiling. |
 | Strong Match | 80–100 | Save to pipeline. Counts toward the ~20 ceiling. |
 
-**ATS-synced candidates get the default stage for their band, not an
-automatic downgrade to "Maybe"** — once you've actually opened their ATS
-record and resolved it (see the Dedup section above), there's nothing left
-to be unsure about: either they're still live elsewhere (skip, never reach
-scoring) or they're concluded and you scored them fresh, ignoring the old
-reason entirely. A resolved candidate is a clean find, same as anyone else.
-Mention the prior rejection in your summary to the recruiter for
-transparency (e.g. "rejected 6 months ago for X, re-evaluated independently,
-scores as Good Match now") — that's a reporting note, not a reason to stage
-them differently.
-**Fallback: if the ATS record genuinely can't be resolved** (e.g. the link
-doesn't open, or the record is ambiguous even after checking) — stage as
-"Maybe" instead of the default, same as the old caution, so a genuine fit
-still isn't lost to an unresolved unknown. They still don't count toward the
-~20 ceiling in that case.
+**ATS-synced or applied candidates never reach this scoring step at all** —
+they're diverted at Stage 1, straight to the "Already in ATS" stage, before
+any profile is opened. See the Dedup section below for the mechanics; the
+short version is that opening the real ATS record to resolve each one costs
+too much per candidate, so the recruiter reviews that bucket manually
+instead of Maya scoring it.
 
 The **fit-gate** referenced elsewhere in this file means **Good Match (60) or
 above** — that's the ~20-slot shortlist. Not Sure candidates are saved too,
 just staged separately as "Maybe" so they never get confused with the actual
 shortlist. No notes and no tags anywhere in this workflow — the band is
 conveyed entirely by the pipeline stage (default/uncontacted for Good/Strong
-Match, "Maybe" for Not Sure, "Moved Recently" for a parked fresh-hire). The
-recruiter reviews and decides from inside the project itself; Maya's job
-ends at the disposition, not at explaining it.
+Match, "Maybe" for Not Sure, "Moved Recently" for a parked fresh-hire,
+"Already in ATS" for the unscored applied/ATS-synced bucket). The recruiter
+reviews and decides from inside the project itself; Maya's job ends at the
+disposition, not at explaining it.
 
 ## Target company list
 
@@ -339,35 +331,23 @@ a profile does. Before opening a profile, check the card for:
   or a different one. Being sourced for a different req isn't the same as
   being engaged; a real fit for two open roles at once is legitimate, not a
   duplicate.
-- **Applied to a job, or ATS-synced ("In Comeet" or your ATS's name)** — not a
-  Stage-1 skip, and not resolved by LinkedIn's own project/requisition
-  panel either (verified live: it can show "Unreviewed" while the real ATS
-  record shows a completed rejection from months earlier — LinkedIn's own
-  display isn't reliable here). Resolve this at Stage 2 by opening the actual
-  ATS record — see `references/linkedin-recruiter.md` for how — not the
-  in-app "Comeet" tab inside LinkedIn Recruiter, which only shows export-sync
-  status and contact info, nothing about the real disposition.
-  - **No rejected/terminal status found** → treat as still live, skip, don't
-    touch — same as any other active thread.
-  - **Rejected (or any other concluded/terminal status)** → the disposition
-    is resolved, but **completely ignore the stated reason** — verified live
-    that reasons range from real substantive calls ("doesn't meet
-    requirements: experience") to pure administrative noise ("position
-    closed," which says nothing about the person at all) with no reliable
-    way to tell which from the outside. Evaluate the candidate fresh through
-    the normal gate + score rubric, exactly like a brand-new candidate, and
-    disposition on the merits alone. If they're genuinely a bad fit, your own
-    scoring will land them in No Go anyway — nothing about this can turn a
-    correct old rejection into a wrongful save, since the old reason never
-    factors into the score either way.
+- **Applied to a job, or ATS-synced ("In Comeet" or your ATS's name)** — if
+  this is the *only* signal on the card (no live thread per the first
+  bullet), don't open anything — not the profile, not the ATS record.
+  Opening the real ATS record to find out what actually happened there
+  (verified live: LinkedIn's own project/requisition panel is unreliable for
+  this — it can show "Unreviewed" while the real ATS record shows a
+  completed rejection from months earlier) costs a full profile-open cycle
+  per candidate, and that's too expensive to spend on a bucket this size.
+  Instead, save the candidate straight to the **"Already in ATS"** pipeline
+  stage directly from the card — the recruiter reviews that bucket manually.
+  This is a Stage-1 action, not a Stage-2 one.
 
-Skip on the first two signals **before** spending a profile-open cycle on
-that candidate. The third (applied/ATS-synced) needs the ATS check above to
-resolve, which does cost a profile-open cycle — that's accepted cost, because
-the alternative is silently losing a genuinely great fit to a stale or
-administrative record. Keep a running count of everyone you skip for genuine
-engagement — it's a real signal about how saturated the pool already is,
-even without a formal end-of-run report.
+Skip on the first two signals, and route the third straight to "Already in
+ATS," **all before spending a profile-open cycle on that candidate.** None
+of the three costs a full evaluation. Keep a running count of everyone you
+skip for genuine engagement — it's a real signal about how saturated the
+pool already is, even without a formal end-of-run report.
 
 ## The workflow, end to end
 

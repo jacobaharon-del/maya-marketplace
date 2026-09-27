@@ -310,13 +310,16 @@ they're already in *this* project specifically gets resolved unambiguously
 at Stage 2 by the "Current project" tag check (§8) — that's the authoritative
 check, not this card-level guess.
 
-**"In Comeet" / ATS sync, and "Applied to \<job\>," are not Stage-1 skips
-either — don't add them to the regex above.** The card only shows they're
-*somewhere* in the ATS, not what actually happened there. Excluding on that
-alone risks silently losing a genuinely great fit to a stale or
-administrative ATS record. Let them through to Stage 2, where the real ATS
-record gets opened and resolved — see §4a for how, and §8 for what happens
-to the disposition once it's resolved.
+**"In Comeet" / ATS sync, and "Applied to \<job\>," are Stage-1 actions, not
+skips and not Stage-2 evaluations.** The card only shows they're *somewhere*
+in the ATS, not what actually happened there — but finding out by opening
+the real ATS record costs a full profile-open cycle per candidate, which is
+too expensive for a bucket this size. So don't try to resolve it at all: if
+this is the *only* signal on the card (no live-engagement signal per the
+regex above), route the candidate straight to the **"Already in ATS"**
+pipeline stage — see §4a. Never add this signal to the `alreadyEngaged`
+regex either, since routing to "Already in ATS" is its own action, not a
+skip.
 
 Exclude the truly-engaged ones (contacted/replied/InMail stage) from the
 ranked shortlist — they never occupy one of the ~20 slots, and you never
@@ -324,40 +327,23 @@ spend an open+read cycle confirming them further. Keep a running count as
 you go, even without a formal end-of-run report — it's useful context for
 how saturated the pool is.
 
-## 4a. Resolving an ATS-synced or "Applied" candidate — open the real record
+## 4a. Routing an ATS-synced or "Applied" candidate to "Already in ATS"
 
-The candidate card, and even LinkedIn Recruiter's own project/requisition
-detail panel, are not reliable for this — verified live: the panel can show
-"Unreviewed" while the real ATS record shows a completed rejection from
-months earlier. LinkedIn's own display is not the source of truth here; the
-ATS itself is.
+Don't open anything for these — not the profile, not the ATS record, not
+the in-app "Comeet" tab. All three cost a real open+read cycle, and the
+whole point of this stage is to avoid spending that on a bucket this size.
 
-**Open the actual ATS record, not the in-app "Comeet" tab.** The profile has
-two different things that both look relevant and aren't the same:
-- The **"Comeet" tab** inside the LinkedIn Recruiter profile view — a dead
-  end for this purpose. It only shows LinkedIn-to-ATS export-sync status and
-  contact info, never the real pipeline stage or disposition.
-- The **"Recent ATS Profile"** link (on the card or at the top of the opened
-  profile) — clicking this opens the real ATS platform (e.g. Comeet/Spark
-  Hire) in a new tab, already authenticated as the recruiter. This is the
-  one that has the actual answer.
+From the search-results card, use the **"Save to pipeline" dropdown arrow**
+(same one-action mechanic as any other disposition — see §8) and pick the
+**"Already in ATS"** stage. That's the entire action: no profile read, no
+gate, no score, no note. The recruiter reviews this bucket manually inside
+the project — that's a deliberate choice to trade Maya's scoring signal for
+lower cost on a bucket that's expensive to resolve automatically.
 
-**Read only two things there, nothing else** — the current pipeline
-stage/disposition (e.g. a "Rejected" marker, or the absence of one) and the
-stated reason in the activity log if rejected. Do not open or read resume
-files, other notes, contact/demographic data, or any other activity in the
-ATS beyond that — this is a hard scope limit, not a suggestion. Then close
-the tab and return to LinkedIn Recruiter.
-
-- **No rejected/terminal marker found** → still live somewhere in the
-  process. Skip, don't touch — same as any other active thread.
-- **Rejected (or any other concluded/terminal status)** → resolved.
-  **Ignore the stated reason completely** — reasons observed live range from
-  a real substantive call ("doesn't meet requirements: experience") to pure
-  administrative noise ("position closed," which reflects nothing about the
-  candidate) with no reliable way to tell which from the outside. Move on to
-  full Stage 2 evaluation as if this were a brand-new candidate — the
-  Scoring rubric in `SKILL.md` decides the outcome, not the old reason.
+This candidate never reaches Stage 2 and never gets a "Current project" tag
+check, a gate, or a score — "Already in ATS" is the disposition, full stop.
+They don't count toward the ~20 ceiling, same as "Maybe" or "Moved
+Recently."
 
 ## 5. Work around javascript_tool truncation
 
@@ -443,14 +429,14 @@ arrow next to **Save to pipeline** (not the button itself) — this opens
 saves the candidate and sets that stage together (verified live). Pick:
 
 - Good Match / Strong Match → **uncontacted** (the default stage — nobody's
-  been contacted yet). An ATS-synced candidate you resolved via §4a gets this
-  same default, not an automatic downgrade — once resolved there's nothing
-  left to flag. **Fallback**: if the ATS record genuinely couldn't be
-  resolved, stage as **Maybe** instead (see `SKILL.md` Scoring rubric).
+  been contacted yet).
 - Not Sure → **Maybe** (verified live: an existing account-wide stage,
   available on every project, no setup needed).
 - Fresh-hire, otherwise a Good Match+ → **Moved Recently - Less than 1
   year** (also verified live, account-wide).
+- Applied/ATS-synced with no other signal → **Already in ATS**, from the
+  card, before ever reaching this Stage-2 list — see §4a. This one never
+  goes through the gate/score/stage decision above at all.
 
 That's the entire disposition — no note, no tag. **No notes, ever** — the
 stage alone carries the band; adding a note is extra clicking for
