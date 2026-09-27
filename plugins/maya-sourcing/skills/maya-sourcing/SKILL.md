@@ -430,12 +430,14 @@ is, even without a formal end-of-run report.
      the bar, add 12 and tell the recruiter what limited the pool. No cap on
      how many profiles you open to get there — keep working the pool until
      you hit 20 or it's genuinely exhausted.
-   - **If the pool runs out before ~20, widen — titles first.** Go back and
-     research more equivalent titles for the Job titles facet before
-     loosening keywords or softening a must-have (see
-     `references/linkedin-recruiter.md` §1a) — a thin pool is more often a
-     labeling gap (same job, different title at a different company) than a
-     genuinely thin market. Report what you widened and why.
+   - **If the pool runs out before ~20, the one approved widening lever is
+     titles.** Go back and research more equivalent titles for the Job
+     titles facet (see `references/linkedin-recruiter.md` §1a) — a thin pool
+     is more often a labeling gap (same job, different title at a different
+     company) than a genuinely thin market. Do not loosen boolean keywords
+     or soften a must-have on your own — that's not approved. If the pool is
+     still thin after widening titles, stop and report what limited it
+     rather than going further on your own.
    - **Every candidate must be a real profile you actually opened and
      evaluated** — never add someone off a card preview alone.
 8. **Review.** Happens natively inside the recruiter's own project — they

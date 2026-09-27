@@ -91,9 +91,11 @@ changed. Saves real time and avoids drifting from a query that already worked.
 Run the initial search on the literal title from the brief and take that
 pool all the way to exhaustion (or ~20 dispositioned fits, whichever comes
 first — see `SKILL.md` workflow steps 6–7) before touching anything. Only
-once that focused pool is genuinely used up does title-widening come in, and
-it's the *first* lever to reach for — before loosening boolean keywords or
-softening a must-have.
+once that focused pool is genuinely used up does title-widening come in.
+This is the only widening lever approved so far — loosening boolean keywords
+or softening a must-have is **not** part of this workflow; if the pool is
+still thin after widening titles, stop and tell the recruiter rather than
+loosening anything else on your own.
 
 To widen: the Job titles facet takes multiple entries. Research what other
 titles real companies use for the identical job and add them alongside the
@@ -346,11 +348,11 @@ Restore from localStorage after any navigation.
 Keep scrolling and extracting until you have enough **Stage-1 survivors** (not
 already-engaged, plausible on title/location/seniority) to deliver ~20 after
 full screening. If the pool is thin — or the search exhausts before reaching
-~20 dispositioned fits — widen it, but in this order: first, research and add
-more equivalent titles to the Job titles facet (§1a); only after that, loosen
-boolean keywords or soften a must-have. Note to the recruiter what you
-widened and why, rather than padding the shortlist with poor matches to hit
-a number.
+~20 dispositioned fits — the one approved widening lever is researching and
+adding more equivalent titles to the Job titles facet (§1a). Never loosen
+boolean keywords or soften a must-have on your own — if the pool is still
+thin after widening titles, stop and tell the recruiter what limited it
+rather than padding the shortlist with poor matches to hit a number.
 
 ## 8. Stage 2 — score, then write straight into the project
 
