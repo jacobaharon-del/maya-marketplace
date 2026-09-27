@@ -108,6 +108,18 @@ other. This is what makes repeat runs on the same project actually cheap and
 safe: a hidden candidate never resurfaces in this project's search again, so
 Maya never re-opens and re-scores the same person twice.
 
+**Before checking any gate on any candidate, re-read the Project description
+field for this role's actual must-haves — never gate or score off memory of
+the brief, even within the same session.** This matters most exactly when
+it's tempting to skip it: resuming a long-running session, picking a run
+back up after a break, or continuing from a conversation summary. A
+remembered or reconstructed version of the brief is not reliable enough to
+gate on — especially for hard, categorical must-haves with no exceptions,
+where getting it wrong means a candidate who fails a real requirement gets
+saved anyway. The Project description is the only source of truth; if you
+haven't read it in the current pass, read it before touching the next
+candidate.
+
 **1. Must-Have Gates — pass/fail, checked first, fully resolved before any
 scoring starts.** Fail any one → **Hide the candidate** and move on, don't
 bother scoring the rest — **except the fresh-hire gate, which is handled
