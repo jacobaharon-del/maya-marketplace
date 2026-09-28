@@ -85,6 +85,17 @@ single biggest cost driver in a run, so how you read each one matters:
   opt.click();
   ```
 
+  **The menu renders asynchronously after the dropdown arrow is clicked —
+  verified live: searching for the option text immediately after that click
+  can return nothing, because the menu's contents haven't painted yet.**
+  This is a safe failure (the search finds no match, so nothing gets
+  clicked) rather than a wrong one, but it still needs handling: put a short
+  `computer` wait (around 1 second) between clicking the dropdown arrow and
+  running the text-match search, and if the search still comes back empty,
+  wait once more and retry before falling back to a screenshot. Never treat
+  "no match found" as "already done" — that gap is exactly how a candidate
+  ends up silently un-dispositioned.
+
   Then immediately confirm with a text check (not a screenshot) that the
   candidate's stage label actually changed — a click that silently missed
   its target is worse than a visible misclick, since nothing on screen
