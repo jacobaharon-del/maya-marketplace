@@ -111,6 +111,25 @@ single biggest cost driver in a run, so how you read each one matters:
   Must-Have Gates and all three scoring dimensions in a single pass. Going
   back to re-check something on a profile you already read multiplies cost
   for no accuracy gain.
+- **Never navigate a candidate's open profile tab away to check something
+  else, then navigate back.** Verified live: doing this while mid-evaluation
+  (leaving an open profile to go re-read the Project description, then
+  returning to the same profile URL) very likely re-triggers a LinkedIn
+  Recruiter profile-view charge on that candidate a second time — the
+  credit meter appears to count page loads of a profile, not unique
+  candidates. If you need to check something else while a profile is open,
+  open it in a **separate tab** instead, so the candidate's own tab never
+  reloads.
+- **If a click doesn't produce the expected result, don't retry the same
+  blind action repeatedly.** Verified live: a "Save to pipeline" dropdown
+  failed to open after a click, and instead of checking why, the next step
+  was three more blind attempts (a different element, the same coordinate
+  again) — four tries and several screenshots before anything was actually
+  diagnosed. After one click + the standard wait (§0a above), if the
+  expected menu/state still isn't there, take a single screenshot to see
+  what's actually on screen before trying again. Two failed attempts total
+  is the limit — past that, stop and flag it rather than continuing to
+  guess.
 
 ## 1. Build the boolean search
 
