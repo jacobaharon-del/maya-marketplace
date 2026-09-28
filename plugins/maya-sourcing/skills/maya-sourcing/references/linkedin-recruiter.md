@@ -85,6 +85,26 @@ single biggest cost driver in a run, so how you read each one matters:
   opt.click();
   ```
 
+  **Two different dropdowns use two different label formats — matching only one
+  causes silent misclicks on the other.** Verified live: the "Save to pipeline"
+  dropdown (candidate not yet saved) lists plain labels ("uncontacted"), but the
+  "Change stage" dropdown (candidate already saved) numbers every option ("1.
+  uncontacted", "2. contacted", ...). A selector built for one format can match
+  a decoy element under the other format and silently do nothing, or a stale
+  screenshot coordinate can land one row off — this mis-set three consecutive
+  candidates' stages in one run before being caught only because each one
+  happened to get double-checked. Match both formats at once and require the
+  element to be a real leaf (no children), not a wrapper that merely contains
+  the text elsewhere on the page:
+
+  ```js
+  const target = 'uncontacted';
+  const opt = Array.from(document.querySelectorAll('li, div, button, span'))
+    .find(el => el.children.length === 0 &&
+                new RegExp(`^(\\d+\\.\\s*)?${target}$`, 'i').test(el.textContent.trim()));
+  opt.click();
+  ```
+
   **The menu renders asynchronously after the dropdown arrow is clicked —
   verified live: searching for the option text immediately after that click
   can return nothing, because the menu's contents haven't painted yet.**
