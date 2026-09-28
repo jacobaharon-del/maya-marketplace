@@ -43,27 +43,56 @@ Pacing (§0) controls wall-clock speed to protect the seat. This controls
 token cost, which is separate and just as real — full profile opens are the
 single biggest cost driver in a run, so how you read each one matters:
 
-- **Scope reads to the relevant content, not the whole page.** A candidate
-  profile page also renders a "Recruiting Tools" sidebar (Similar Profiles,
-  Recommended matches) that has nothing to do with scoring this candidate.
-  Read the profile card itself — via a scoped `read_page` (pass `ref_id` for
-  the profile section) or a targeted `javascript_tool` query for the
-  experience/about/education blocks — instead of pulling the entire page
-  into context.
-- **Prefer text over screenshots — this means routine confirmations too, not
-  just reading.** `find`, `get_page_text`, and targeted `javascript_tool`
-  queries return plain text at a fraction of the token cost of a screenshot.
-  After a stage change, save, hide, or archive action, confirm it landed by
-  checking the toast/status text or the new stage label with a text query —
-  not by taking a screenshot to read a sentence you could grep for. The same
-  goes for confirming a dropdown menu opened: a text query for the expected
-  option label confirms it exists without a screenshot. Reserve `computer`
-  screenshots for genuinely visual questions you can't answer from text —
-  where an element actually rendered on screen, whether a layout is broken,
-  confirming a menu's *click coordinates* before clicking it for the first
-  time in a session. If you catch yourself screenshotting after every single
-  click just to read a one-line confirmation, that's the anti-pattern this
-  bullet exists to prevent.
+- **Scope reads to the relevant content, not the whole page — and this isn't
+  just a cost rule, it's an accuracy one.** A candidate profile page also
+  renders a "Recruiting Tools" sidebar (Similar Profiles, Recommended
+  matches) showing *other* candidates, and a naive full-page text grab
+  mixes their headlines and job titles in with the one you're actually
+  scoring. This caused a real false-positive live: a keyword hit for "Epic"
+  that looked like it was on the candidate's own profile was actually from
+  a different person's card in that sidebar. The cheap fix — LinkedIn always
+  prints a "Recruiting Tools" heading right where that sidebar starts, on
+  every profile, so cut the text there before searching it for anything:
+
+  ```js
+  const full = document.body.innerText;
+  const idx = full.indexOf('Recruiting Tools');
+  const profileText = idx > -1 ? full.slice(0, idx) : full;
+  ```
+
+  Run every keyword/date/gate check against `profileText`, never the raw
+  page text. For the hard, no-exceptions gates specifically (Epic/VBC-style
+  must-haves), pair this with a scoped `read_page` (pass `ref_id` for the
+  profile section) as a second, DOM-structural way to exclude the sidebar —
+  don't rely on the text-boundary trick alone when a wrong answer would
+  wrongly pass or fail a categorical must-have.
+- **Prefer text over screenshots — this means routine confirmations and
+  dropdown clicks too, not just reading.** `find`, `get_page_text`, and
+  targeted `javascript_tool` queries return plain text at a fraction of the
+  token cost of a screenshot. After a stage change, save, hide, or archive
+  action, confirm it landed by checking the toast/status text or the new
+  stage label with a text query — not by taking a screenshot to read a
+  sentence you could grep for. For picking an option out of a stage-picker
+  dropdown, don't screenshot to find its pixel position and click by
+  coordinate — LinkedIn's menu position shifts between the screenshot and
+  the click often enough to land on the wrong option (verified live: this
+  mis-set several candidates' stages this session). Instead, find the
+  option by its exact visible text and click that element directly:
+
+  ```js
+  const opt = Array.from(document.querySelectorAll('li, div, button'))
+    .find(el => el.textContent.trim().endsWith('Maybe')); // match the label, not a numbered prefix
+  opt.click();
+  ```
+
+  Then immediately confirm with a text check (not a screenshot) that the
+  candidate's stage label actually changed — a click that silently missed
+  its target is worse than a visible misclick, since nothing on screen
+  flags it. Reserve `computer` screenshots for genuinely visual questions
+  you can't answer from text — whether an element actually rendered, whether
+  a layout is broken. If you catch yourself screenshotting after every
+  single click just to read a one-line confirmation, that's the anti-pattern
+  this bullet exists to prevent.
 - **Batch sequences in one `browser_batch` call** wherever the steps are
   deterministic (scroll-then-read, open-then-extract) instead of separate
   round trips — this cuts overhead from re-transmitting context on every call.
