@@ -436,8 +436,15 @@ without exception — not just the ones that look borderline from the card —
 navigate to their full profile before applying any gate or score. Never
 gate or score off the expanded card alone.
 
-Once on the full profile, **check for a "Current project" tag first, before
-anything else.** The candidate view shows a line like `In 1 project ·
+Once on the full profile, **check whether the candidate's current employer is
+the hiring company itself, before anything else.** LinkedIn Recruiter search
+results can include a company's own employees (flagged as "Internal
+candidates" in the Spotlights row on the search page). An internal candidate
+isn't a real external sourcing result — skip them straight away (Hide, no
+scoring, no gates) without stopping to ask. This is a standing rule, not a
+one-off judgment call.
+
+Next, **check for a "Current project" tag.** The candidate view shows a line like `In 1 project ·
 <project name> · Current project` when they're already in the project you're
 working from. If that tag is present, skip them — they're already covered by
 a prior run on this exact project, regardless of what Stage 1's card-level
