@@ -459,6 +459,18 @@ a prior run on this exact project, regardless of what Stage 1's card-level
 check suggested. This is the authoritative check that makes repeat runs on
 the same project safe.
 
+**Match this with a word boundary — a plain substring check silently
+false-positives on "concurrent project(s)" in someone's job history.**
+Verified live: `/Current project/i.test(profileText)` returned `true` for a
+candidate whose only relevant text was "...led cross-functional
+collaboration...on **concurrent project**s..." in an old role, which would
+have wrongly skipped a genuinely new candidate. Require a word boundary
+before "Current" so "concurrent" can't match it:
+
+```js
+/\bCurrent project\b/i.test(profileText)
+```
+
 Otherwise, extract the history — including the About section, full skills
 list, and any recommendations — and run the Scoring rubric in `SKILL.md` —
 Must-Have Gates first (fresh-hire handled specially, see below), then the
