@@ -66,64 +66,52 @@ single biggest cost driver in a run, so how you read each one matters:
   profile section) as a second, DOM-structural way to exclude the sidebar —
   don't rely on the text-boundary trick alone when a wrong answer would
   wrongly pass or fail a categorical must-have.
-- **Prefer text over screenshots — this means routine confirmations and
-  dropdown clicks too, not just reading.** `find`, `get_page_text`, and
-  targeted `javascript_tool` queries return plain text at a fraction of the
-  token cost of a screenshot. After a stage change, save, hide, or archive
-  action, confirm it landed by checking the toast/status text or the new
-  stage label with a text query — not by taking a screenshot to read a
-  sentence you could grep for. For picking an option out of a stage-picker
-  dropdown, don't screenshot to find its pixel position and click by
-  coordinate — LinkedIn's menu position shifts between the screenshot and
-  the click often enough to land on the wrong option (verified live: this
-  mis-set several candidates' stages this session). Instead, find the
-  option by its exact visible text and click that element directly:
+- **Prefer text over screenshots for reading/confirming — but the stage-picker
+  dropdown itself is the one place a real mouse click beats a JS click.**
+  `find`, `get_page_text`, and targeted `javascript_tool` queries are the
+  right tool for reading page state and for confirming an action landed
+  (check the toast/status text or the new stage label by text, not by
+  screenshotting a sentence you could grep for). But picking an option out
+  of the "Save to pipeline" / "Change stage" dropdown is different, and it's
+  gone through two wrong fixes this session before landing on what actually
+  works — both failure modes are worth knowing so they don't get
+  re-discovered:
 
-  ```js
-  const opt = Array.from(document.querySelectorAll('li, div, button'))
-    .find(el => el.textContent.trim().endsWith('Maybe')); // match the label, not a numbered prefix
-  opt.click();
-  ```
+  1. **Coordinate-clicking off a screenshot taken even a moment earlier
+     misses.** LinkedIn's menu position or content can shift between the
+     screenshot and the click (verified live: mis-set several candidates'
+     stages this session, including one candidate misclicked *twice* in a
+     row this way).
+  2. **A JS `.click()` on the option found by text match looks like it
+     works — it reports finding the right element and calls `.click()` on
+     it — but verified live, it silently doesn't trigger the framework's
+     real stage-change handler.** The dropdown stayed open, the stage
+     didn't change, and nothing about the return value indicated failure.
+     This is worse than fix #1: it produces false confidence, not a
+     visible miss.
 
-  **Two different dropdowns use two different label formats — matching only one
-  causes silent misclicks on the other.** Verified live: the "Save to pipeline"
-  dropdown (candidate not yet saved) lists plain labels ("uncontacted"), but the
-  "Change stage" dropdown (candidate already saved) numbers every option ("1.
-  uncontacted", "2. contacted", ...). A selector built for one format can match
-  a decoy element under the other format and silently do nothing, or a stale
-  screenshot coordinate can land one row off — this mis-set three consecutive
-  candidates' stages in one run before being caught only because each one
-  happened to get double-checked. Match both formats at once and require the
-  element to be a real leaf (no children), not a wrapper that merely contains
-  the text elsewhere on the page:
+  **What actually works, verified live:** click the dropdown arrow, wait
+  ~1 second for the async-rendered menu, take one screenshot, and
+  **immediately** — no other tool call in between — click the target
+  option by the coordinates read from that same screenshot, using the
+  `computer` click action (a real mouse event), never a JS `.click()`. The
+  "immediately" matters: the gap that breaks fix #1 is the round-trip
+  between screenshot and click, not the coordinate math itself, so collapse
+  that gap to zero rather than trying to out-clever it with selectors.
 
-  ```js
-  const target = 'uncontacted';
-  const opt = Array.from(document.querySelectorAll('li, div, button, span'))
-    .find(el => el.children.length === 0 &&
-                new RegExp(`^(\\d+\\.\\s*)?${target}$`, 'i').test(el.textContent.trim()));
-  opt.click();
-  ```
+  The dropdown also uses two different label formats depending on which
+  button opened it — the "Save to pipeline" version (candidate not yet
+  saved) lists plain labels ("uncontacted"), while the "Change stage"
+  version (candidate already saved) numbers every option ("1. uncontacted",
+  "2. contacted", ...) — so read the actual label text off the screenshot
+  each time rather than assuming a fixed row position.
 
-  **The menu renders asynchronously after the dropdown arrow is clicked —
-  verified live: searching for the option text immediately after that click
-  can return nothing, because the menu's contents haven't painted yet.**
-  This is a safe failure (the search finds no match, so nothing gets
-  clicked) rather than a wrong one, but it still needs handling: put a short
-  `computer` wait (around 1 second) between clicking the dropdown arrow and
-  running the text-match search, and if the search still comes back empty,
-  wait once more and retry before falling back to a screenshot. Never treat
-  "no match found" as "already done" — that gap is exactly how a candidate
-  ends up silently un-dispositioned.
-
-  Then immediately confirm with a text check (not a screenshot) that the
-  candidate's stage label actually changed — a click that silently missed
-  its target is worse than a visible misclick, since nothing on screen
-  flags it. Reserve `computer` screenshots for genuinely visual questions
-  you can't answer from text — whether an element actually rendered, whether
-  a layout is broken. If you catch yourself screenshotting after every
-  single click just to read a one-line confirmation, that's the anti-pattern
-  this bullet exists to prevent.
+  **Never skip the post-click verification, and never trust a "clicked"
+  return value from JS as proof of anything.** After the click, run a
+  text check (e.g. `In \d+ project[\s\S]{0,60}` against
+  `document.body.innerText`) for the stage label. If it still shows the old
+  stage, the click missed — take a fresh screenshot and retry the
+  screenshot-then-immediate-click sequence rather than re-clicking blind.
 - **Batch sequences in one `browser_batch` call** wherever the steps are
   deterministic (scroll-then-read, open-then-extract) instead of separate
   round trips — this cuts overhead from re-transmitting context on every call.
