@@ -142,6 +142,25 @@ of failing it outright.
   must-haves (not a number — a specific kind of experience, a language
   requirement, an explicit "this is a dealbreaker") are always binary;
   there's no "near" on a category.
+  - **Named-tool/platform categorical must-haves are the one place "binary"
+    still needs a judgment call: what counts as naming the tool.** A gate
+    like "Salesforce or DealHub + CPQ" is categorical (no near-miss
+    flexing), but don't require the literal product name to appear in the
+    candidate's own words before the gate can pass. Verified live: this
+    cost several genuinely strong, exact-function candidates (explicit
+    SaaS company, explicit Salesforce, years of quote-to-cash/deal-desk/
+    pricing work) a Hide for the sole reason that their LinkedIn text
+    happened to say "CPQ" but not "Salesforce," or vice versa, or named an
+    adjacent tool (Clari, ContractPod) instead of the platform itself.
+    Accept strong, specific adjacent language as satisfying the half of
+    the gate that isn't spelled out literally — quote-to-cash, deal desk,
+    or configure/price/quote-style pricing-and-bundling work for the CPQ
+    half; "CRM," a named CRM-adjacent revenue tool (e.g. Clari), or
+    platform-specific language (e.g. "Salesforce Service/Sales/Revenue
+    Cloud") for the CRM half. The bar stays categorical, not numeric —
+    generic "sales tools" or "software experience" with nothing specific
+    still fails — but don't fail a candidate purely on which half of a
+    two-tool gate they happened to spell out by brand name.
 - **Seniority floor** — from the JD/brief itself (step 2), never a global
   default. Numeric, near-miss judgment applies by default.
 - **Tenure/stability bar** — the standard 2.0-year average, unless the
