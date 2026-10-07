@@ -443,9 +443,14 @@ See `references/linkedin-recruiter.md` §4 for the mechanics.
    activity" warning, stop and hand back to the recruiter.
    - **Two-stage screen, in order — this is what keeps cost down without
      losing accuracy:**
-     - **Stage 1 (card-level, no profile open).** Check for an ATS-sync or
-       applied signal first ("In Comeet," "Applied to a job") — divert
-       straight to "Already in ATS," no profile open, no gate, no score.
+     - **Stage 1 (card-level, no profile open).** **Before any other
+       judgment, explicitly check every single card for an ATS-sync or
+       applied signal — "In Comeet," "Applied to a job," or your ATS's
+       name — even one that looks like an obvious fit or an obvious
+       reject.** Verified live: this check has been skipped on a card that
+       looked clear-cut enough to go straight to a plausibility read instead
+       — don't let a strong- or weak-looking card shortcut past it. Divert
+       straight to "Already in ATS," no profile open, no gate, no decision.
        Otherwise, run a quick plausibility check on title, location, and
        obvious seniority mismatch from the card text alone — a "High
        qualification relevance" badge, if present, is a free extra signal
