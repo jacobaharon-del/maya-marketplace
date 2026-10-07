@@ -1,0 +1,68 @@
+<svg width="680" height="620" viewBox="0 0 680 620" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Maya sourcing process flow</title>
+<desc>Flowchart from intake interview through gate equivalence confirmation, brief writing, search, two-stage screening, to four possible outcomes: Save, Maybe, Parked (moved recently), or Hide.</desc>
+<rect width="680" height="620" fill="#ffffff"/>
+
+<rect x="160" y="40" width="360" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="340" y="61" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#2C2C2A">Intake interview</text>
+<text x="340" y="78" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5F5E5A">location, JD, rubric, notes</text>
+
+<line x1="340" y1="90" x2="340" y2="118" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+<rect x="160" y="120" width="360" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="340" y="141" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#2C2C2A">Gate equivalence confirmed</text>
+<text x="340" y="158" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5F5E5A">what counts, what doesn't</text>
+
+<line x1="340" y1="170" x2="340" y2="198" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+<rect x="160" y="200" width="360" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="340" y="221" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#2C2C2A">Brief written to project</text>
+<text x="340" y="238" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5F5E5A">single source of truth</text>
+
+<line x1="340" y1="250" x2="340" y2="278" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+<rect x="160" y="280" width="360" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="340" y="301" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#2C2C2A">Search linkedin recruiter</text>
+<text x="340" y="318" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5F5E5A">boolean string + title filter</text>
+
+<line x1="340" y1="330" x2="340" y2="358" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+<rect x="160" y="360" width="360" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="340" y="381" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#2C2C2A">Stage 1: card-level screen</text>
+<text x="340" y="398" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5F5E5A">ATS-sync checked first, always</text>
+
+<line x1="340" y1="410" x2="340" y2="438" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+<rect x="160" y="440" width="360" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="340" y="461" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#2C2C2A">Stage 2: check every gate</text>
+<text x="340" y="478" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5F5E5A">silence isn't failure</text>
+
+<line x1="340" y1="490" x2="340" y2="510" stroke="#B4B2A9" stroke-width="0.75" stroke-dasharray="3,3"/>
+<line x1="105" y1="510" x2="555" y2="510" stroke="#B4B2A9" stroke-width="0.75" stroke-dasharray="3,3"/>
+<line x1="105" y1="510" x2="105" y2="528" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow2)"/>
+<line x1="255" y1="510" x2="255" y2="528" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow2)"/>
+<line x1="405" y1="510" x2="405" y2="528" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow2)"/>
+<line x1="555" y1="510" x2="555" y2="528" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+<rect x="40" y="530" width="130" height="50" rx="8" fill="#EAF3DE" stroke="#639922"/>
+<text x="105" y="551" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#173404">Save</text>
+<text x="105" y="568" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#27500A">default stage</text>
+
+<rect x="190" y="530" width="130" height="50" rx="8" fill="#FAEEDA" stroke="#BA7517"/>
+<text x="255" y="551" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#412402">Maybe</text>
+<text x="255" y="568" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#633806">double-check</text>
+
+<rect x="340" y="530" width="130" height="50" rx="8" fill="#E6F1FB" stroke="#378ADD"/>
+<text x="405" y="551" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#042C53">Parked</text>
+<text x="405" y="568" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#0C447C">moved recently</text>
+
+<rect x="490" y="530" width="130" height="50" rx="8" fill="#FCEBEB" stroke="#E24B4A"/>
+<text x="555" y="551" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#501313">Hide</text>
+<text x="555" y="568" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#791F1F">gate failed</text>
+
+<defs>
+<marker id="arrow2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+<path d="M0,0 L8,4 L0,8 Z" fill="#5F5E5A"/>
+</marker>
+</defs>
+</svg>
