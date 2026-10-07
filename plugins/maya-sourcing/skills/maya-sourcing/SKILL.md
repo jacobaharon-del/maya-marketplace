@@ -85,11 +85,20 @@ Israel run, last refined 2026-07-12) — refine further as more roles run.
 
 ## Scoring rubric
 
-Score every Stage-2 survivor with this rubric — gates first, then a weighted
-number computed explicitly (don't estimate the final number, add it up), then
-a band that decides whether they make the shortlist.
+Check every Stage-2 survivor against this rubric — Must-Have Gates are the
+entire decision for sourcing. There's no weighted score and no numeric band:
+gates alone decide Save, Maybe, or Hide. (A separate, richer scoring model
+may exist elsewhere for other purposes, like screening inbound resumes —
+that model fits a workflow where nobody re-reads every candidate by hand.
+Maya does, and the recruiter reviews every pipelined candidate again
+afterward, so a score computed in between adds cost without adding signal.
+Gates plus consistent judgment catch real misses more reliably than a
+blended number ever did — a full audit of this project's run found every
+error ran in one direction, wrongly hiding strong candidates, which traced
+back to inconsistently-applied gate judgment, not to the absence of a
+score.)
 
-**Score each candidate independently against the JD and the rules below —
+**Judge each candidate independently against the JD and the rules below —
 never against other candidates in this run.** The bar is fixed (the JD, the
 must-haves, the global rules), not relative. Don't reason in terms of
 "stronger than the last one" or "the difference from candidate X" —
@@ -99,12 +108,13 @@ Every profile gets evaluated fresh against the same fixed standard,
 regardless of who else has come through this run before them.
 
 **Every Stage-2 candidate gets a decision — never neither.** Once you've
-opened a profile, it ends in exactly one of two dispositions: **Save to
-pipeline**, or **Hide** (verified live: Hide removes the candidate from this
-project's search results permanently — the card collapses to "won't appear
-in any of your search results for this project," and it's reversible by the
-recruiter, not destructive). Never just move on without doing one or the
-other. This is what makes repeat runs on the same project actually cheap and
+opened a profile, it ends in exactly one of three dispositions: **Save to
+pipeline** (default stage), **Save to pipeline staged as "Maybe,"** or
+**Hide** (verified live: Hide removes the candidate from this project's
+search results permanently — the card collapses to "won't appear in any of
+your search results for this project," and it's reversible by the
+recruiter, not destructive). Never just move on without doing one of the
+three. This is what makes repeat runs on the same project actually cheap and
 safe: a hidden candidate never resurfaces in this project's search again, so
 Maya never re-opens and re-scores the same person twice.
 
@@ -120,21 +130,28 @@ saved anyway. The Project description is the only source of truth; if you
 haven't read it in the current pass, read it before touching the next
 candidate.
 
-**1. Must-Have Gates — pass/fail, checked first, fully resolved before any
-scoring starts.** Fail any one → **Hide the candidate** and move on, don't
-bother scoring the rest — **except the fresh-hire gate, which is handled
-differently, below.** For every numeric gate, decide **near-miss or wide
-miss** right here, before moving on to the weighted score — don't let a wide
-miss "leak through" as merely a low score on some dimension later. If the
-must-have is "4+ years as architect" and the candidate has **zero**, that's
-not a near-miss to be softened by good underlying work elsewhere — it's a
-wide miss, the gate fails, and the candidate gets Hidden immediately without
-ever reaching the weighted score. Near-miss judgment only kicks in when the
-candidate is actually *close* to the bar (the ~20–30% guide) — it's not a
-general license to average a real gate failure into a mediocre score instead
-of failing it outright.
+**1. Must-Have Gates — checked first, fully resolved before deciding
+anything.** Every gate must be satisfied to Save a candidate at all —
+**except the fresh-hire gate, which is handled differently, below.** For
+every numeric gate, decide **near-miss or wide miss** right here, before
+moving on — don't let a wide miss "leak through" as a thin excuse later. If
+the must-have is "4+ years as architect" and the candidate has **zero**,
+that's not a near-miss to be softened by good underlying work elsewhere —
+it's a wide miss, the gate fails, and the candidate gets Hidden immediately.
+Near-miss judgment only kicks in when the candidate is actually *close* to
+the bar (the ~20–30% guide) — it's not a general license to wave through a
+real gate failure because the rest of the profile looks good.
 
-- **The role's own must-haves and hard dealbreakers from intake (step 3).**
+- **The role's own must-haves and hard dealbreakers from intake (step 3),
+  written into the Project description as an explicit "Satisfied by / NOT
+  satisfied by" list per gate (see the brief template in The intake
+  interview section).** Use that list as the primary reference for what
+  counts — it was drafted and confirmed with the recruiter specifically so
+  this doesn't have to be improvised per candidate. If a candidate's
+  evidence is genuinely not covered by the list (new phrasing that's
+  clearly the same concept, or a genuinely silent gate), fall back to the
+  judgment rules below rather than mechanically requiring an exact match to
+  the drafted list.
   If any of these are **numeric** (years of experience, tenure length,
   etc.), near-miss judgment (below) applies by default — the same as every
   other numeric gate — unless the recruiter explicitly said it's a hard
@@ -143,24 +160,45 @@ of failing it outright.
   requirement, an explicit "this is a dealbreaker") are always binary;
   there's no "near" on a category.
   - **Named-tool/platform categorical must-haves are the one place "binary"
-    still needs a judgment call: what counts as naming the tool.** A gate
-    like "Salesforce or DealHub + CPQ" is categorical (no near-miss
-    flexing), but don't require the literal product name to appear in the
-    candidate's own words before the gate can pass. Verified live: this
-    cost several genuinely strong, exact-function candidates (explicit
-    SaaS company, explicit Salesforce, years of quote-to-cash/deal-desk/
-    pricing work) a Hide for the sole reason that their LinkedIn text
-    happened to say "CPQ" but not "Salesforce," or vice versa, or named an
-    adjacent tool (Clari, ContractPod) instead of the platform itself.
-    Accept strong, specific adjacent language as satisfying the half of
-    the gate that isn't spelled out literally — quote-to-cash, deal desk,
-    or configure/price/quote-style pricing-and-bundling work for the CPQ
-    half; "CRM," a named CRM-adjacent revenue tool (e.g. Clari), or
+    still needs a judgment call: what counts as naming the tool — and this
+    is the single most common source of wrongly-hidden candidates found in
+    live audits, so treat it as a mandatory check, not background
+    knowledge.** Before hiding a candidate on a named-tool gate, explicitly
+    re-scan their extracted profile text one more time for the full
+    "Satisfied by" list from the brief — don't conclude a fail from a first
+    read. Verified live, twice: this has cost dozens of genuinely strong,
+    exact-function candidates (explicit SaaS company, explicit Salesforce,
+    years of quote-to-cash/deal-desk/pricing work) a Hide for the sole
+    reason that their LinkedIn text happened to say "CPQ" but not
+    "Salesforce," or vice versa, or named an adjacent tool (Clari,
+    ContractPod) instead of the platform itself — even after this exact
+    rule was already written down, which is why the re-scan step exists:
+    writing the rule once wasn't enough to make it stick. Accept strong,
+    specific adjacent language as satisfying the half of the gate that
+    isn't spelled out literally — quote-to-cash, deal desk, or
+    configure/price/quote-style pricing-and-bundling work for the CPQ half;
+    "CRM," a named CRM-adjacent revenue tool (e.g. Clari), or
     platform-specific language (e.g. "Salesforce Service/Sales/Revenue
     Cloud") for the CRM half. The bar stays categorical, not numeric —
     generic "sales tools" or "software experience" with nothing specific
     still fails — but don't fail a candidate purely on which half of a
     two-tool gate they happened to spell out by brand name.
+  - **For any gate about company type (SaaS, non-SaaS, agency, etc.), check
+    the candidate's full relevant work history, not just their current
+    role.** A candidate whose current employer doesn't fit but whose
+    immediately-prior, substantial, relevant role clearly does satisfies the
+    gate just as well — "current or relevant past" means what it says.
+    Checking only the current-role line and stopping there is a confirmed,
+    repeated source of wrongly-hidden candidates; always read the fuller
+    work history before failing a company-type gate.
+  - **Silence is not failure.** A gate the profile simply doesn't mention —
+    one half of a compound gate never comes up, or a specific detail is
+    absent — is not the same as a gate the profile actively contradicts.
+    Only an explicit contradiction (a different, named competing
+    tool/platform, a clearly different domain, explicit evidence the
+    candidate lacks the thing) fails a categorical gate. Plain silence
+    means the gate is unverified, not failed — see "Deciding between Save
+    and Maybe" below for how that unverified gap gets handled.
 - **Seniority floor** — from the JD/brief itself (step 2), never a global
   default. Numeric, near-miss judgment applies by default.
 - **Tenure/stability bar** — the standard 2.0-year average, unless the
@@ -182,10 +220,10 @@ notes (step 3 of intake). The company hard-gate and any **categorical**
 candidate is close to the line — e.g. 5 years against a 7-year floor, or 1.6
 years average against a 2.0-year bar — but everything else about them is
 strong (clear core-requirements match, excellent recent relevance, real
-evidence), **don't auto-hide them on the number alone.**
-Score them through the full rubric instead and let the weighted score decide
-— a near-miss with an otherwise excellent picture should land Good Match or
-better, not get filtered out before anyone sees it. Reserve an automatic Hide
+evidence), **don't auto-hide them on the number alone** — treat the
+near-miss as a pass and move on to the rest of the gates. A near-miss with
+an otherwise excellent picture should land a clean Save, not get filtered
+out before anyone sees it. Reserve an automatic Hide
 for candidates who are *both* off on the threshold *and* weak elsewhere, or
 who miss by a wide margin (e.g. 2 years against a 7-year floor isn't a
 near-miss). For seniority floor and role-specific numeric must-haves, use
@@ -209,19 +247,17 @@ candidate. But short stints have a very different read depending on cause:
   (or better) regardless of how far under the bar the average sits — don't
   penalize someone for the market.
 - **No visible external cause** — if the pattern looks like voluntary early
-  exits with nothing to explain them, that's a real stability concern. Even
-  with excellent must-haves elsewhere, weigh the Career Stability score down
-  meaningfully rather than waving it through — for this role type, staying
-  power isn't a separate nice-to-have that "perfect skills" can outweigh.
-  This should more often land Not Sure than Good Match, so the recruiter
-  gets to make that specific tradeoff call rather than Maya deciding it
-  silently either way.
+  exits with nothing to explain them, that's a real stability concern. If
+  the rest of the profile is strong, don't Hide on this alone — stage as
+  **"Maybe"** instead of the default stage, so the recruiter makes that
+  specific tradeoff call rather than Maya deciding it silently either way.
+  If the rest of the profile is also weak or thin, Hide.
 
 Check for the cause using what's visible on the profile and public knowledge
 of the companies involved (a company known to have had layoffs or shut down,
 a role marked "eliminated" or similar) — don't fabricate a reason that isn't
 supported by anything, and when the cause is genuinely unclear, that
-uncertainty is exactly what "Not Sure" is for.
+uncertainty is exactly what "Maybe" is for.
 
 Why the company hard-gate and categorical dealbreakers *don't* get this
 treatment: those aren't numeric proxies, they're categorical — "this
@@ -231,102 +267,93 @@ different kind of experience. Flexibility applies to thresholds, not to a
 fundamentally different category of background.
 
 **Fresh-hire gate — park, don't drop.** If a candidate fails *only* the
-fresh-hire rule (started their current role under 6 months ago) and clears
-every other gate, don't reject them — score them through the rest of the
-rubric as normal. If they'd otherwise land Good Match or above, **save them
-to pipeline and set the stage to "Moved Recently - Less than 1 year"**
-(an existing account-wide stage) instead of the default — a strong fit who's
-just too fresh in their current role to approach yet. This mirrors how fresh
-hires are already tracked manually on this account — it's a "revisit later,"
-not a rejection. They don't count toward the ~20 ceiling. If a candidate
-fails the fresh-hire rule *and* another gate, that's a normal reject — no
-special handling.
+fresh-hire rule (started their current role under 6 months ago), judge
+everything else first using the rules above. If they clear every other gate,
+**save them to pipeline and set the stage to "Moved Recently - Less than 1
+year"** (an existing account-wide stage) — regardless of whether the rest of
+their profile would otherwise have landed a clean Save or a "Maybe," park
+them either way; gates already did the real filtering. This mirrors how
+fresh hires are already tracked manually on this account — it's a "revisit
+later," not a rejection. They don't count toward the ~20 ceiling. If a
+candidate fails the fresh-hire rule *and* a substantive gate, that's a
+normal Hide — no special handling.
 
-**2. Weighted score — for gate-passers only.** These three categories apply
-to every function — engineering, GTM, ops, whatever the role is. Their
-*content* always comes from that role's own JD and must-haves, never from a
-hardcoded skill list, so the same rubric works whether the must-have is "AWS
-and Python" or "quota attainment and enterprise deal cycles." Score each
-dimension 0–100 with evidence, then compute the weighted sum yourself and
-show the math:
+**2. Deciding between Save and Maybe, once every gate is cleared.** This is
+the only judgment call left — there's no score to compute, and this applies
+to every function the same way, since it's about evidence quality, not
+content.
 
-| Dimension | Weight | What it captures |
-|---|---|---|
-| Core requirements match | 50% | Does the profile actually show the JD's must-haves — not adjacent, not implied. For a technical role that's the stack/tools; for GTM it's things like quota attainment, deal size/ACV, sales cycle, or vertical experience; for any other function, whatever the JD names as required. |
-| Relevant experience | 35% | Recency, domain fit, title-family match, actual scope — per the rules above. |
-| Career stability | 15% | Tenure trend, gaps, trajectory — beyond the pass/fail gate, does the pattern look stable or shaky. |
-
-```
-(core × 0.50) + (experience × 0.35) + (stability × 0.15) = final score
-```
-
-**A whole missing capability area scores very differently from a partial
-gap — don't treat them the same.** "Weaker on a dimension" (some evidence of
-a required skill, just less depth than ideal) deserves a modest deduction.
-**"Zero evidence of an entire required capability area"** — a whole pillar
-of the JD's core responsibilities with nothing in the profile pointing to
-it at all, not "less of it" but none — is categorically worse and should
-drag Core requirements match down sharply, not just a few points. Example:
-a JD split roughly evenly between general platform architecture and
-org-wide AI-tooling evangelism, evaluated against a candidate whose entire
-demonstrated background is data-infrastructure-specific with nothing
-showing either of those two pillars — that's not "somewhat adjacent," it's
-a full capability area unaddressed, and Core requirements should reflect
-that severity (well under 50), not land in the 70s–80s the way a partial
-gap would. When you notice yourself scoring a total blank the same as a
-partial one, stop and re-score — this is exactly the mistake that's easy to
-make by defaulting to "just dock a few points" for every kind of gap.
+- **Save (default stage)** — every gate has explicit or clearly-adjacent
+  evidence, or every gate but one is explicit and the remaining one is
+  simply silent (not contradicted) with nothing else on the profile
+  suggesting a different/incompatible answer.
+- **Maybe** — more than one gate is silent, unclear, or relies on a weak
+  inference, or there are genuinely mixed signals — but nothing is
+  explicitly contradicted. This isn't a lesser shortlist; it's a flag for
+  the recruiter to personally double-check the specific gap before reaching
+  out, since Maya couldn't fully confirm it herself.
 
 **Missing information is not disqualifying information.** LinkedIn profiles
 rarely spell out hard numbers — a salesperson's profile almost never states
 quota attainment or ACV, and plenty of engineers don't list every tool they
 used. There's a real difference between a profile that *actively shows* the
 must-have isn't there (wrong domain entirely, explicitly different tech
-stack, explicitly smaller deal sizes) and one that simply *doesn't say either
-way*. Don't treat these the same:
+stack, explicitly smaller deal sizes) and one that simply *doesn't say
+either way*. Don't treat these the same:
 
-- If the profile contradicts the must-have, score it low with confidence.
-- If the profile is just silent on it, don't default to the floor. Look for
-  the best adjacent signal instead — company type, team/product context,
-  title specificity, scope of role, promotions — and score off that. **Only
-  use knowledge you already have; never do a separate lookup or search to
-  find out what a company's stack or deal sizes typically look like.** For a
-  well-known company you already have a read on, base the inference on that;
-  for a company you don't know anything about, that signal simply isn't
-  available — fall back to whatever other signals exist. If there's
-  genuinely nothing to go on, score it in the middle of the range (not the
-  floor) rather than treating silence as failure.
-- This applies to the weighted score. For a **Must-Have Gate** that can't be
-  verified either way from the profile, don't auto-pass or auto-fail it —
-  score the candidate through on the rest of the rubric rather than silently
-  killing or silently waving through a candidate on a gate you couldn't
-  actually check.
+- If the profile contradicts a gate, that's a Hide — see below.
+- If the profile is just silent on a gate, don't treat that as a failure.
+  Look for the best adjacent signal instead — company type, team/product
+  context, title specificity, scope of role, promotions — and judge off
+  that. **Only use knowledge you already have; never do a separate lookup
+  or search to find out what a company's stack typically looks like.** For
+  a well-known company you already have a read on, base the inference on
+  that; for a company you don't know anything about, that signal simply
+  isn't available. A gate that's genuinely unverifiable either way doesn't
+  fail — it's exactly what makes the difference between a clean Save and a
+  "Maybe." Gate evidence that's just missing (not contradicted) should
+  never by itself push a strong, otherwise rare, hard-to-find candidate out
+  of consideration entirely — the goal is to protect this pool from being
+  thinned out by what a LinkedIn profile happens not to mention, while
+  still being honest with the recruiter about exactly which gap wasn't
+  confirmed.
 
-**3. Band → action:**
+**3. Hide — the complete list of reasons, not just a failed gate.** A gate
+explicitly failing is the most common reason, but not the only one. Hide
+whenever any of these apply:
 
-| Band | Score | Action |
-|---|---|---|
-| No Go | 0–39 | **Hide.** Never saved to the project, never left un-dispositioned either. |
-| Not Sure | 40–59 | Save to pipeline, then **Change stage → "Maybe"** (an existing account-wide stage — don't leave it at the default "uncontacted"). Doesn't count toward the ~20 ceiling. |
-| Good Match | 60–79 | Save to pipeline (default stage is fine — nobody's been contacted yet). Counts toward the ~20 ceiling. |
-| Strong Match | 80–100 | Save to pipeline. Counts toward the ~20 ceiling. |
+1. A Must-Have Gate is explicitly contradicted (a different named competing
+   tool/platform, a clearly different domain, explicit evidence the
+   candidate lacks the thing) or missed by a wide numeric margin.
+2. Card-level implausibility caught at Stage 1 (title, location, or
+   seniority obviously wrong from the search-result card alone).
+3. The company hard-gate (no-name shop, pure consultancy, or
+   outsourcing/integration/staffing firm as their primary identity).
+4. Functional mismatch — their actual role history doesn't match the
+   function, even if titles look similar.
+5. Internal candidate — already employed at the hiring company.
+6. Tenure/stability with no visible external cause *and* weak evidence
+   elsewhere (strong elsewhere gets "Maybe" instead — see above).
+7. Fails the fresh-hire rule *and* a substantive gate.
 
-**Every candidate reaches this scoring step, regardless of prior engagement
+Never saved to the project, never left un-dispositioned either.
+
+**Every candidate reaches this decision step, regardless of prior engagement
 history.** Whether a candidate shows "In contacted," "In replied," or an
 accepted/declined InMail changes nothing — see "Prior engagement / ATS
 history" below. The one exception is an ATS-sync or applied signal ("In
-Comeet," "Applied to a job"), which is diverted straight to "Already in
-ATS" before ever reaching this step — same section below.
+Comeet," "Applied to a job"), which is diverted straight to "Already in ATS"
+before ever reaching this step — same section below.
 
-The **fit-gate** referenced elsewhere in this file means **Good Match (60) or
-above** — that's the ~20-slot shortlist. Not Sure candidates are saved too,
-just staged separately as "Maybe" so they never get confused with the actual
-shortlist. No notes and no tags anywhere in this workflow — the band is
-conveyed entirely by the pipeline stage (default/uncontacted for Good/Strong
-Match, "Maybe" for Not Sure, "Moved Recently" for a parked fresh-hire,
-"Already in ATS" for the unscored ATS-synced/applied bucket). The recruiter
-reviews and decides from inside the project itself; Maya's job ends at the
-disposition, not at explaining it.
+The **fit-gate** referenced elsewhere in this file means **cleared every
+gate with solid evidence** — the default-stage Save, which is the ~20-slot
+shortlist. "Maybe" candidates are saved too, just staged separately so they
+never get confused with the actual shortlist. No notes and no tags anywhere
+in this workflow — the disposition is conveyed entirely by the pipeline
+stage (default for a clean Save, "Maybe" for a flagged one, "Moved Recently"
+for a parked fresh-hire, "Already in ATS" for the unscored ATS-synced/
+applied bucket). The recruiter reviews and decides from inside the project
+itself; Maya's job ends at the disposition, not at explaining it.
 
 ## Target company list
 
@@ -357,11 +384,12 @@ buckets:
 - **Everything else — contacted, replied, an accepted/declined InMail, any
   InMail stage on another project — changes nothing.** None of it is a
   reason to skip opening a profile. Every one of these candidates gets the
-  same full Stage 2 evaluation (profile open, gates, weighted score — see
-  Scoring rubric above) regardless of what the card or profile shows, and
-  lands in the same outcome set as anyone else: **Hide**, **Maybe** (Not
-  Sure), **uncontacted** (Good/Strong Match), or **Moved Recently - Less
-  than 1 year** (a parked fresh-hire). There's no mirroring a candidate's
+  same full Stage 2 evaluation (profile open, gates, Save/Maybe/Hide
+  decision — see Scoring rubric above) regardless of what the card or
+  profile shows, and lands in the same outcome set as anyone else: **Hide**,
+  **Maybe** (flagged for the recruiter to double-check), **uncontacted** (a
+  clean Save), or **Moved Recently - Less than 1 year** (a parked
+  fresh-hire). There's no mirroring a candidate's
   contacted/replied/InMail stage from another project into this one — that
   history is still visible to the recruiter on the candidate's own profile
   page whenever they open it; Maya just never uses it to shortcut or change
@@ -442,17 +470,17 @@ See `references/linkedin-recruiter.md` §4 for the mechanics.
        background." Review deep into the pool, not just the first page or
        two.
 7. **Write a decision straight into LinkedIn Recruiter for every Stage-2
-   candidate — never leave one un-dispositioned.** For anyone who clears the
-   fit-gate (Good Match or above — see Scoring rubric), Not Sure, or a parked
-   fresh-hire: **Save to pipeline**, staged appropriately (default for
-   Good/Strong Match, "Maybe" for Not Sure, "Moved Recently" for a parked
-   fresh-hire). For No Go and any other gate failure: **Hide** them instead —
-   this is what keeps a future run on the same project from ever re-reviewing
-   the same person. No notes, no tags — the stage alone carries the
-   disposition; the recruiter reviews and decides from inside the project.
-   Do this automatically for every candidate you evaluate — don't pause to
-   ask "should I add/hide these?" The only sign-off gate is the brief in
-   step 4.
+   candidate — never leave one un-dispositioned.** For anyone who clears
+   every Must-Have Gate, or a parked fresh-hire: **Save to pipeline**,
+   staged appropriately (default stage for a clean Save, "Maybe" for a
+   flagged one, "Moved Recently" for a parked fresh-hire). For anyone who
+   fails a gate, or hits one of the Hide reasons (see Scoring rubric):
+   **Hide** them instead — this is what keeps a future run on the same
+   project from ever re-reviewing the same person. No notes, no tags — the
+   stage alone carries the disposition; the recruiter reviews and decides
+   from inside the project. Do this automatically for every candidate you
+   evaluate — don't pause to ask "should I add/hide these?" The only
+   sign-off gate is the brief in step 4.
    - **20 is a ceiling, not a floor.** Stop once you have ~20 genuine fits (or
      the pool runs out first). Never pad to hit a number — if only 12 clear
      the bar, add 12 and tell the recruiter what limited the pool. No cap on
