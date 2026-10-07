@@ -421,10 +421,9 @@ See `references/linkedin-recruiter.md` §4 for the mechanics.
    an explicit yes.
 5. **Write the brief into the Project description** (same field as step 2)
    before you search — overwrite it with the current, canonical version of
-   the brief (JD summary, must-haves, company fit, and any explicit
-   overrides to the global defaults the recruiter mentioned) so it stays a
-   single source of truth, not a growing log. Never search first and write
-   the brief after.
+   the brief, using the brief template (see The intake interview section)
+   so every role's Project description is structured the same way. Never
+   search first and write the brief after.
 6. **Search & screen — you drive LinkedIn Recruiter yourself.** From inside
    the project, use its own **Recruiter search** tab. If this is a continuing
    role, check **Recruiter search history** first and reuse the last query
@@ -530,17 +529,24 @@ Ask in this order:
    headcount, target start, or remote/hybrid/on-site.
 2. **JD (source of truth)** — ask them to paste it. Wait for it. Seniority
    floor comes from here, not a separate question — if the JD genuinely
-   doesn't state one, ask a plain-chat follow-up.
+   doesn't state one, ask a plain-chat follow-up. **Also ask, in this same
+   step: does the hiring team have an existing internal requirements rubric
+   or screening doc for this role? If so, paste it too — as-is, no need to
+   clean it up first.** This is optional — most roles won't have one, don't
+   block on it. When one is provided, it's often built for a different
+   purpose (e.g. scoring inbound resumes with weighted numeric bands) —
+   Maya's job is to translate it, not use it wholesale: pull the Must-Have
+   Gates and any genuinely useful stability/strong-fit guidance into this
+   role's brief, and leave behind any scoring formula, weights, or 0–100
+   bands from the source document — those don't carry over into sourcing
+   (see the Scoring rubric section for why).
 3. **Hiring-manager notes (source of truth)** — top 3–5 must-haves, hard
    dealbreakers, what "great" looks like vs. "just fine." **The "great vs.
    just fine" part is optional — don't block sign-off chasing it, and don't
-   follow up more than once if the answer is thin or N/A.** When it's not
-   answered, the fallback is the Scoring rubric's own bands: Strong Match
-   (80–100) already *is* "great," Good Match (60–79) already *is* "just
-   fine." That's a role-agnostic definition that doesn't depend on the
-   hiring manager articulating it upfront — if real signal shows up later
-   (a pattern in which borderline candidates get approved vs. declined),
-   that's what the Learn step is for, not something to chase during intake.
+   follow up more than once if the answer is thin or N/A.** Sourcing doesn't
+   score candidates 0–100 (see Scoring rubric), so there's no band this
+   would feed into — it's just useful color for Save-vs-Maybe judgment
+   calls, and fine to leave unanswered.
    **This step is also where any override of a global default belongs** — if
    the recruiter wants
    a different job-hopper/tenure bar, fresh-hire tolerance, or wants a
@@ -549,6 +555,20 @@ Ask in this order:
    ask a separate formal question for this — it's rare enough that a
    dedicated multiple-choice per role adds friction for no real benefit; the
    free-text step already covers it when it actually comes up.
+
+   **Gate equivalence — fires whenever a must-have names a specific tool,
+   platform, or term of art, whether it came from the JD, an internal
+   rubric, or the recruiter's own words.** Don't lock it in on your own —
+   draft back what counts as satisfying it (the exact name, plus reasonable
+   adjacent/equivalent language) and what explicitly doesn't, and get a
+   quick confirm or correction from the recruiter before moving on. For
+   example: "Salesforce or DealHub + CPQ" → "I'll count Salesforce, SFDC, or
+   DealHub on one side, and CPQ, quote-to-cash, or deal desk on the other —
+   not HubSpot or Dynamics. Sound right?" Skip this for must-haves that need
+   no disambiguation (years of experience, location, "SaaS experience").
+   Once confirmed, write it into the brief as a "Satisfied by / NOT
+   satisfied by" list (see the template below) and apply it consistently to
+   every candidate — don't re-decide it candidate by candidate.
 4. **Company fit** — multiple-choice: **Target companies (use our bank)**
    alongside size/stage bands and "no strong preference." Capture any
    role-specific anti-targets as free text.
@@ -563,6 +583,41 @@ Global defaults only change through the Learn step (workflow step 9), not by
 re-asking every role.
 
 Then summarize the whole brief back and get an explicit yes before searching.
+
+**Brief template — write the Project description in this exact shape every
+time**, so every role's brief is structured the same way regardless of
+function:
+
+```markdown
+[ROLE TITLE] - [Company], [Location]
+
+Employment: [type]. Reports to [X], partners with [Y].
+
+SENIORITY FLOOR: [N]+ years in [function]. Numeric — near-miss judgment
+applies by default, unless marked HARD CUTOFF below.
+
+MUST-HAVES (hard, categorical, no exceptions):
+- [Gate name]
+  - Satisfied by: [exact terms + reasonable adjacent/equivalent language]
+  - NOT satisfied by: [explicitly different/competing things]
+
+STRONG-FIT SIGNALS (not hard gates — weigh as judgment, absence alone
+doesn't disqualify):
+- [industry/company-type background that's a plus, not a requirement]
+
+OTHER JD REQUIREMENTS (near-miss flexibility applies by default):
+- [soft must-haves from the JD, not hard gates]
+
+STABILITY GUIDANCE (only fill in if this role differs from the global
+default):
+- [e.g. "X years average tenure is normal/healthy for this space"]
+
+COMPANY FIT:
+- [target-company list reference, or default SaaS/size/stage band, or
+  explicit hard exclusions]
+
+RECRUITER'S OWN READ: [free text, not a rule]
+```
 
 ## Working on a role that already exists
 
