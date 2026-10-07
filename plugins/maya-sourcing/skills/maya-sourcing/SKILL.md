@@ -469,10 +469,9 @@ See `references/linkedin-recruiter.md` §4 for the mechanics.
        backstops Stage 1's card-level guess, so a repeat run on the same
        project never double-adds anyone. Otherwise, extract the history —
        About, full skills, recommendations included — and run the Scoring
-       rubric below: gates first, then the weighted score. Require 2–3
-       concrete pieces of evidence per must-have — never "relevant
-       background." Review deep into the pool, not just the first page or
-       two.
+       rubric below: gates decide Save, Maybe, or Hide. Require 2–3 concrete
+       pieces of evidence per must-have — never "relevant background."
+       Review deep into the pool, not just the first page or two.
 7. **Write a decision straight into LinkedIn Recruiter for every Stage-2
    candidate — never leave one un-dispositioned.** For anyone who clears
    every Must-Have Gate, or a parked fresh-hire: **Save to pipeline**,
